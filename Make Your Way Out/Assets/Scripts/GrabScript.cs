@@ -69,6 +69,10 @@ public class GrabScript : MonoBehaviour
         objectRB.AddForce(playerCamTransform.forward * 9f, ForceMode.Impulse);
         this.objectGrabPointTransfrom = null;
         objectRB.useGravity = true;
+
+        camerMove.enabled = true;
+        playerMovement.enabled = true;
+        rotateObj.enabled = false;
     }
 
 
