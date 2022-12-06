@@ -24,12 +24,14 @@ public class PickUpP : MonoBehaviour
 
     private GrabScript grabScript;
 
+    public GameObject player;
+
 
 
 
     void Start()
     {
-
+        player.layer = 6;
     }
 
     // Update is called once per frame
@@ -39,14 +41,12 @@ public class PickUpP : MonoBehaviour
         {
             if (grabScript == null)
             {
-
-
                 pickUpDistance = 2f;
-
                 if (Physics.Raycast(playerCamT.position, playerCamT.forward, out RaycastHit raycastHit, pickUpDistance, pickUpLayerMask))
                 {
                     if (raycastHit.transform.TryGetComponent(out grabScript))
                     {
+                        player.layer = 7;
                         grabScript.Grab(objectGrabT);
                     }
                 }
@@ -54,6 +54,7 @@ public class PickUpP : MonoBehaviour
 
             else
             {
+                player.layer = 6;
                 grabScript.Drop();
                 grabScript = null;
 
@@ -61,10 +62,4 @@ public class PickUpP : MonoBehaviour
         }
     }
 
-
-
-    public Vector3 playerCamTGetter()
-    {
-        return playerCamT.transform.position;
-    }
 }

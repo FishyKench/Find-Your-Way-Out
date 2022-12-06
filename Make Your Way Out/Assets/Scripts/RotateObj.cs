@@ -8,19 +8,23 @@ public class RotateObj : MonoBehaviour
 
     public float senX;
     public float senY;
+    public GrabScript cube;
 
     void Start()
     {
-
+        cube = GetComponent<GrabScript>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * senX;
-        float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * senY;
+        if (cube.isFrozen == true)
+        {
+            float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * senX;
+            float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * senY;
 
-        transform.Rotate(Vector3.up, mouseX, Space.World);
-        transform.Rotate(Vector3.left, -mouseY, Space.World);
+            transform.Rotate(Vector3.up, mouseX, Space.World);
+            transform.Rotate(Vector3.left, -mouseY, Space.World);
+        }
     }
 }

@@ -19,6 +19,10 @@ public class GrabScript : MonoBehaviour
     public PlayerCam camerMove;
     public RotateObj rotateObj;
 
+    public GameObject player;
+
+    public bool isFrozen;
+
 
 
 
@@ -28,6 +32,7 @@ public class GrabScript : MonoBehaviour
         playerMovement = playerHolder.GetComponent<PlayerMovementAdvanced>();
         camerMove = camHolder.GetComponent<PlayerCam>();
         rotateObj = GetComponent<RotateObj>();
+        objectRB.GetComponent<Rigidbody>();
 
     }
 
@@ -71,6 +76,9 @@ public class GrabScript : MonoBehaviour
     {
         if (objectGrabPointTransfrom != null)
         {
+            isFrozen = true;
+           
+            objectRB.velocity = Vector3.zero;
             if (Input.GetKey(KeyCode.Mouse1))
             {
                 print("ur mom");
