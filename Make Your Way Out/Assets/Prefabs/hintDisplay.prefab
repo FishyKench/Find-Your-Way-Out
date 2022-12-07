@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4387272822600813778}
   - component: {fileID: 4387272822600813776}
   - component: {fileID: 4387272822600813779}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,8 @@ GameObject:
   - component: {fileID: 4387272822798668905}
   - component: {fileID: 4387272822798668911}
   - component: {fileID: 4387272822798668910}
-  m_Layer: 0
+  - component: {fileID: 3447226456757903947}
+  m_Layer: 8
   m_Name: textScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,6 +222,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3447226456757903947
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4387272822798668904}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02042453, y: 0.00035887127, z: 0.026561301}
+  m_Center: {x: -0.000000059604645, y: -0.00007393113, z: 0.00000023843188}
 --- !u!1 &4387272823198314398
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +245,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4387272823198314396}
   - component: {fileID: 4387272823198314399}
-  m_Layer: 0
+  - component: {fileID: 2474942940299194110}
+  m_Layer: 8
   m_Name: hintDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,3 +295,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!54 &2474942940299194110
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4387272823198314398}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
