@@ -33,6 +33,7 @@ public class GrabScript : MonoBehaviour
         camerMove = camHolder.GetComponent<PlayerCam>();
         rotateObj = GetComponent<RotateObj>();
         objectRB.GetComponent<Rigidbody>();
+        objectRB.isKinematic = true;
 
     }
 
@@ -66,6 +67,7 @@ public class GrabScript : MonoBehaviour
 
     public void Drop()
     {
+        objectRB.isKinematic = false;
         objectRB.AddForce(playerCamTransform.forward * 9f, ForceMode.Impulse);
         this.objectGrabPointTransfrom = null;
         objectRB.useGravity = true;
