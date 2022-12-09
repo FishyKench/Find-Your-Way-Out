@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class numberButtonInteractable : interactable
 {
-    [SerializeField] private float changeAmount;
+    [SerializeField] private int changeAmount;
+    [SerializeField] private string changeIndex;
     [SerializeField] private Material highlightMat;
+    [SerializeField] private buttonManager bm;
 
     private Material _defaultMat;
     private MeshRenderer _meshRenderer;
 
     private void Start()
     {
-        //get the mesh renderer to change materials later
+
         _meshRenderer = GetComponent<MeshRenderer>();
-        //save the default material to a variable
+
         _defaultMat = _meshRenderer.material;
     }
 
@@ -22,7 +24,7 @@ public class numberButtonInteractable : interactable
     public override void OnFocus()
     {
         print("looking at " + gameObject.name);
-        //change the material to the highlight one
+
         _meshRenderer.material = highlightMat;
     }
 
@@ -30,13 +32,14 @@ public class numberButtonInteractable : interactable
     public override void OnInteract()
     {
         print("interacted with " + gameObject.name);
+        bm.changeAmount(changeIndex, changeAmount);
     }
 
     //when player stops looking at this object
     public override void OnLoseFocus()
     {
         print("stopped lokking at " + gameObject.name);
-        //Change the material to the default one
+
         _meshRenderer.material = _defaultMat;
     }
 }
