@@ -15,6 +15,11 @@ public class buttonManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI blueDisplay;
     [SerializeField] TextMeshProUGUI yellowDisplay;
 
+    [SerializeField] int goalRed;
+    [SerializeField] int goalGreen;
+    [SerializeField] int goalBlue;
+    [SerializeField] int goalYellow;
+
     private void Update()
     {
         redDisplay.text = redNum.ToString();
@@ -55,6 +60,18 @@ public class buttonManager : MonoBehaviour
                 yellowNum += changeAmont;
                 break;
 
+        }
+    }
+
+    public void CheckSolution()
+    {
+        if(redNum == goalRed && greenNum == goalGreen && blueNum == goalBlue && yellowNum == goalYellow)
+        {
+            print("CACHANG DOOR OPEN");
+        }
+        else
+        {
+            print("NOPE TRY AGAIN");
         }
     }
 }
