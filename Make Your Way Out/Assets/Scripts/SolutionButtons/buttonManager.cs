@@ -5,16 +5,20 @@ using TMPro;
 
 public class buttonManager : MonoBehaviour
 {
-    public int redNum;
-    public int greenNum;
-    public int blueNum;
-    public int yellowNum;
+    [HideInInspector] public int redNum;
+    [HideInInspector] public int greenNum;
+    [HideInInspector] public int blueNum;
+    [HideInInspector] public int yellowNum;
 
+    [Header("References")]
     [SerializeField] TextMeshProUGUI redDisplay;
     [SerializeField] TextMeshProUGUI greenDisplay;
     [SerializeField] TextMeshProUGUI blueDisplay;
     [SerializeField] TextMeshProUGUI yellowDisplay;
 
+    [Space (15)]
+
+    [Header("Solution")]
     [SerializeField] int goalRed;
     [SerializeField] int goalGreen;
     [SerializeField] int goalBlue;

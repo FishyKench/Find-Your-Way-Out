@@ -33,7 +33,7 @@ public class GrabScript : MonoBehaviour
         camerMove = camHolder.GetComponent<PlayerCam>();
         rotateObj = GetComponent<RotateObj>();
         objectRB.GetComponent<Rigidbody>();
-        objectRB.isKinematic = true;
+        //objectRB.isKinematic = true;
 
     }
 
