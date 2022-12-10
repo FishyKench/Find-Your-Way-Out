@@ -89,10 +89,16 @@ public class buttonManager : MonoBehaviour
             print("CACHANG DOOR OPEN");
             Destroy(normalDoor);
             Instantiate(brokenDoor, spawnOffSet, Quaternion.Euler(0, 90, 0));
+            StartCoroutine(waitForDoor());
         }
         else
         {
             print("NOPE TRY AGAIN");
         }
+    }
+    IEnumerator waitForDoor()
+    {
+        yield return new WaitForSeconds(2);
+        DestroyImmediate(brokenDoor, true);
     }
 }
