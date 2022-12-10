@@ -24,6 +24,21 @@ public class buttonManager : MonoBehaviour
     [SerializeField] int goalBlue;
     [SerializeField] int goalYellow;
 
+
+
+    public GameObject brokenDoor;
+    public GameObject normalDoor;
+
+    public Vector3 spawnOffSet;
+
+
+    private void Start()
+    {
+        spawnOffSet = new Vector3(103.1f, 2.7f, -31.2f);
+    }
+
+
+
     private void Update()
     {
         redDisplay.text = redNum.ToString();
@@ -72,6 +87,8 @@ public class buttonManager : MonoBehaviour
         if(redNum == goalRed && greenNum == goalGreen && blueNum == goalBlue && yellowNum == goalYellow)
         {
             print("CACHANG DOOR OPEN");
+            Destroy(normalDoor);
+            Instantiate(brokenDoor, spawnOffSet, Quaternion.Euler(0, 90, 0));
         }
         else
         {
