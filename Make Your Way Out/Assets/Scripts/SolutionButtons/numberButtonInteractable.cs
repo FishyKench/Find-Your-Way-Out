@@ -11,10 +11,12 @@ public class numberButtonInteractable : interactable
 
     private Material _defaultMat;
     private MeshRenderer _meshRenderer;
+    Vector3 originalPos;
 
     private void Start()
     {
-
+        
+         originalPos = transform.position;
         _meshRenderer = GetComponent<MeshRenderer>();
 
         _defaultMat = _meshRenderer.material;
@@ -33,6 +35,7 @@ public class numberButtonInteractable : interactable
     {
         print("interacted with " + gameObject.name);
         bm.changeAmount(changeIndex, changeAmount);
+        StartCoroutine(interactAnim());
     }
 
     //when player stops looking at this object
@@ -41,5 +44,14 @@ public class numberButtonInteractable : interactable
         print("stopped lokking at " + gameObject.name);
 
         _meshRenderer.material = _defaultMat;
+    }
+
+    IEnumerator interactAnim()
+    {
+        
+
+        transform.position = Vector3.Lerp(transform.position, transform.position -= Vector3.forward/25, 10);
+        yield return new WaitForSeconds(.3f);
+        transform.position = Vector3.Lerp(transform.position, originalPos, 10);
     }
 }
