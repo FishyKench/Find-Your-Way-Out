@@ -9,22 +9,37 @@ public class RotateObj : MonoBehaviour
     public float senX;
     public float senY;
     public GrabScript cube;
+    public Rigidbody rb;
+    private Quaternion defualtRotation;
 
     void Start()
     {
         cube = GetComponent<GrabScript>();
+        rb = GetComponent<Rigidbody>();
+
+        defualtRotation = gameObject.transform.rotation;
     }
 
     // Update is called once per frame
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && cube.IsGrabbed == true)
+        {
+            gameObject.transform.rotation = defualtRotation;
+        }
+    }
+
     void FixedUpdate()
     {
+        
         if (cube.isFrozen == true)
         {
+
             float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * senX;
             float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * senY;
-
-            transform.Rotate(Vector3.up, mouseX, Space.World);
-            transform.Rotate(Vector3.left, -mouseY, Space.World);
+            transform.Rotate(Vector3.down, mouseX, Space.World);
+            transform.Rotate(Vector3.right, mouseY, Space.World);
         }
     }
 }

@@ -19,9 +19,13 @@ public class GrabScript : MonoBehaviour
     public PlayerCam camerMove;
     public RotateObj rotateObj;
 
+    public PickUpP pickUpPlayer;
+
     public GameObject player;
 
     public bool isFrozen;
+
+    public bool IsGrabbed;
 
 
 
@@ -33,7 +37,6 @@ public class GrabScript : MonoBehaviour
         camerMove = camHolder.GetComponent<PlayerCam>();
         rotateObj = GetComponent<RotateObj>();
         objectRB.GetComponent<Rigidbody>();
-        //objectRB.isKinematic = true;
 
     }
 
@@ -61,20 +64,54 @@ public class GrabScript : MonoBehaviour
 
     public void Grab(Transform objectGrabPoint)
     {
+        IsGrabbed = true;
         this.objectGrabPointTransfrom = objectGrabPoint;
         objectRB.useGravity = false;
     }
 
     public void Drop()
     {
-        objectRB.isKinematic = false;
-        objectRB.AddForce(playerCamTransform.forward * 9f, ForceMode.Impulse);
-        this.objectGrabPointTransfrom = null;
-        objectRB.useGravity = true;
+        IsGrabbed = false;
+        if (pickUpPlayer.itWasntGrab == true)
+        {
+            this.gameObject.layer = 10;
 
-        camerMove.enabled = true;
-        playerMovement.enabled = true;
-        rotateObj.enabled = false;
+            objectRB.isKinematic = false;
+            objectRB.AddForce(playerCamTransform.forward * 9f, ForceMode.Impulse);
+            this.objectGrabPointTransfrom = null;
+            objectRB.useGravity = true;
+
+            camerMove.enabled = true;
+            playerMovement.enabled = true;
+            rotateObj.enabled = false;
+
+        }
+        else if (pickUpPlayer.itwasSCUM == true)
+        {
+            this.gameObject.layer = 13;
+
+            objectRB.isKinematic = false;
+            objectRB.AddForce(playerCamTransform.forward * 9f, ForceMode.Impulse);
+            this.objectGrabPointTransfrom = null;
+            objectRB.useGravity = true;
+
+            camerMove.enabled = true;
+            playerMovement.enabled = true;
+            rotateObj.enabled = false;
+        }
+
+        else
+        {
+            this.gameObject.layer = 8;
+            objectRB.isKinematic = false;
+            objectRB.AddForce(playerCamTransform.forward * 9f, ForceMode.Impulse);
+            this.objectGrabPointTransfrom = null;
+            objectRB.useGravity = true;
+
+            camerMove.enabled = true;
+            playerMovement.enabled = true;
+            rotateObj.enabled = false;
+        }
     }
 
 
