@@ -67,11 +67,13 @@ public class GrabScript : MonoBehaviour
         IsGrabbed = true;
         this.objectGrabPointTransfrom = objectGrabPoint;
         objectRB.useGravity = false;
+        objectRB.gameObject.transform.SetParent(playerCamTransform);
     }
 
     public void Drop()
     {
         IsGrabbed = false;
+        objectRB.gameObject.transform.SetParent(null);
         if (pickUpPlayer.itWasntGrab == true)
         {
             this.gameObject.layer = 10;
@@ -84,6 +86,7 @@ public class GrabScript : MonoBehaviour
             camerMove.enabled = true;
             playerMovement.enabled = true;
             rotateObj.enabled = false;
+            
 
         }
         else if (pickUpPlayer.itwasSCUM == true)
@@ -98,6 +101,7 @@ public class GrabScript : MonoBehaviour
             camerMove.enabled = true;
             playerMovement.enabled = true;
             rotateObj.enabled = false;
+            
         }
 
         else
@@ -111,6 +115,7 @@ public class GrabScript : MonoBehaviour
             camerMove.enabled = true;
             playerMovement.enabled = true;
             rotateObj.enabled = false;
+            
         }
     }
 
@@ -130,6 +135,7 @@ public class GrabScript : MonoBehaviour
                 rotateObj.enabled = true;
                 objectRB.velocity = Vector3.zero;
                 objectRB.angularVelocity = Vector3.zero;
+            objectRB.gameObject.transform.SetParent(null);
 
             }
             else
@@ -138,6 +144,7 @@ public class GrabScript : MonoBehaviour
                 camerMove.enabled = true;
                 playerMovement.enabled = true;
                 rotateObj.enabled = false;
+                objectRB.gameObject.transform.SetParent(playerCamTransform);
             }
 
 
