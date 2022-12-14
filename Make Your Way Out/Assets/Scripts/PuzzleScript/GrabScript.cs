@@ -27,6 +27,8 @@ public class GrabScript : MonoBehaviour
 
     public bool IsGrabbed;
 
+    public float throwForce;
+
 
 
 
@@ -37,6 +39,8 @@ public class GrabScript : MonoBehaviour
         camerMove = camHolder.GetComponent<PlayerCam>();
         rotateObj = GetComponent<RotateObj>();
         objectRB.GetComponent<Rigidbody>();
+
+        throwForce = 9f;
 
     }
 
@@ -79,7 +83,7 @@ public class GrabScript : MonoBehaviour
             this.gameObject.layer = 10;
 
             objectRB.isKinematic = false;
-            objectRB.AddForce(playerCamTransform.forward * 9f, ForceMode.Impulse);
+            objectRB.AddForce(playerCamTransform.forward * throwForce, ForceMode.Impulse);
             this.objectGrabPointTransfrom = null;
             objectRB.useGravity = true;
 
@@ -94,7 +98,7 @@ public class GrabScript : MonoBehaviour
             this.gameObject.layer = 13;
 
             objectRB.isKinematic = false;
-            objectRB.AddForce(playerCamTransform.forward * 9f, ForceMode.Impulse);
+            objectRB.AddForce(playerCamTransform.forward * throwForce, ForceMode.Impulse);
             this.objectGrabPointTransfrom = null;
             objectRB.useGravity = true;
 
@@ -108,7 +112,7 @@ public class GrabScript : MonoBehaviour
         {
             this.gameObject.layer = 8;
             objectRB.isKinematic = false;
-            objectRB.AddForce(playerCamTransform.forward * 9f, ForceMode.Impulse);
+            objectRB.AddForce(playerCamTransform.forward * throwForce, ForceMode.Impulse);
             this.objectGrabPointTransfrom = null;
             objectRB.useGravity = true;
 
