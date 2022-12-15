@@ -5,6 +5,7 @@ using UnityEngine;
 public class TelephoneButtons : interactable
 {
     public TelephoneSolution teleScript;
+    public TelephoneConfirm teleConfirmScript;
 
 
     private Material _defaultMat;
@@ -15,11 +16,13 @@ public class TelephoneButtons : interactable
     private int num;
 
 
+
     private void Start()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
 
         _defaultMat = _meshRenderer.material;
+        
     }
 
 
@@ -28,7 +31,7 @@ public class TelephoneButtons : interactable
 
         teleScript.getNum(num);
         teleScript.changeText();
-
+       teleConfirmScript.buttonPresses++;
     }
 
 

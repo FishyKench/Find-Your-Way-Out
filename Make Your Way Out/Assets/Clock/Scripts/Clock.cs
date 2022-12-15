@@ -12,29 +12,36 @@ public class Clock : MonoBehaviour {
 	public GameObject pointerSeconds;
     public GameObject pointerMinutes;
     public GameObject pointerHours;
-    
+
     //-- time speed factor
     public float clockSpeed = 1.0f;     // 1.0f = realtime, < 1.0f = slower, > 1.0f = faster
 
     //-- internal vars
     float msecs=0;
 
+
+
+
+
+
+
 void Start() 
 {
-	//-- set real time
-	if (realTime)
+        
+        //-- set real time
+        if (realTime)
 	{
-		//hour=System.DateTime.Now.Hour;
-		//minutes=System.DateTime.Now.Minute;
-		//seconds=System.DateTime.Now.Second;
+
 	}
 }
 
 void Update() 
 {
+
+
     //-- calculate time
-    //msecs += Time.deltaTime * clockSpeed;
-    if(msecs >= 1.0f)
+    msecs += Time.deltaTime * clockSpeed;
+        if (msecs >= 1.0f)
     {
         msecs -= 1.0f;
         seconds++;
@@ -64,4 +71,28 @@ void Update()
     pointerHours.transform.localEulerAngles   = new Vector3(0.0f, 0.0f, rotationHours);
 
 }
+
+
+
+
+    public void PutHours(int hours)
+    {
+        hour = hours;
+    }
+
+    public void PutMins(int mins)
+    {
+        minutes = mins;
+    }
+
+    public void ResetClock()
+    {
+        hour = 12;
+        minutes = 0;
+    }
+
+
+
+
+
 }

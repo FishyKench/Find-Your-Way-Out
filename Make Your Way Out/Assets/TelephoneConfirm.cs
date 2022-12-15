@@ -13,12 +13,28 @@ public class TelephoneConfirm : interactable
 
     public TelephoneSolution teleSolutionScrip;
     public TextMeshProUGUI text;
-    
+
+    public Clock clockScript;
+
+
+
+    public int buttonPresses;
 
     public int cFirstHours;
     public int cSecondHours;
     public int cFirstMins;
     public int cSecondMins;
+
+    public int iFinalHours;
+    public int iFinalMins;
+
+    public string sFirstHours;
+    public string sSecondHours;
+    public string sFirstMins;
+    public string sSecondMins;
+
+    public string sFinalHours;
+    public string sFinalMins;
 
 
 
@@ -35,33 +51,54 @@ public class TelephoneConfirm : interactable
     // Update is called once per frame
     void Update()
     {
-        cFirstHours =  teleSolutionScrip.FirstHours;
-        cSecondHours = teleSolutionScrip.SecondHours;
-        cFirstMins = teleSolutionScrip.FirstMins;
-        cSecondMins = teleSolutionScrip.SecondMins;
+        sFirstHours = teleSolutionScrip.FirstHours.ToString();
+        sSecondHours = teleSolutionScrip.SecondHours.ToString();
+        sFirstMins = teleSolutionScrip.FirstMins.ToString();
+        sSecondMins = teleSolutionScrip.SecondMins.ToString();
+
+        if (buttonPresses == 2)
+        {
+            sFinalHours = sFirstHours + sSecondHours;
+            int.TryParse(sFinalHours, out iFinalHours);
+            clockScript.PutHours(iFinalHours);
+
+        }
+        else if (buttonPresses == 4)
+        {
+            sFinalMins = sFirstMins + sSecondMins;
+            int.TryParse(sFinalMins, out iFinalMins);
+            clockScript.PutMins(iFinalMins);
+        }
+
     }
 
 
 
     public override void OnInteract()
     {
-            if (cFirstHours == 0 && cSecondHours == 7 && cFirstMins == 3 && cSecondMins == 0)
-            {
-                print(cFirstHours + cSecondHours + ":" + cFirstMins + cSecondMins);
-                print("CORRECT!");
-            }
-            else if (cFirstHours != -1 && cSecondHours != -1 && cFirstMins != -1 && cSecondMins != -1)
-            {
-                print(cFirstHours + cSecondHours + ":" + cFirstMins + cSecondMins);
-                print("Wrong!");
+        if (iFinalHours == 7 && iFinalMins == 30)
+        {
+            
+        }
 
+        else
+        {
             teleSolutionScrip.FirstHours = -1;
             teleSolutionScrip.SecondHours = -1;
             teleSolutionScrip.FirstMins = -1;
             teleSolutionScrip.SecondMins = -1;
 
+            buttonPresses = 0;
+
+            sFirstHours = null;
+            sSecondHours = null;
+            sFirstMins = null;
+            sSecondMins = null;
+            sFinalHours = null;
+            sFinalMins = null;
+            clockScript.ResetClock();
             text.text = "-" + "-" + ":" + "-" + "-";
-            }
+        }
     }
 
     public override void OnFocus()
@@ -73,4 +110,6 @@ public class TelephoneConfirm : interactable
     {
         _meshRenderer.material = _defaultMat;
     }
+
+
 }
