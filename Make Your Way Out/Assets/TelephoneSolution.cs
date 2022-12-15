@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TelephoneSolution : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class TelephoneSolution : MonoBehaviour
     public int SecondMins = -1;
 
     public int hehe;
+    public TextMeshProUGUI telephoneText;
 
 
 
@@ -44,22 +46,49 @@ public class TelephoneSolution : MonoBehaviour
         {
             FirstHours = number;
             return FirstHours;
+            
         }
 
         else if (FirstHours != -1 && SecondHours == -1)
         {
             SecondHours = number;
             return SecondHours;
+            
+
         }
         else if (FirstHours != -1 && SecondHours != -1 && FirstMins == -1)
         {
             FirstMins = number;
             return FirstMins;
+            
         }
         else
         {
             SecondMins = number;
             return SecondMins;
+            
+        }
+    }
+
+    public void changeText()
+    {
+        if (FirstHours != -1 && SecondHours == -1)
+        {
+            telephoneText.text = FirstHours.ToString() + "-" + ":" + "-" + "-";
+        }
+
+        else if (FirstHours != -1 && SecondHours != -1 && FirstMins == -1)
+        {
+            telephoneText.text = FirstHours.ToString() + SecondHours.ToString() + ":" + "-" + "-";
+
+        }
+        else if (FirstHours != -1 && SecondHours != -1 && FirstMins != -1 && SecondMins == -1)
+        {
+            telephoneText.text = FirstHours.ToString() + SecondHours.ToString() + ":" + FirstMins.ToString() + "-";
+        }
+        else
+        {
+            telephoneText.text = FirstHours.ToString() + SecondHours.ToString() + ":" + FirstMins.ToString() + SecondMins.ToString();
         }
     }
 

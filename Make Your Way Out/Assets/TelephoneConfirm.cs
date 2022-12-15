@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TelephoneConfirm : interactable
 {
@@ -11,6 +12,8 @@ public class TelephoneConfirm : interactable
 
 
     public TelephoneSolution teleSolutionScrip;
+    public TextMeshProUGUI text;
+    
 
     public int cFirstHours;
     public int cSecondHours;
@@ -22,6 +25,7 @@ public class TelephoneConfirm : interactable
     // Start is called before the first frame update
     void Start()
     {
+        text = teleSolutionScrip.telephoneText;
 
         _meshRenderer = GetComponent<MeshRenderer>();
 
@@ -35,7 +39,6 @@ public class TelephoneConfirm : interactable
         cSecondHours = teleSolutionScrip.SecondHours;
         cFirstMins = teleSolutionScrip.FirstMins;
         cSecondMins = teleSolutionScrip.SecondMins;
-
     }
 
 
@@ -56,6 +59,8 @@ public class TelephoneConfirm : interactable
             teleSolutionScrip.SecondHours = -1;
             teleSolutionScrip.FirstMins = -1;
             teleSolutionScrip.SecondMins = -1;
+
+            text.text = "-" + "-" + ":" + "-" + "-";
             }
     }
 

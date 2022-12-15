@@ -27,6 +27,7 @@ public class TelephoneButtons : interactable
     {
 
         teleScript.getNum(num);
+        teleScript.changeText();
 
     }
 
