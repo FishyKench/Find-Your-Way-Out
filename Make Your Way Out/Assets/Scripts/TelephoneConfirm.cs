@@ -5,36 +5,38 @@ using TMPro;
 
 public class TelephoneConfirm : interactable
 {
-
+    [Header("Refrences")]
     private Material _defaultMat;
     public Material highlightMat;
     private MeshRenderer _meshRenderer;
 
+    public GameObject normalDoor;
+    public GameObject brokenDoor;
 
+
+    [Header ("Script Refrences")]
+    public Clock clockScript;
     public TelephoneSolution teleSolutionScrip;
     public TextMeshProUGUI text;
 
-    public Clock clockScript;
+    
+    [Header ("Declerations")]
 
-
-
-    public int buttonPresses;
-
-    public int cFirstHours;
-    public int cSecondHours;
-    public int cFirstMins;
-    public int cSecondMins;
-
+    //saves the final hours inputed in form of integers
     public int iFinalHours;
     public int iFinalMins;
 
+    //converts the inputed pressed buttons to strings
     public string sFirstHours;
     public string sSecondHours;
     public string sFirstMins;
     public string sSecondMins;
-
     public string sFinalHours;
     public string sFinalMins;
+
+    public int buttonPresses;
+
+
 
 
 
@@ -78,7 +80,8 @@ public class TelephoneConfirm : interactable
     {
         if (iFinalHours == 7 && iFinalMins == 30)
         {
-            
+            Destroy(normalDoor);
+            Instantiate(brokenDoor,normalDoor.transform.position,Quaternion.identity);
         }
 
         else
