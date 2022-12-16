@@ -10,6 +10,10 @@ public class buttonManager : MonoBehaviour
     [HideInInspector] public int blueNum;
     [HideInInspector] public int yellowNum;
 
+    [SerializeField]
+    private List <GameObject> screens;
+
+
     [Header("References")]
     [SerializeField] TextMeshProUGUI redDisplay;
     [SerializeField] TextMeshProUGUI greenDisplay;
@@ -26,15 +30,9 @@ public class buttonManager : MonoBehaviour
 
 
 
-    public GameObject brokenDoor;
-    public GameObject normalDoor;
-
-    public Vector3 spawnOffSet;
-
-
     private void Start()
     {
-        spawnOffSet = new Vector3(103.1f, 2.7f, -31.2f);
+
     }
 
 
@@ -87,8 +85,11 @@ public class buttonManager : MonoBehaviour
         if(redNum == goalRed && greenNum == goalGreen && blueNum == goalBlue && yellowNum == goalYellow)
         {
             print("CACHANG DOOR OPEN");
-            Destroy(normalDoor);
-            Instantiate(brokenDoor, spawnOffSet, Quaternion.Euler(0, 90, 0));
+            foreach ( GameObject i in screens)
+            {
+                Destroy(i);
+            }
+            
         }
         else
         {
