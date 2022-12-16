@@ -13,6 +13,10 @@ public class buttonManager : MonoBehaviour
     [SerializeField]
     private List <GameObject> screens;
 
+    public GameObject brokenScreen;
+    public GameObject brokenScreen1;
+    public GameObject brokenScreen2;
+
 
     [Header("References")]
     [SerializeField] TextMeshProUGUI redDisplay;
@@ -27,6 +31,8 @@ public class buttonManager : MonoBehaviour
     [SerializeField] int goalGreen;
     [SerializeField] int goalBlue;
     [SerializeField] int goalYellow;
+
+    public Vector3 offSet;
 
 
 
@@ -88,6 +94,12 @@ public class buttonManager : MonoBehaviour
             foreach ( GameObject i in screens)
             {
                 Destroy(i);
+                brokenScreen.SetActive(true);
+                brokenScreen1.SetActive(true);
+                brokenScreen2.SetActive(true);
+                brokenScreen.GetComponent<Rigidbody>().AddForce(new Vector3(0,1,1),ForceMode.Impulse);
+                brokenScreen1.GetComponent<Rigidbody>().AddForce(new Vector3(0, 1, 1), ForceMode.Impulse);
+                brokenScreen2.GetComponent<Rigidbody>().AddForce(new Vector3(0, 1, 1), ForceMode.Impulse);
             }
             
         }
