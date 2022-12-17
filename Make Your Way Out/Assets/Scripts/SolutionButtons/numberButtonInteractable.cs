@@ -8,6 +8,10 @@ public class numberButtonInteractable : interactable
     [SerializeField] private string changeIndex;
     [SerializeField] private Material highlightMat;
     [SerializeField] private buttonManager bm;
+    [SerializeField] Transform targetPos;
+
+    
+    
 
     private Material _defaultMat;
     private MeshRenderer _meshRenderer;
@@ -15,8 +19,8 @@ public class numberButtonInteractable : interactable
 
     private void Start()
     {
-        
-         originalPos = transform.position;
+
+        originalPos = transform.position;
         _meshRenderer = GetComponent<MeshRenderer>();
 
         _defaultMat = _meshRenderer.material;
@@ -48,9 +52,9 @@ public class numberButtonInteractable : interactable
 
     IEnumerator interactAnim()
     {
-        
 
-        transform.position = Vector3.Lerp(transform.position, transform.position -= Vector3.forward/25, 10);
+
+        transform.position = Vector3.Lerp(transform.position, targetPos.position, 10);
         yield return new WaitForSeconds(.3f);
         transform.position = Vector3.Lerp(transform.position, originalPos, 10);
     }

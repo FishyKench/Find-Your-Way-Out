@@ -12,6 +12,12 @@ public class buttonManager : MonoBehaviour
 
     [SerializeField]
     private List <GameObject> screens;
+    [SerializeField]
+    private List<MeshRenderer> screensToBeBroken;
+    [SerializeField]
+    private List<Material> brokenMaterials;
+    [SerializeField]
+    private List<GameObject> itemsToDelete;
 
     public GameObject brokenScreen;
     public GameObject brokenScreen1;
@@ -100,6 +106,17 @@ public class buttonManager : MonoBehaviour
                 brokenScreen.GetComponent<Rigidbody>().AddForce(new Vector3(0,1,1),ForceMode.Impulse);
                 brokenScreen1.GetComponent<Rigidbody>().AddForce(new Vector3(0, 1, 1), ForceMode.Impulse);
                 brokenScreen2.GetComponent<Rigidbody>().AddForce(new Vector3(0, 1, 1), ForceMode.Impulse);
+            }
+
+            foreach (GameObject i in itemsToDelete)
+            {
+                Destroy(i);
+            }
+
+            for(int i = 0; i <= screensToBeBroken.Count-1; i++)
+            {
+                print("I I I I II  I I ");
+                screensToBeBroken[i].material = brokenMaterials[i];
             }
             
         }

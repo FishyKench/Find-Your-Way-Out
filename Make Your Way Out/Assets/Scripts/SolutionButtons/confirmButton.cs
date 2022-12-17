@@ -5,11 +5,13 @@ using UnityEngine;
 public class confirmButton : interactable
 {
     [SerializeField] private Material highlightMat;
+    [SerializeField]Transform targetPos;
+    [SerializeField] private buttonManager bm;
+
     private Material _defaultMat;
     private MeshRenderer _meshRenderer;
     Vector3 originalPos;
 
-    [SerializeField] private buttonManager bm;
 
     private void Start()
     {
@@ -41,7 +43,7 @@ public class confirmButton : interactable
 
     IEnumerator interactAnim()
     {
-        transform.position = Vector3.Lerp(transform.position, transform.position -= Vector3.forward / 25, 10);
+        transform.position = Vector3.Lerp(transform.position,targetPos.position, 10);
         yield return new WaitForSeconds(.3f);
         transform.position = Vector3.Lerp(transform.position, originalPos, 10);
     }
