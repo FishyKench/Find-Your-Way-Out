@@ -9,6 +9,10 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private LayerMask interactionLayer = default;
     [SerializeField] private bool canInteract = true;
     [SerializeField] private KeyCode interactKey = KeyCode.E;
+
+    [Header("UI")]
+    public GameObject crosshair;
+
     private interactable currentInteractable;
 
     [SerializeField] private Camera cam;
@@ -32,13 +36,17 @@ public class PlayerInteraction : MonoBehaviour
                 hit.collider.TryGetComponent(out currentInteractable);
 
                 if (currentInteractable)
+                {
                     currentInteractable.OnFocus();
+                    crosshair.transform.localScale = new Vector3(.1f, .1f, .1f);
+                }
             }
         }
         else if (currentInteractable)
         {
             currentInteractable.OnLoseFocus();
             currentInteractable = null;
+            crosshair.transform.localScale = new Vector3(.05f, .05f, .05f);
         }
     }
     private void HandleInteractionInput()

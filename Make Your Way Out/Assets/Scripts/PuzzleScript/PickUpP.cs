@@ -9,7 +9,8 @@ public class PickUpP : MonoBehaviour
     [Header("KeyBindings")]
     public KeyCode GrabKey = KeyCode.E;
 
-
+    [Header("UI")]
+    public GameObject grabUi;
 
     [SerializeField]
     private Transform playerCamT;
@@ -64,7 +65,7 @@ public class PickUpP : MonoBehaviour
                             itWasntGrab = true;
                             raycastHit.transform.gameObject.layer = 8;
                         }
-
+                        grabUi.SetActive(true);
                         player.layer = 7;
                         grabScript.Grab(objectGrabT);
                     }
@@ -76,7 +77,7 @@ public class PickUpP : MonoBehaviour
                 player.layer = 6;
                 grabScript.Drop();
                 grabScript = null;
-
+                grabUi.SetActive(false);
             }
         }
     }
