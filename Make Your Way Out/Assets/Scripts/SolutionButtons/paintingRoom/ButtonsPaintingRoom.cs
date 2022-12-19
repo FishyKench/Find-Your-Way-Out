@@ -5,7 +5,7 @@ using UnityEngine;
 public class ButtonsPaintingRoom : interactable
 {
     [SerializeField] private int changeAmount;
-    [SerializeField] private string changeIndex;
+    [SerializeField] private int changeIndex;
     [SerializeField] private Material highlightMat;
     [SerializeField] private ButtonManager_RGBnDOOR bm;
     [SerializeField] Transform targetPos;
