@@ -12,7 +12,7 @@ public class GrabScript : MonoBehaviour
     private Transform objectGrabPointTransfrom;
     private float lerpSpeed = 9f;
 
-    public GameObject camHolder;
+    public GameObject PlayerCam;
     public GameObject playerHolder;
 
     public PlayerMovementAdvanced playerMovement;
@@ -36,7 +36,7 @@ public class GrabScript : MonoBehaviour
     private void Start()
     {
         playerMovement = playerHolder.GetComponent<PlayerMovementAdvanced>();
-        camerMove = camHolder.GetComponent<PlayerCam>();
+        camerMove = PlayerCam.GetComponent<PlayerCam>();
         rotateObj = GetComponent<RotateObj>();
         objectRB.GetComponent<Rigidbody>();
 
