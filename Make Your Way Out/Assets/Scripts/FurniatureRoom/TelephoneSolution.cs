@@ -13,6 +13,13 @@ public class TelephoneSolution : MonoBehaviour
     public int hehe;
     public TextMeshProUGUI telephoneText;
 
+    private AudioSource buttonSFX;
+
+    private void Start()
+    {
+        buttonSFX = GetComponent<AudioSource>();
+    }
+
 
 
 
@@ -68,6 +75,8 @@ public class TelephoneSolution : MonoBehaviour
             return SecondMins;
             
         }
+
+       
     }
 
     public void changeText()
@@ -90,6 +99,8 @@ public class TelephoneSolution : MonoBehaviour
         {
             telephoneText.text = FirstHours.ToString() + SecondHours.ToString() + ":" + FirstMins.ToString() + SecondMins.ToString();
         }
+
+        buttonSFX.Play();
     }
 
 

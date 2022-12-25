@@ -19,7 +19,7 @@ public class zoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             //Stop old coroutine
             if (zoomCoroutine != null)
@@ -29,7 +29,7 @@ public class zoom : MonoBehaviour
             zoomCoroutine = StartCoroutine(lerpFieldOfView(cam, zoomedInFov, zoomDuration));
         }
 
-        if (Input.GetKeyUp(KeyCode.R))
+        if (Input.GetKeyUp(KeyCode.Q))
         {
             //Stop old coroutine
             if (zoomCoroutine != null)
