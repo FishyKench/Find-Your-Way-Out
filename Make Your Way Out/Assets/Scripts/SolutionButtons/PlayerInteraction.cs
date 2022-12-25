@@ -33,6 +33,9 @@ public class PlayerInteraction : MonoBehaviour
         {
             if(hit.collider.gameObject.layer == 11 && (currentInteractable == null || hit.collider.gameObject.GetInstanceID() != currentInteractable.gameObject.GetInstanceID()))
             {
+                if (currentInteractable != null)
+                    currentInteractable.OnLoseFocus();
+
                 hit.collider.TryGetComponent(out currentInteractable);
 
                 if (currentInteractable)

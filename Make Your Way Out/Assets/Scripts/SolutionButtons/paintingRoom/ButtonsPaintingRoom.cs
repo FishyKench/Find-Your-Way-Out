@@ -29,15 +29,12 @@ public class ButtonsPaintingRoom : interactable
     //when player is looking at this object
     public override void OnFocus()
     {
-        print("looking at " + gameObject.name);
-
         _meshRenderer.material = highlightMat;
     }
 
     //when player clicks the interact button (Default E) on this object
     public override void OnInteract()
     {
-        print("interacted with " + gameObject.name);
         bm.changeAmount(changeIndex, changeAmount);
         StartCoroutine(interactAnim());
     }
@@ -45,7 +42,6 @@ public class ButtonsPaintingRoom : interactable
     //when player stops looking at this object
     public override void OnLoseFocus()
     {
-        print("stopped lokking at " + gameObject.name);
 
         _meshRenderer.material = _defaultMat;
     }
