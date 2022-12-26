@@ -20,6 +20,9 @@ public class ButtonManager_RGBnDOOR : MonoBehaviour
     [SerializeField] Sprite blue;
     [SerializeField] Sprite green;
 
+    [SerializeField] AudioSource btnClick;
+    [SerializeField] AudioSource confirmClick;
+
     [Space(5)]
 
     public GameObject normalDoor;
@@ -101,6 +104,8 @@ public class ButtonManager_RGBnDOOR : MonoBehaviour
 
     public void changeAmount(int index, int changeAmont)
     {
+        btnClick.Play();
+
         switch (index)
         {
             case 1:
@@ -237,6 +242,8 @@ public class ButtonManager_RGBnDOOR : MonoBehaviour
 
     public void CheckSolution()
     {
+        confirmClick.Play();
+
         if (one == goalOne && two == goalTwo && three == goalThree && four == goalFour && five == goalFive && six == goalSix && seven == goalSeven && eight == goalEight)
         {
             print("CACHANG DOOR OPEN");

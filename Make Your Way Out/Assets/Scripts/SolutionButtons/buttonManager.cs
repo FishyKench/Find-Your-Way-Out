@@ -29,6 +29,8 @@ public class buttonManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI greenDisplay;
     [SerializeField] TextMeshProUGUI blueDisplay;
     [SerializeField] TextMeshProUGUI yellowDisplay;
+    [SerializeField] AudioSource btnClick;
+    [SerializeField] AudioSource confirmClick;
 
     [Space (15)]
 
@@ -39,14 +41,6 @@ public class buttonManager : MonoBehaviour
     [SerializeField] int goalYellow;
 
     public Vector3 offSet;
-
-
-
-    private void Start()
-    {
-
-    }
-
 
 
     private void Update()
@@ -71,6 +65,7 @@ public class buttonManager : MonoBehaviour
 
     public void changeAmount(string index, int changeAmont)
     {
+        btnClick.Play();
         switch (index)
         {
             case "red":
@@ -94,6 +89,8 @@ public class buttonManager : MonoBehaviour
 
     public void CheckSolution()
     {
+        confirmClick.Play();
+
         if(redNum == goalRed && greenNum == goalGreen && blueNum == goalBlue && yellowNum == goalYellow)
         {
             print("CACHANG DOOR OPEN");
@@ -117,6 +114,11 @@ public class buttonManager : MonoBehaviour
             {
                 print("I I I I II  I I ");
                 screensToBeBroken[i].material = brokenMaterials[i];
+
+               if(screensToBeBroken[i].TryGetComponent(out AudioSource screenAudio))
+                {
+                    screenAudio.Stop();
+                }
             }
             
         }
