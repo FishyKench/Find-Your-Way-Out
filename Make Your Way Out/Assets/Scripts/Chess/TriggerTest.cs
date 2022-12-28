@@ -7,12 +7,12 @@ public class TriggerTest : MonoBehaviour
 {
     public bool hasPiece;
     public bool hasEntered;
+    private GrabScript grabscipt;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -32,11 +32,12 @@ public class TriggerTest : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
+        grabscipt = other.gameObject.GetComponent<GrabScript>();
         if (hasEntered == false)
         {
-            if (other.tag == "ChessPiece" && hasPiece == false)
+            if (other.tag == "ChessPiece" && hasPiece == false && grabscipt.IsGrabbed == false)
             {
                 hasEntered = true;
                 other.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
