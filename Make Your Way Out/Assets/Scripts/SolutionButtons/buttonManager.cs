@@ -120,6 +120,10 @@ public class buttonManager : MonoBehaviour
                     screenAudio.Stop();
                 }
             }
+
+            GameObject confirmBTN = FindObjectOfType<confirmButton>().gameObject;
+            confirmBTN.GetComponent<MeshCollider>().enabled = false;
+
             
         }
         else
