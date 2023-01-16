@@ -7,6 +7,7 @@ public class TriggerTest : MonoBehaviour
 {
     public bool hasPiece;
     public bool hasEntered;
+    [SerializeField]
     private GrabScript grabscipt;
 
 
@@ -18,7 +19,7 @@ public class TriggerTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
 
@@ -45,7 +46,6 @@ public class TriggerTest : MonoBehaviour
                 other.GetComponent<Rigidbody>().freezeRotation = true;
                 print(hasEntered);
                 other.transform.localPosition = this.gameObject.transform.position;
-                StartCoroutine(UnFreeze());
                 other.GetComponent<Rigidbody>().freezeRotation = false;
                 other.tag = "ChessPieceIn";
                 hasPiece = true;
@@ -53,12 +53,6 @@ public class TriggerTest : MonoBehaviour
             }
         }
 
-
-    }
-    IEnumerator UnFreeze()
-    {
-        yield return new WaitForSeconds(2);
-        //other.GetComponent<Rigidbody>().freezeRotation = false;
 
     }
 }

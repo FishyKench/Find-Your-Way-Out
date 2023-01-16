@@ -30,6 +30,8 @@ public class PickUpP : MonoBehaviour
     public bool itWasntGrab;
     public bool itwasSCUM;
 
+    public bool isHoldingObject;
+
 
 
     void Start()
@@ -50,6 +52,7 @@ public class PickUpP : MonoBehaviour
                 {
                     if (raycastHit.transform.TryGetComponent(out grabScript))
                     {
+                        isHoldingObject = true; // bool set to true when we successfully pick up an object
 
                         //checks if the picked up item is SCUM
                         if (raycastHit.transform.gameObject.layer == 13)
@@ -78,6 +81,7 @@ public class PickUpP : MonoBehaviour
                 grabScript.Drop();
                 grabScript = null;
                 grabUi.SetActive(false);
+                isHoldingObject = false;
             }
         }
     }
