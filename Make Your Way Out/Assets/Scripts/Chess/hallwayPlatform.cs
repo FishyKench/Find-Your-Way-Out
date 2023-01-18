@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class hallwayPlatform : MonoBehaviour
 {
-    private GameObject lamp;
     
     [SerializeField]private bool correctPlatform;
-    [SerializeField]private bool shouldLight;
+    public GameObject lamp;
+    public bool shouldLight;
 
     private void Start()
     {
@@ -17,12 +17,13 @@ public class hallwayPlatform : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(correctPlatform == true && collision.gameObject.CompareTag("Player"))
+        if (correctPlatform == true && collision.gameObject.CompareTag("Player"))
         {
             shouldLight = true;
         }
         else
         {
+            GetComponent<BoxCollider>().enabled = false;
             FindObjectOfType<hallwayPlatformManager>().makeThemFall();
         }
         if (shouldLight)
