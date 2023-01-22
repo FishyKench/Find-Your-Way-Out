@@ -11,6 +11,8 @@ public class ChessInteractable : interactable
     private bool _spawned;
     public PickUpP pickUpScript;
 
+    public Transform thisObject;
+
     private void Start()
     {
         pickUpScript.GetComponent<PickUpP>();
@@ -22,7 +24,7 @@ public class ChessInteractable : interactable
     {
         if (_spawned == false && pickUpScript.isHoldingObject == true)
         {
-            _chessPiece = Instantiate(_chessPiecePref, this.transform.position, Quaternion.Euler(-90, 0, 0));
+            _chessPiece = Instantiate(_chessPiecePref,this.transform.position,Quaternion.Euler(-90,0,0));
             _spawned = true;
         }
     }
