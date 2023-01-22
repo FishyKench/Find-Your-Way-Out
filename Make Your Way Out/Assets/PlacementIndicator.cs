@@ -1,0 +1,102 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlacementIndicator : MonoBehaviour
+{
+    public bool hasEntered;
+    [SerializeField]
+    private GrabScript grabscipt;
+    [SerializeField]
+    private TriggerTest triggerScript;
+
+    [SerializeField]
+    private GameObject _chessKing; // The King Prefab
+    [SerializeField]
+    private GameObject _chessRook; // The Rook Prefab
+    [SerializeField]
+    private GameObject _chessBishop; //The Bishop Prefab
+    [SerializeField]
+    private GameObject _chessQueen; // The Queen Prefab
+    [SerializeField]
+    private GameObject _chessKnight; // The Knight Prefab
+    [SerializeField]
+    private GameObject _chessPawn; // The Pawn Prefab
+
+    private GameObject _chessPiece; // the refrence to the prefab to be able to destory it 
+
+    public GameObject daPlayer;
+
+
+
+
+
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (triggerScript.GetComponent<TriggerTest>().hasPiece == true)
+        {
+            Destroy(_chessPiece);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(hasEntered == false && triggerScript.GetComponent<TriggerTest>().hasPiece == false)
+        {
+            if(daPlayer.GetComponent<PickUpP>().isHoldingObject == true)
+            {
+                if(other.tag == "ChessPiece")
+                {
+                    switch (other.GetComponent<ChessTypeChecker>().Type)
+                    {
+                        case "King":
+                            _chessPiece = Instantiate(_chessKing, this.transform.position, Quaternion.Euler(-90, 0, 0));
+                            hasEntered = true;
+                            break;
+                        case "Rook":
+                            _chessPiece = Instantiate(_chessRook, this.transform.position, Quaternion.Euler(-90, 0, 0));
+                            hasEntered = true;
+                            break;
+                        case "Bishop":
+                            _chessPiece = Instantiate(_chessBishop, this.transform.position, Quaternion.Euler(-90, 0, 0));
+                            hasEntered = true;
+                            break;
+                        case "Queen":
+                            _chessPiece = Instantiate(_chessQueen, this.transform.position, Quaternion.Euler(-90, 0, 0));
+                            hasEntered = true;
+                            break;
+                        case "Knight":
+                            _chessPiece = Instantiate(_chessKnight, this.transform.position, Quaternion.Euler(-90, 0, 0));
+                            hasEntered = true;
+                            break;
+                        case "Pawn":
+                            _chessPiece = Instantiate(_chessPawn, this.transform.position, Quaternion.Euler(-90, 0, 0));
+                            hasEntered = true;
+                            break;
+
+                    }
+
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        Destroy(_chessPiece);
+        hasEntered = false;
+        if (other.tag == "ChessPieceIn")
+        {
+
+            other.tag = "ChessPiece";
+        }
+    }
+
+
+}

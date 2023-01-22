@@ -25,6 +25,8 @@ public class TriggerTest : MonoBehaviour
 
     private GameObject _chessPiece; // the refrence to the prefab to be able to destory it 
 
+    public GameObject daPlayer;
+
 
 
     // Start is called before the first frame update
@@ -38,43 +40,12 @@ public class TriggerTest : MonoBehaviour
     {
 
     }
-
-
-
+ 
 
     private void OnTriggerStay(Collider other)
     {
-
-        grabscipt = other.gameObject.GetComponent<GrabScript>();
-        if (other.tag == "ChessPiece")
-        {
-            switch (other.GetComponent<ChessTypeChecker>().Type)
-            {
-                case "King":
-                    _chessPiece = Instantiate(_chessKing, this.transform.position, Quaternion.Euler(-90, 0, 0));
-                    break;
-                case "Rook":
-                    _chessPiece = Instantiate(_chessRook, this.transform.position, Quaternion.Euler(-90, 0, 0));
-                    break;
-                case "Bishop":
-                    _chessPiece = Instantiate(_chessBishop, this.transform.position, Quaternion.Euler(-90, 0, 0));
-                    break;
-                case "Queen":
-                    _chessPiece = Instantiate(_chessQueen, this.transform.position, Quaternion.Euler(-90, 0, 0));
-                    break;
-                case "Knight":
-                    _chessPiece = Instantiate(_chessKnight, this.transform.position, Quaternion.Euler(-90, 0, 0));
-                    break;
-                case "Pawn":
-                    _chessPiece = Instantiate(_chessPawn, this.transform.position, Quaternion.Euler(-90, 0, 0));
-                    break;
-            }
-
-
-        }
-
-
-        if (hasEntered == false)
+                grabscipt = other.gameObject.GetComponent<GrabScript>();
+        if (hasEntered == false && hasPiece == false)
         {
 
             if (other.tag == "ChessPiece" && hasPiece == false && grabscipt.IsGrabbed == false)
@@ -90,13 +61,14 @@ public class TriggerTest : MonoBehaviour
                 hasPiece = true;
 
             }
+
+
         }
-
-
-
     }
+
     private void OnTriggerExit(Collider other)
     {
+        Destroy(_chessPiece);
         hasPiece = false;
         hasEntered = false;
         if (other.tag == "ChessPieceIn")
