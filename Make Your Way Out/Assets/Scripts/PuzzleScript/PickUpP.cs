@@ -54,16 +54,33 @@ public class PickUpP : MonoBehaviour
                     {
                         isHoldingObject = true; // bool set to true when we successfully pick up an object
 
-                        //checks if the picked up item is SCUM
-                        if (raycastHit.transform.gameObject.layer == 13)
+                        if (raycastHit.transform.gameObject.layer != 8 && raycastHit.transform.gameObject.GetComponent<ChessTypeChecker>().Type == "King") // checks if knight is held
                         {
-                            itwasSCUM = true;
-                            raycastHit.transform.gameObject.layer = 8;
+                            player.tag = "PlayerHoldingKing";
+                        }
+                        else if (raycastHit.transform.gameObject.layer != 8 && raycastHit.transform.gameObject.GetComponent<ChessTypeChecker>().Type == "Rook")
+                        {
+                            player.tag = "PlayerHoldingRook";
+                        }
+                        else if (raycastHit.transform.gameObject.layer != 8 && raycastHit.transform.gameObject.GetComponent<ChessTypeChecker>().Type == "King")
+                        {
+                            player.tag = "PlayerHoldingBishop";
+                        }
+                        else if (raycastHit.transform.gameObject.layer != 8 && raycastHit.transform.gameObject.GetComponent<ChessTypeChecker>().Type == "Queen")
+                        {
+                            player.tag = "PlayerHoldingQueen";
+                        }
+                        else if (raycastHit.transform.gameObject.layer != 8 && raycastHit.transform.gameObject.GetComponent<ChessTypeChecker>().Type == "Knight")
+                        {
+                            player.tag = "PlayerHoldingKnight";
+                        }
+                        else if (raycastHit.transform.gameObject.layer != 8 && raycastHit.transform.gameObject.GetComponent<ChessTypeChecker>().Type == "Pawn")
+                        {
+                            player.tag = "PlayerHoldingPawn";
                         }
 
-
                         //checks if the picked items is NOT scum nor a Grab
-                        else if (raycastHit.transform.gameObject.layer != 13 && raycastHit.transform.gameObject.layer != 8)
+                        else if (raycastHit.transform.gameObject.layer != 8)
                         {
                             itWasntGrab = true;
                             raycastHit.transform.gameObject.layer = 8;
@@ -85,5 +102,4 @@ public class PickUpP : MonoBehaviour
             }
         }
     }
-
 }

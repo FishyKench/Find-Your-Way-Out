@@ -29,6 +29,8 @@ public class GrabScript : MonoBehaviour
 
     public float throwForce;
 
+    private LayerMask originalLayer;
+
 
 
 
@@ -90,6 +92,7 @@ public class GrabScript : MonoBehaviour
             camerMove.enabled = true;
             playerMovement.enabled = true;
             rotateObj.enabled = false;
+            player.tag = "Player";
             
 
         }
