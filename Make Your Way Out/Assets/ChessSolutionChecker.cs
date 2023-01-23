@@ -7,7 +7,11 @@ public class ChessSolutionChecker : MonoBehaviour
     // Start is called before the first frame update
 
     public PlacementIndicator B2, F3, B5, D6, G7, H8;
-    
+
+    public List<GameObject> gridPath; 
+    public Material pathMat;
+
+
 
 
 
@@ -22,6 +26,10 @@ public class ChessSolutionChecker : MonoBehaviour
          if (B2.hasRook == true && F3.hasBishop == true && B5.hasKing == true && D6.hasKnight == true && G7.hasQueen == true && H8.hasPawn == true)
         {
             print("WORKED");
+            foreach (GameObject p in gridPath)
+            { 
+                p.GetComponent<MeshRenderer>().material = pathMat;
+            }
         }
 
     }
