@@ -54,11 +54,11 @@ public class TriggerTest : MonoBehaviour
                 other.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
                 other.transform.rotation = Quaternion.Euler(-90, 0, 0);
                 other.GetComponent<Rigidbody>().freezeRotation = true;
-                print(hasEntered);
                 other.transform.localPosition = this.gameObject.transform.position;
                 other.GetComponent<Rigidbody>().freezeRotation = false;
                 other.tag = "ChessPieceIn";
                 hasPiece = true;
+                
 
             }
 

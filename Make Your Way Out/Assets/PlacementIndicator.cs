@@ -27,6 +27,13 @@ public class PlacementIndicator : MonoBehaviour
 
     public GameObject daPlayer;
 
+    public bool hasKing;
+    public bool hasRook;
+    public bool hasBishop;
+    public bool hasQueen;
+    public bool hasKnight;
+    public bool hasPawn;
+
 
 
 
@@ -58,26 +65,32 @@ public class PlacementIndicator : MonoBehaviour
                         case "King":
                             _chessPiece = Instantiate(_chessKing, this.transform.position, Quaternion.Euler(-90, 0, 0));
                             hasEntered = true;
+                            hasKing = true;
                             break;
                         case "Rook":
                             _chessPiece = Instantiate(_chessRook, this.transform.position, Quaternion.Euler(-90, 0, 0));
                             hasEntered = true;
+                            hasRook = true;
                             break;
                         case "Bishop":
                             _chessPiece = Instantiate(_chessBishop, this.transform.position, Quaternion.Euler(-90, 0, 0));
                             hasEntered = true;
+                            hasBishop = true;
                             break;
                         case "Queen":
                             _chessPiece = Instantiate(_chessQueen, this.transform.position, Quaternion.Euler(-90, 0, 0));
                             hasEntered = true;
+                            hasQueen = true;
                             break;
                         case "Knight":
                             _chessPiece = Instantiate(_chessKnight, this.transform.position, Quaternion.Euler(-90, 0, 0));
                             hasEntered = true;
+                            hasKnight = true;
                             break;
                         case "Pawn":
                             _chessPiece = Instantiate(_chessPawn, this.transform.position, Quaternion.Euler(-90, 0, 0));
                             hasEntered = true;
+                            hasPawn = true;
                             break;
 
                     }
@@ -91,6 +104,12 @@ public class PlacementIndicator : MonoBehaviour
     {
         Destroy(_chessPiece);
         hasEntered = false;
+        hasKing = false;
+        hasRook = false;
+        hasBishop = false;
+        hasQueen= false;
+        hasKnight = false;
+        hasPawn = false;
         if (other.tag == "ChessPieceIn")
         {
 
