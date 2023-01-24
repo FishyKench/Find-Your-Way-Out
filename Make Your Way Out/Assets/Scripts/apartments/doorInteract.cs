@@ -6,6 +6,9 @@ public class doorInteract : interactable
 {
     [SerializeField] private Material highlightMat;
     [SerializeField] private bool rightDoor = false;
+    [SerializeField] private AudioSource slam;
+    [SerializeField] private AudioSource open;
+    [SerializeField] private AudioSource transition;
 
     GameObject player;
     GameObject spawnpoint;
@@ -64,6 +67,7 @@ public class doorInteract : interactable
     {
        
 
+        open.Play();
 
         while (elapsedTime < waitTime)
         { 
@@ -77,13 +81,29 @@ public class doorInteract : interactable
         }
         // Make sure we got there
         transform.rotation = _targetRot;
-        yield return null;
+        elapsedTime = 0;
+        yield return new WaitForSeconds(2f);
+        slam.Play();
 
+        while (elapsedTime < waitTime)
+        {
+            transform.rotation = Quaternion.Lerp(this.transform.rotation, originalRotation, (elapsedTime / waitTime));
+            elapsedTime += Time.deltaTime;
+
+            // Yield here
+            yield return null;
+
+
+        }
+        // Make sure we got there
+        transform.rotation = originalRotation;
+        elapsedTime = 0;
     }
 
     private void wrongDoor()
     {
         player.transform.position = spawnpoint.transform.position;
+        transition.Play();
         fade.SetTrigger("Fade");
     }
 }
