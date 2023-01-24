@@ -14,6 +14,11 @@ public class doorInteract : interactable
     private Material _defaultMat;
     private MeshRenderer _meshRenderer;
 
+    [Header("Rotation stuff")]
+    Quaternion closedRotation;
+    private Transform pivot;
+    [SerializeField] private bool invertRotation = false;
+
     private void Start()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
@@ -23,6 +28,8 @@ public class doorInteract : interactable
         spawnpoint = GameObject.Find("PlayerSpawnPoint");
         fade = GameObject.Find("Fade").GetComponent<Animator>();
 
+        pivot = transform.parent.gameObject.transform;
+        closedRotation = pivot.rotation;
     }
     public override void OnFocus()
     {
@@ -32,7 +39,7 @@ public class doorInteract : interactable
     public override void OnInteract()
     {
         if (rightDoor)
-            openDoor();
+            StartCoroutine(openDoor());
         else
             wrongDoor();
     }
@@ -42,10 +49,24 @@ public class doorInteract : interactable
         _meshRenderer.material = _defaultMat;
     }
 
-    private void openDoor()
+    private IEnumerator openDoor()
     {
-        GetComponent<Animator>().SetTrigger("openDoor");
+        //GetComponent<Animator>().SetTrigger("openDoor");
         GetComponent<AudioSource>().Play();
+
+        if (invertRotation == false)
+        {
+        pivot.rotation = Quaternion.Euler(0, 90, 0);
+            print("nonvert");
+        }
+        else if(invertRotation == true)
+        {
+        pivot.rotation = Quaternion.Euler(0, -90, 0);
+            print("INVERS");
+        }
+        yield return new WaitForSeconds(1f);
+        pivot.rotation = closedRotation;
+
     }
 
     private void wrongDoor()
