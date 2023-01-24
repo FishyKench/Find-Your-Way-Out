@@ -19,6 +19,13 @@ public class doorInteract : interactable
     private Transform pivot;
     [SerializeField] private bool invertRotation = false;
 
+    [SerializeField]
+    private Quaternion _targetRot;
+
+    private float elapsedTime;
+    private float waitTime = 0.75f;
+    private Quaternion originalRotation;
+
     private void Start()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
@@ -28,8 +35,12 @@ public class doorInteract : interactable
         spawnpoint = GameObject.Find("PlayerSpawnPoint");
         fade = GameObject.Find("Fade").GetComponent<Animator>();
 
-        pivot = transform.parent.gameObject.transform;
-        closedRotation = pivot.rotation;
+
+        originalRotation = this.transform.rotation;
+        
+
+
+
     }
     public override void OnFocus()
     {
@@ -51,21 +62,22 @@ public class doorInteract : interactable
 
     private IEnumerator openDoor()
     {
-        //GetComponent<Animator>().SetTrigger("openDoor");
-        GetComponent<AudioSource>().Play();
+       
 
-        if (invertRotation == false)
-        {
-        pivot.rotation = Quaternion.Euler(0, 90, 0);
-            print("nonvert");
+
+        while (elapsedTime < waitTime)
+        { 
+            transform.rotation = Quaternion.Lerp(originalRotation, _targetRot, (elapsedTime / waitTime));
+            elapsedTime += Time.deltaTime;
+
+            // Yield here
+            yield return null;
+
+ 
         }
-        else if(invertRotation == true)
-        {
-        pivot.rotation = Quaternion.Euler(0, -90, 0);
-            print("INVERS");
-        }
-        yield return new WaitForSeconds(1f);
-        pivot.rotation = closedRotation;
+        // Make sure we got there
+        transform.rotation = _targetRot;
+        yield return null;
 
     }
 
