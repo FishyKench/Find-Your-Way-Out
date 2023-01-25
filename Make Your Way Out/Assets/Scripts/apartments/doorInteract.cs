@@ -53,7 +53,10 @@ public class doorInteract : interactable
     public override void OnInteract()
     {
         if (rightDoor)
+        {
             StartCoroutine(openDoor());
+            FindObjectOfType<stopSFX>().StartCoroutine("FadeOut");
+        }
         else
             wrongDoor();
     }

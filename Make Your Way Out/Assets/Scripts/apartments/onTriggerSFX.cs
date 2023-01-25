@@ -6,7 +6,7 @@ public class onTriggerSFX : MonoBehaviour
 {
     [SerializeField] private AudioSource sfx;
     float time;
-    bool shouldPlay = false;
+    bool isPlaying = false;
 
     float timeElapsed;
 
@@ -17,9 +17,10 @@ public class onTriggerSFX : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && isPlaying == false)
         {
             StartCoroutine(waitToPlay());
+            isPlaying = true;
         }
 
     }
@@ -29,6 +30,7 @@ public class onTriggerSFX : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            time = 0;
             StartCoroutine(waitToStop());
             time = Random.Range(0f, 2.5f);
         }
@@ -42,6 +44,12 @@ public class onTriggerSFX : MonoBehaviour
 
     IEnumerator waitToStop()
     {
+        sfx.Stop();
+        yield return new WaitForSeconds(0.2f);
+        isPlaying = false;
+        sfx.Stop();
+        yield return new WaitForSeconds(0.2f);
+        sfx.Stop();
         yield return new WaitForSeconds(0.2f);
         sfx.Stop();
     }

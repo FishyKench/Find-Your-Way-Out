@@ -15,7 +15,7 @@ public class stopSFX : MonoBehaviour
         }
 
     }
-    IEnumerator FadeOut()
+   public IEnumerator FadeOut()
     {
         float startVolume = sfx.volume;
         while (sfx.volume > 0)
