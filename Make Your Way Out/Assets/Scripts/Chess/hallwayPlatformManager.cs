@@ -7,17 +7,22 @@ public class hallwayPlatformManager : MonoBehaviour
     [SerializeField] private List<Rigidbody> platforms;
     [SerializeField] private List<Transform> spawnpoints;
     [SerializeField] private Transform playerSpawn;
+    [SerializeField] private GameObject particleSpawner;
+    [SerializeField] private AudioSource fallingSFX;
+    [SerializeField] private AudioSource respawnSFX;
     private GameObject player;
-    private AudioSource sfx;
+    private Animator fade;
 
     private void Start()
     {
         player = FindObjectOfType<PlayerMovementAdvanced>().gameObject;
-        sfx = GetComponent<AudioSource>();
+        fade = GameObject.Find("Fade").GetComponent<Animator>();
     }
     public void makeThemFall()
     {
-        sfx.Play();
+        fallingSFX.Play();
+
+        particleSpawner.SetActive(true);
         foreach (Rigidbody i in platforms)
         {
             i.isKinematic = false;
@@ -39,8 +44,10 @@ public class hallwayPlatformManager : MonoBehaviour
             platform.GetComponent<hallwayPlatform>().lamp.SetActive(false);
 
         }
-
+        particleSpawner.SetActive(false);
         player.transform.position = playerSpawn.position;
+        respawnSFX.Play();
+        fade.SetTrigger("Fade");
 
     }
 }
