@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class hallwayPlatform : MonoBehaviour
 {
-    
+    private AudioSource sfx;
+    float pitch;
+
     [SerializeField]private bool correctPlatform;
     public GameObject lamp;
     public bool shouldLight;
@@ -13,6 +15,9 @@ public class hallwayPlatform : MonoBehaviour
     {
         lamp = GetComponentInChildren<Light>().gameObject;
         lamp.SetActive(false);
+
+        sfx = GetComponent<AudioSource>();
+        pitch = Random.Range(1, 1.5f);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -20,6 +25,7 @@ public class hallwayPlatform : MonoBehaviour
         if (correctPlatform == true && collision.gameObject.CompareTag("Player"))
         {
             shouldLight = true;
+            
         }
         else
         {
@@ -27,6 +33,10 @@ public class hallwayPlatform : MonoBehaviour
             FindObjectOfType<hallwayPlatformManager>().makeThemFall();
         }
         if (shouldLight)
+        {
             lamp.SetActive(true);
+            sfx.pitch = pitch;
+            sfx.Play();
+        }
     }
 }

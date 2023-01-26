@@ -8,13 +8,16 @@ public class hallwayPlatformManager : MonoBehaviour
     [SerializeField] private List<Transform> spawnpoints;
     [SerializeField] private Transform playerSpawn;
     private GameObject player;
+    private AudioSource sfx;
 
     private void Start()
     {
         player = FindObjectOfType<PlayerMovementAdvanced>().gameObject;
+        sfx = GetComponent<AudioSource>();
     }
     public void makeThemFall()
     {
+        sfx.Play();
         foreach (Rigidbody i in platforms)
         {
             i.isKinematic = false;
