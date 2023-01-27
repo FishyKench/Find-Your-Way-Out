@@ -11,6 +11,8 @@ public class InteractSceneLoader : interactable
     [SerializeField] private AudioSource vent;
     [SerializeField] private Material highlightMat;
 
+    [SerializeField] private string SceneToGoTo;
+
     private void Start()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
@@ -23,7 +25,7 @@ public class InteractSceneLoader : interactable
 
     public override void OnInteract()
     {
-        SceneManager.LoadScene("InterRoom");
+        SceneManager.LoadScene(SceneToGoTo);
     }
 
     public override void OnLoseFocus()
