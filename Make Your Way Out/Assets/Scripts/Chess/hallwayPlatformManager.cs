@@ -11,6 +11,8 @@ public class hallwayPlatformManager : MonoBehaviour
     [SerializeField] private AudioSource fallingSFX;
     [SerializeField] private AudioSource respawnSFX;
     private GameObject player;
+    [SerializeField]
+    private bool soundPlayed;
     private Animator fade;
 
     private void Start()
@@ -20,7 +22,13 @@ public class hallwayPlatformManager : MonoBehaviour
     }
     public void makeThemFall()
     {
-        fallingSFX.Play();
+        if(soundPlayed == false)
+        {
+            fallingSFX.Play();
+            soundPlayed = true;
+            StartCoroutine(soundCoolDown());
+        }
+        
 
         particleSpawner.SetActive(true);
         foreach (Rigidbody i in platforms)
@@ -49,5 +57,14 @@ public class hallwayPlatformManager : MonoBehaviour
         respawnSFX.Play();
         fade.SetTrigger("Fade");
 
+    }
+    IEnumerator soundCoolDown()
+    {
+        if(soundPlayed == true)
+        {
+            yield return new WaitForSeconds(2);
+            soundPlayed = false;
+        }
+        
     }
 }
