@@ -19,7 +19,7 @@ public class PickUpP : MonoBehaviour
     [SerializeField] private LayerMask pickUpLayerMask;
 
     [SerializeField]
-    private Transform objectGrabT;
+    public Transform objectGrabT;
 
     [SerializeField]
     private RotateObj rotateScript;
