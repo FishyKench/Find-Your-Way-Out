@@ -5,23 +5,67 @@ using UnityEngine;
 public class testpers : MonoBehaviour
 {
     GrabScript grab;
+    Camera cam;
+    Rigidbody rb;
+
+    [Header("Lerp Variables")]
+    [SerializeField] float overTime = 0.5f;
+    [Space(10)]
+
+    [Header("Camera Variables")]
     [SerializeField] float orthoSize;
+    [Space (10)]
+
+    [Header("Rotation Variables")]
+    [SerializeField] Vector3 goalRotMin;
+    [SerializeField] Vector3 goalRotMax;
+    [SerializeField] Vector3 goalRot;
+    [SerializeField] Vector3 localRot;
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
         grab = GetComponent<GrabScript>();
+        cam = FindObjectOfType<Camera>();
     }
 
     private void Update()
     {
+        localRot = transform.rotation.eulerAngles;
+
         if(grab.IsGrabbed == true)
         {
-            FindObjectOfType<Camera>().orthographic = true;
-            FindObjectOfType<Camera>().orthographicSize = orthoSize;
-            FindObjectOfType<Camera>().GetComponent<PlayerCam>().enabled = false;
+            switchtoOrtho();
         }
         else
         {
-            FindObjectOfType<Camera>().orthographic = false;
+            cam.orthographic = false;
         }
+
+        if (transform.eulerAngles.x > goalRotMin.x && transform.eulerAngles.y > goalRotMin.y
+        &&  transform.eulerAngles.x < goalRotMax.x && transform.eulerAngles.y < goalRotMax.y)
+        {
+            StartCoroutine(lerpToGoal());
+            grab.Drop();
+            rb.isKinematic = true;
+            rb.freezeRotation = true;
+        }
+    }
+
+    void switchtoOrtho()
+    {
+        cam.orthographic = true;
+        cam.orthographicSize = orthoSize;
+        cam.GetComponent<PlayerCam>().enabled = false;
+    }
+
+    IEnumerator lerpToGoal()
+    {
+        float startTime = Time.time;
+        while(Time.time < startTime + overTime)
+        {
+            transform.rotation = Quaternion.Lerp(Quaternion.Euler(transform.eulerAngles) ,Quaternion.Euler(goalRot), (Time.time - startTime)/overTime);
+            yield return null;
+        }
+        transform.eulerAngles = goalRot;
     }
 }
