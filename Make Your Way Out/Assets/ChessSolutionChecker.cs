@@ -11,6 +11,9 @@ public class ChessSolutionChecker : MonoBehaviour
     public List<GameObject> gridPath; 
     public Material pathMat;
 
+    [SerializeField] Animator door1;
+    [SerializeField] Animator door2;
+
 
 
 
@@ -26,6 +29,9 @@ public class ChessSolutionChecker : MonoBehaviour
          if (B2.hasRook == true && F3.hasBishop == true && B5.hasKing == true && D5.hasKnight == true && G7.hasQueen == true && H8.hasPawn == true)
         {
             print("WORKED");
+            door1.SetTrigger("open");
+            door2.SetTrigger("open");
+            FindObjectOfType<pathGuide>().solution = true;
             foreach (GameObject p in gridPath)
             { 
                 p.GetComponent<MeshRenderer>().material = pathMat;
