@@ -58,8 +58,9 @@ public class TriggerTest : MonoBehaviour
                 other.GetComponent<Rigidbody>().freezeRotation = false;
                 other.tag = "ChessPieceIn";
                 hasPiece = true;
-                
 
+                //sfx
+                GetComponent<AudioSource>().Play();
             }
 
 

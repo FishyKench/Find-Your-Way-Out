@@ -8,6 +8,7 @@ public class pathGuide : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] Transform startPos;
     public bool solution = false;
+    bool sfxStartedPlaying = false;
 
     Vector3 nextPos;
     private void Start()
@@ -48,6 +49,12 @@ public class pathGuide : MonoBehaviour
         }
 
         transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * Time.deltaTime);
+            //sfx
+            if(sfxStartedPlaying == false)
+            {
+                sfxStartedPlaying = true;
+                GetComponent<AudioSource>().Play();
+            }
         }
     }
 
