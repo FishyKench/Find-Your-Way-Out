@@ -66,7 +66,7 @@ public class knobRotateInteract : interactable
         }
         elapsedTime = 0f;
 
-        if (currentRot > 360)
+        if (_nextRot > 360)
         {
             currentRot = 0f;
             _nextRot = 45f;

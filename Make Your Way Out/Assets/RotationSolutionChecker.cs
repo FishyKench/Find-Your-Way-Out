@@ -54,7 +54,7 @@ public class RotationSolutionChecker : MonoBehaviour
             cube1.material = defaultMat;
         }
 
-        if(secondRotation == 45)
+        if(secondRotation == 225)
         {
             cube2.material = correctMat;
         }
@@ -76,7 +76,7 @@ public class RotationSolutionChecker : MonoBehaviour
 
 
 
-        if (firstRotation == 90 && secondRotation == 45 && thirdRotation == 135)
+        if (firstRotation == 90 && secondRotation == 225 && thirdRotation == 135)
         {
             print("MOMO!");
         }
