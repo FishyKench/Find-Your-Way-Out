@@ -9,6 +9,7 @@ public class PSIHandler : interactable
     [SerializeField] private Material highlightMat;
     [SerializeField] Transform targetPos;
     [SerializeField] private  int displayNum;
+    int currentNum;
 
 
 
@@ -27,13 +28,8 @@ public class PSIHandler : interactable
         _meshRenderer = GetComponent<MeshRenderer>();
 
         _defaultMat = _meshRenderer.material;
+        currentNum = int.Parse(buttonDisplay.text);
     }
-
-    private void Update()
-    {
-        buttonDisplay.text = displayNum.ToString();
-    }
-
     //when player is looking at this object
     public override void OnFocus()
     {
@@ -48,8 +44,9 @@ public class PSIHandler : interactable
         print("interacted with " + gameObject.name);
         StartCoroutine(interactAnim());
 
-        displayNum = displayNum + changeAmount;
-
+        currentNum = int.Parse(buttonDisplay.text);
+        displayNum = currentNum + changeAmount;
+        buttonDisplay.text = displayNum.ToString();
 
 
     }
