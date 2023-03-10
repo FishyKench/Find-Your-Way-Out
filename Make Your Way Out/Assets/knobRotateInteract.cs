@@ -14,6 +14,11 @@ public class knobRotateInteract : interactable
     public float _nextRot = 45f;
 
 
+    private float elapsedTime;
+    private float waitTime = 0.5f;
+
+
+
     private void Start()
     {
         _from = Quaternion.Euler(currentRot, 0, 0);
@@ -33,9 +38,35 @@ public class knobRotateInteract : interactable
 
     public override void OnInteract()
     {
-        this.transform.rotation = Quaternion.Slerp(_from, _to, 1f);
+        StartCoroutine(rotateObj());
 
-        if(currentRot > 360)
+        
+
+
+    }
+
+
+
+    private IEnumerator rotateObj()
+    {
+
+        while (elapsedTime < waitTime)
+        {
+            transform.rotation = Quaternion.Lerp(_from, _to, (elapsedTime / waitTime));
+            elapsedTime += Time.deltaTime;
+
+
+
+
+            // Yield here
+            yield return null;
+
+
+
+        }
+        elapsedTime = 0f;
+
+        if (currentRot > 360)
         {
             currentRot = 0f;
             _nextRot = 45f;
@@ -45,8 +76,13 @@ public class knobRotateInteract : interactable
         _nextRot = _nextRot + 45;
         _from = Quaternion.Euler(currentRot, 0, 0);
         _to = Quaternion.Euler(_nextRot, 0, 0);
+        print("this is current: " + currentRot + " " + "this is next: " + _nextRot);
 
     }
+
+
+
+
 
     public override void OnLoseFocus()
     {
