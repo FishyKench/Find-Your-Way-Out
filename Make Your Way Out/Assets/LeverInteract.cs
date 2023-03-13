@@ -6,9 +6,10 @@ public class LeverInteract : interactable
 {
 
 
-    private bool _isOff;
-
+    public bool _isOff;
+    [SerializeField]
     private Quaternion _offPos;
+    [SerializeField]
     private Quaternion _onPos;
 
     private float elapsedTime;
@@ -16,12 +17,7 @@ public class LeverInteract : interactable
 
     void Start()
     {
-
-        _offPos = Quaternion.Euler(315, 90, -90);
-        _onPos = Quaternion.Euler(229, 90, -90);
-
         _isOff = true;
-
 
     }
 
@@ -54,7 +50,7 @@ public class LeverInteract : interactable
         {
             while (elapsedTime < waitTime)
             {
-                    transform.rotation = Quaternion.Lerp(_offPos, _onPos, (elapsedTime / waitTime));
+                    transform.localRotation = Quaternion.Lerp(_offPos, _onPos, (elapsedTime / waitTime));
                     elapsedTime += Time.deltaTime;
                     // Yield here
                     yield return null;
@@ -67,7 +63,7 @@ public class LeverInteract : interactable
         {
             while (elapsedTime < waitTime)
             {
-                transform.rotation = Quaternion.Lerp(_onPos, _offPos, (elapsedTime / waitTime));
+                transform.localRotation = Quaternion.Lerp(_onPos, _offPos, (elapsedTime / waitTime));
                 elapsedTime += Time.deltaTime;
                 // Yield here
                 yield return null;
