@@ -5,18 +5,23 @@ using UnityEngine;
 public class FSInteract : interactable
 {
     // Start is called before the first frame update
+    [Header("values")]
+    [SerializeField] int changeAmount;
 
+    [Space(15)]
 
+    [Header("References")]
     [SerializeField] Transform targetPos;
 
     public ParticleSystem PS;
+    fsManager fsm;
 
     Vector3 originalPos;
 
     void Start()
     {
         originalPos = transform.position;
-        
+        fsm = FindObjectOfType<fsManager>();
     }
 
     // Update is called once per frame
@@ -34,6 +39,7 @@ public class FSInteract : interactable
     {
         StartCoroutine(interactAnim());
         StartCoroutine(smokeAnim());
+        fsm.changePSI(changeAmount);
     }
 
     public override void OnLoseFocus()

@@ -53,7 +53,6 @@ public class zoom : MonoBehaviour
             counter += Time.deltaTime;
 
             float fOVTime = counter / duration;
-            Debug.Log(fOVTime);
 
             //Change FOV
             targetCamera.fieldOfView = Mathf.Lerp(fromFOV, toFOV, fOVTime);
