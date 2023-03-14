@@ -15,6 +15,10 @@ public class fsManager : MonoBehaviour
     [SerializeField] Slider slider;
     [SerializeField] TextMeshProUGUI psiText;
 
+    //easteregg
+    [Space(30)]
+    [SerializeField]GameObject jmpscr;
+
     private void Start()
     {
         psiText.text = psi.ToString();
@@ -32,5 +36,19 @@ public class fsManager : MonoBehaviour
         {
             print("EZEZ");
         }
+
+        //easteregg
+        if(psi > 150)
+        {
+            StartCoroutine(jumpScare());
+        }
+
+    }
+
+    IEnumerator jumpScare()
+    {
+        jmpscr.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        Destroy(jmpscr);
     }
 }
