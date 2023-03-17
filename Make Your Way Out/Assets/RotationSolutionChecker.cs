@@ -15,6 +15,8 @@ public class RotationSolutionChecker : MonoBehaviour
     public float secondRotation;
     public float thirdRotation;
 
+    public bool knobSolved;
+
 
 
 
@@ -25,42 +27,18 @@ public class RotationSolutionChecker : MonoBehaviour
         thirdRotation = g3.GetComponent<knobRotateInteract>().currentRot;
 
 
-        if (firstRotation == 90 )
-        {
-            //
-        }
-        else
-        {
-            //
-        }
-
-        if(secondRotation == 225)
-        {
-            //
-        }
-        else
-        {
-            //
-        }
-
-        if (thirdRotation == 135)
-        {
-            //
-        }
-        else
-        {
-            //
-        }
-
-
-
-
+      
 
         if (firstRotation == 90 && secondRotation == 225 && thirdRotation == 135)
         {
             Color32 correctColor = new Color32(88, 255, 88, 65);
             solutionText.text = "Unlocked";
             solutionText.color = correctColor;
+            knobSolved = true;
+        }
+        else
+        {
+            knobSolved = false;
         }
 
     }

@@ -88,9 +88,5 @@ public class PlayerFollow : MonoBehaviour
     }
 
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(transform.position, sightRange);
-    }
 
 }

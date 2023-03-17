@@ -5,8 +5,9 @@ using TMPro;
 
 public class levermanager : MonoBehaviour
 
-   
+
 {
+    public bool leverSolved;
 
 
     public LeverInteract correctLever1;
@@ -37,17 +38,37 @@ public class levermanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(wrongLever1._isOff == true && wrongLever2._isOff == true && wrongLever3._isOff == true && wrongLever4._isOff == true )
+        if (wrongLever1._isOff == false || wrongLever2._isOff == false || wrongLever3._isOff == false || wrongLever4._isOff == false)
         {
+            leverSolved = false;
+        }
+
+        if (wrongLever1._isOff == true && wrongLever2._isOff == true && wrongLever3._isOff == true && wrongLever4._isOff == true)
+        {
+
+
+            if (correctLever1._isOff == false && correctLever2._isOff == false && correctLever3._isOff == false)
             {
-                if(correctLever1._isOff == false && correctLever2._isOff == false && correctLever3._isOff == false)
-                {
-                    Color32 correctColor = new Color32(88, 255, 88, 65);
-                    solutionText.text = "Activated";
-                    solutionText.color = correctColor;
-                }
+                leverSolved = true;
+            }
+            else
+            {
+                leverSolved = false;
             }
 
+        }
+
+        if (leverSolved == true)
+        {
+            Color32 correctColor = new Color32(88, 255, 88, 65);
+            solutionText.text = "Activated";
+            solutionText.color = correctColor;
+        }
+        else
+        {
+            Color32 correctColor = new Color32(255, 88, 88, 65);
+            solutionText.text = "activated";
+            solutionText.color = correctColor;
         }
     }
 }

@@ -10,6 +10,8 @@ public class fsManager : MonoBehaviour
     public int psi = 18;
     [SerializeField] int goalPSI;
 
+    public bool fsSolved;
+
     [Space(15)]
 
     [SerializeField] Slider slider;
@@ -38,10 +40,15 @@ public class fsManager : MonoBehaviour
             Color32 correctColor = new Color32(88, 255, 88, 65);
             solutionText.text = "sufficient";
             solutionText.color = correctColor;
+            fsSolved = true;
+        }
+        else
+        {
+            fsSolved = false;
         }
 
         //easteregg
-        if(psi > 150)
+        if(psi > 100)
         {
             StartCoroutine(jumpScare());
         }
