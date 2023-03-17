@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54fa993dfa0cfbe4fb1fc5634673ac87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leverSolved: 0
   correctLever1: {fileID: 1090507650}
   correctLever2: {fileID: 338566780}
   correctLever3: {fileID: 396313077}
@@ -1953,6 +1954,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274558423}
   m_CullTransparentMesh: 1
+--- !u!1 &292354712
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 292354714}
+  - component: {fileID: 292354713}
+  m_Layer: 0
+  m_Name: MapManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &292354713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292354712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1e0a535c04a5e44bf2fe0ff961985a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LeverScript: {fileID: 33840810}
+  fsScript: {fileID: 669461159}
+  knobScript: {fileID: 437790505}
+--- !u!4 &292354714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292354712}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.000548, y: 10.859147, z: -24.275253}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &299038724
 GameObject:
   m_ObjectHideFlags: 0
@@ -2778,6 +2826,7 @@ MonoBehaviour:
   firstRotation: 0
   secondRotation: 0
   thirdRotation: 0
+  knobSolved: 0
 --- !u!4 &437790506
 Transform:
   m_ObjectHideFlags: 0
@@ -3779,6 +3828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   psi: 18
   goalPSI: 37
+  fsSolved: 0
   slider: {fileID: 420546002}
   psiText: {fileID: 234701180}
   solutionText: {fileID: 274558425}
