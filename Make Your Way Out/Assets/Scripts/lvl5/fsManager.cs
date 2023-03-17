@@ -14,6 +14,7 @@ public class fsManager : MonoBehaviour
 
     [SerializeField] Slider slider;
     [SerializeField] TextMeshProUGUI psiText;
+    [SerializeField] TextMeshProUGUI solutionText;
 
     //easteregg
     [Space(30)]
@@ -34,7 +35,9 @@ public class fsManager : MonoBehaviour
 
         if(psi == goalPSI)
         {
-            print("EZEZ");
+            Color32 correctColor = new Color32(88, 255, 88, 65);
+            solutionText.text = "sufficient";
+            solutionText.color = correctColor;
         }
 
         //easteregg

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class levermanager : MonoBehaviour
 
@@ -15,6 +16,10 @@ public class levermanager : MonoBehaviour
     public LeverInteract wrongLever2;
     public LeverInteract wrongLever3;
     public LeverInteract wrongLever4;
+
+    [Space(15)]
+
+    public TextMeshProUGUI solutionText;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +42,9 @@ public class levermanager : MonoBehaviour
             {
                 if(correctLever1._isOff == false && correctLever2._isOff == false && correctLever3._isOff == false)
                 {
-                    print("gj nigga");
+                    Color32 correctColor = new Color32(88, 255, 88, 65);
+                    solutionText.text = "Activated";
+                    solutionText.color = correctColor;
                 }
             }
 
