@@ -5,13 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class InteractSceneLoader : interactable
 {
+
+    [SerializeField] private string SceneToGoTo;
+    [SerializeField] private float waitToLoad;
+
+    [Space(20)]
+    [SerializeField] private AudioSource audio;
+    [SerializeField] private Material highlightMat;
+
     private Material _defaultMat;
     private MeshRenderer _meshRenderer;
 
-    [SerializeField] private AudioSource vent;
-    [SerializeField] private Material highlightMat;
-
-    [SerializeField] private string SceneToGoTo;
 
     private void Start()
     {
@@ -24,6 +28,23 @@ public class InteractSceneLoader : interactable
     }
 
     public override void OnInteract()
+    {
+        GameObject.Find("Fade").GetComponent<Animator>().SetTrigger("FadeIn");
+
+        if (audio != null)
+        {
+            audio.Play();
+            Invoke("loadScene", waitToLoad);
+        }
+        else
+        {
+            loadScene();
+        }
+
+
+    }
+
+    public void loadScene()
     {
         SceneManager.LoadScene(SceneToGoTo);
     }
