@@ -1,65 +1,96 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.AI;
-
 public class PlayerFollow : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField]
-    private Transform movePosTrans;
-
     public NavMeshAgent agent;
-    public float range; //radius of sphere
 
-    public Transform centrePoint; //centre of the area the agent wants to move around in
-    //instead of centrePoint you can set it as the transform of the agent if you don't care about a specific area
+    public Transform player;
 
-       private void Awake()
+    private RaycastHit hit;
+
+    //Check for Ground/Obstacles
+    public LayerMask whatIsGround, whatIsPlayer;
+
+    //Patroling
+    public Vector3 walkPoint;
+    public bool walkPointSet;
+    public float walkPointRange;
+
+    //States
+    public bool isDead;
+    public float sightRange;
+    public bool playerInSightRange;
+
+    private void Awake()
     {
+        player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
     }
-
-
-
-    void Start()
+    private void Update()
     {
-        agent = GetComponent<NavMeshAgent>();
-    }
-
-
-    void Update()
-    {
-        agent.destination = movePosTrans.position;
-        if (agent.remainingDistance <= agent.stoppingDistance) //done with path
+        if (!isDead)
         {
-            Vector3 point;
-            if (RandomPoint(centrePoint.position, range, out point)) //pass in our centre point and radius of area
+            //Check if Player in sightrange
+            playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+             if(Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, whatIsPlayer))
             {
-                Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
-                agent.SetDestination(point);
+                ChasePlayer();
             }
-        }
 
+
+            if (!playerInSightRange) Patroling();
+            if (playerInSightRange) ChasePlayer();
+        }
     }
-    bool RandomPoint(Vector3 center, float range, out Vector3 result)
+
+    private void Patroling()
     {
+        if (isDead) return;
 
-        Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
+        if (!walkPointSet) SearchWalkPoint();
+
+        //Calculate direction and walk to Point
+        if (walkPointSet)
         {
-            //the 1.0f is the max distance from the random point to a point on the navmesh, might want to increase if range is big
-            //or add a for loop like in the documentation
-            result = hit.position;
-            return true;
+            agent.SetDestination(walkPoint);
+            
         }
 
-        result = Vector3.zero;
-        return false;
+        //Calculates DistanceToWalkPoint
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+        //Walkpoint reached
+        if (distanceToWalkPoint.magnitude < 1f)
+            walkPointSet = false;
+
+    }
+    private void SearchWalkPoint()
+    {
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        if (Physics.Raycast(walkPoint, -transform.up, 2, whatIsGround))
+            walkPointSet = true;
+    }
+    private void ChasePlayer()
+    {
+        if (isDead) return;
+
+        agent.SetDestination(player.position);
+
+    }
+    private void Destroyy()
+    {
+        Destroy(gameObject);
     }
 
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(transform.position, sightRange);
+    }
 
- 
 }
