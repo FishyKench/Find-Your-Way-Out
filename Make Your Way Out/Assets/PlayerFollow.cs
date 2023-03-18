@@ -7,8 +7,6 @@ public class PlayerFollow : MonoBehaviour
 
     public Transform player;
 
-    private RaycastHit hit;
-
     //Check for Ground/Obstacles
     public LayerMask whatIsGround, whatIsPlayer;
 
@@ -36,10 +34,31 @@ public class PlayerFollow : MonoBehaviour
 
 
             if (!playerInSightRange) Patroling();
-            if (playerInSightRange) ChasePlayer();
+            if (playerInSightRange) checkIfPlayerBehindWall();
+            //if (playerInSightRange) ChasePlayer();
         }
     }
 
+    void checkIfPlayerBehindWall()
+    {
+        if (playerInSightRange)
+        {
+            Physics.Raycast(transform.position, -(transform.position - player.transform.position), out RaycastHit checkwallHit);
+            Debug.DrawLine(transform.position, checkwallHit.point,Color.red);
+
+            print(checkwallHit.transform.gameObject.name);
+            if (checkwallHit.transform.gameObject.CompareTag("Player"))
+            {
+                ChasePlayer();
+            }
+            else
+            {
+                Patroling();
+            }
+            
+
+        }
+    }
     private void Patroling()
     {
         if (isDead) return;
@@ -68,7 +87,7 @@ public class PlayerFollow : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, out hit, 2, whatIsGround))
+        if (Physics.Raycast(walkPoint, -transform.up, out RaycastHit hit, 2, whatIsGround))
         {
             if (hit.transform.gameObject.name == "hall2Floor")
             {
@@ -92,6 +111,7 @@ public class PlayerFollow : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(transform.position, sightRange);
+        //Gizmos.DrawLine(wallchecker.position, player.transform.position);
     }
 
 }
