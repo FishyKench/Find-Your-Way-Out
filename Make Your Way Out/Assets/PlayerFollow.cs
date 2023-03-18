@@ -24,7 +24,7 @@ public class PlayerFollow : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("PlayerObj").transform;
+        //player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
     }
     private void Update()
@@ -33,10 +33,6 @@ public class PlayerFollow : MonoBehaviour
         {
             //Check if Player in sightrange
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-             if(Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, whatIsPlayer))
-            {
-                ChasePlayer();
-            }
 
 
             if (!playerInSightRange) Patroling();
@@ -54,7 +50,7 @@ public class PlayerFollow : MonoBehaviour
         if (walkPointSet)
         {
             agent.SetDestination(walkPoint);
-            
+
         }
 
         //Calculates DistanceToWalkPoint
@@ -72,8 +68,14 @@ public class PlayerFollow : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if (Physics.Raycast(walkPoint, -transform.up, 2, whatIsGround))
-            walkPointSet = true;
+        if (Physics.Raycast(walkPoint, -transform.up, out hit, 2, whatIsGround))
+        {
+            if (hit.transform.gameObject.name == "hall2Floor")
+            {
+                walkPointSet = true;
+                //print(hit.transform.gameObject.name);
+            }
+        }
     }
     private void ChasePlayer()
     {
@@ -87,6 +89,9 @@ public class PlayerFollow : MonoBehaviour
         Destroy(gameObject);
     }
 
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
 
 }
