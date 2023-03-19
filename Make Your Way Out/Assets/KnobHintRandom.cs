@@ -30,22 +30,22 @@ public class KnobHintRandom : MonoBehaviour
             case 1:
                 {
                     firstPos = true;
-                    transform.position = firstVector;
-                    transform.rotation = firstRotation;
+                    transform.localPosition = firstVector;
+                    transform.localRotation = firstRotation;
                     break;
                 }
             case 2:
                 {
                     secondPos = true;
-                    transform.position = secondPosVector;
-                    transform.rotation = secondPosRotation;
+                    transform.localPosition = secondPosVector;
+                    transform.localRotation = secondPosRotation;
                     break;
                 }
             case 3:
                 {
                     thirdPos = true;
-                    transform.position = thirdPosVector;
-                    transform.rotation = thirdPosRotation;
+                    transform.localPosition = thirdPosVector;
+                    transform.localRotation = thirdPosRotation;
                     break;
                 }
         }
