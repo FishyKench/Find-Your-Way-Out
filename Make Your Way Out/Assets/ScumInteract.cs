@@ -6,7 +6,7 @@ public class ScumInteract : interactable
 {
     void Start()
     {
-        _isOff = true;
+        //_isOff = true;
 
     }
 
@@ -23,7 +23,7 @@ public class ScumInteract : interactable
 
     public override void OnInteract()
     {
-        StartCoroutine(rotateLever());
+        //StartCoroutine(rotateLever());
     }
 
     public override void OnLoseFocus()
