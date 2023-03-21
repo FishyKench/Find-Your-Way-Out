@@ -32,8 +32,8 @@ public class RotationSolutionChecker : MonoBehaviour
         if (firstRotation == 90 && secondRotation == 225 && thirdRotation == 135)
         {
             Color32 correctColor = new Color32(88, 255, 88, 65);
-            solutionText.text = "Unlocked";
-            solutionText.color = correctColor;
+            //solutionText.text = "Unlocked";
+            //solutionText.color = correctColor;
             knobSolved = true;
         }
         else
