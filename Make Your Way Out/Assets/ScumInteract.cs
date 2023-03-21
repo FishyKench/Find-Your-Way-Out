@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ScumInteract : interactable
 {
+
+    public GameObject endScreenImg;
     void Start()
     {
         //_isOff = true;
@@ -23,11 +25,17 @@ public class ScumInteract : interactable
 
     public override void OnInteract()
     {
-        //StartCoroutine(rotateLever());
+        StartCoroutine(EndScreen());
     }
 
     public override void OnLoseFocus()
     {
 
+    }
+
+    IEnumerator EndScreen()
+    {
+        endScreenImg.SetActive(true);
+        Application.Quit(0);
     }
 }
