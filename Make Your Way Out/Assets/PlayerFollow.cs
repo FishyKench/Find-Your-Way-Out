@@ -27,6 +27,7 @@ public class PlayerFollow : MonoBehaviour
     {
         //player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = 9;
     }
     private void Update()
     {
@@ -53,10 +54,12 @@ public class PlayerFollow : MonoBehaviour
             if (checkwallHit.transform.gameObject.CompareTag("Player"))
             {
                 ChasePlayer();
+                agent.speed = 11;
             }
             else
             {
                 Patroling();
+                agent.speed = 9;
             }
 
 
