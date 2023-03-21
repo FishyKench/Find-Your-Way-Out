@@ -11,6 +11,8 @@ public class ScumMapManager : MonoBehaviour
     public GameObject normalDoor;
     public GameObject brokenDoor;
     private bool broke;
+
+    public GameObject scummy;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,7 @@ public class ScumMapManager : MonoBehaviour
             broke = true;
             Instantiate(brokenDoor, normalDoor.transform.position, Quaternion.identity);
             Destroy(normalDoor);
+            Destroy(scummy);
         }
 
     }

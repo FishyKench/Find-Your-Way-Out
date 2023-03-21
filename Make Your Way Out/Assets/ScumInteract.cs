@@ -36,6 +36,7 @@ public class ScumInteract : interactable
     IEnumerator EndScreen()
     {
         endScreenImg.SetActive(true);
+        yield return new WaitForSeconds(4f);
         Application.Quit(0);
     }
 }
