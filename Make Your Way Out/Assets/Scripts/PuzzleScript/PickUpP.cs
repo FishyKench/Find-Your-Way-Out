@@ -37,7 +37,7 @@ public class PickUpP : MonoBehaviour
     void Start()
     {
         player.layer = 6;
-
+        grabUi = GameObject.Find("crossHair");
     }
 
     // Update is called once per frame

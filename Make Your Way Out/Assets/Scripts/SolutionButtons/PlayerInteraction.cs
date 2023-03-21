@@ -16,6 +16,10 @@ public class PlayerInteraction : MonoBehaviour
     private interactable currentInteractable;
 
     [SerializeField] private Camera cam;
+    private void Awake()
+    {
+        crosshair = GameObject.Find("crossHair");
+    }
 
     private void Update()
     {
