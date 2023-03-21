@@ -1,6 +1,8 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 public class PlayerFollow : MonoBehaviour
 {
     public NavMeshAgent agent;
@@ -22,6 +24,8 @@ public class PlayerFollow : MonoBehaviour
 
     [SerializeField] AudioSource rumble;
     bool rumblePlayed = false;
+
+
 
     private void Awake()
     {
@@ -127,6 +131,19 @@ public class PlayerFollow : MonoBehaviour
     {
         Gizmos.DrawWireSphere(transform.position, sightRange);
         //Gizmos.DrawLine(wallchecker.position, player.transform.position);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+           
+            
+            Scene Scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(Scene.name);
+
+   
+        }
     }
 
 }
