@@ -18,6 +18,11 @@ public class knobRotateInteract : interactable
     private float waitTime = 0.5f;
 
 
+    [SerializeField] GameObject jmpscr;
+    [SerializeField] private int _jumpScareCounter;
+    private bool hasJumped;
+
+
 
     private void Start()
     {
@@ -27,7 +32,11 @@ public class knobRotateInteract : interactable
     }
     private void Update()
     {
-        
+        if (_jumpScareCounter == 3 && hasJumped == false)
+        {
+            StartCoroutine(jumpScare());
+            hasJumped = true;
+        }
         
     }
     public override void OnFocus()
@@ -68,6 +77,7 @@ public class knobRotateInteract : interactable
 
         if (_nextRot > 360)
         {
+            _jumpScareCounter +=1;
             currentRot = 0f;
             _nextRot = 45f;
         }
@@ -79,6 +89,15 @@ public class knobRotateInteract : interactable
         print("this is current: " + currentRot + " " + "this is next: " + _nextRot);
 
     }
+
+    IEnumerator jumpScare()
+    {
+        jmpscr.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        Destroy(jmpscr);
+    }
+
+
 
 
 
