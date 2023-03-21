@@ -68,9 +68,9 @@ public class doorInteract : interactable
 
     private IEnumerator openDoor()
     {
-       
 
-        open.Play();
+
+        open.PlayOneShot(open.clip);
 
         while (elapsedTime < waitTime)
         { 
@@ -86,7 +86,7 @@ public class doorInteract : interactable
         transform.rotation = _targetRot;
         elapsedTime = 0;
         yield return new WaitForSeconds(2f);
-        slam.Play();
+        slam.PlayOneShot(slam.clip);
 
         while (elapsedTime < waitTime)
         {

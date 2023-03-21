@@ -46,7 +46,7 @@ public class PlayerFollow : MonoBehaviour
             Physics.Raycast(transform.position, -(transform.position - player.transform.position), out RaycastHit checkwallHit);
             Debug.DrawLine(transform.position, checkwallHit.point,Color.red);
 
-            print(checkwallHit.transform.gameObject.name);
+            //print(checkwallHit.transform.gameObject.name);
             if (checkwallHit.transform.gameObject.CompareTag("Player"))
             {
                 ChasePlayer();

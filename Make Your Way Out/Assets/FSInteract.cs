@@ -18,10 +18,13 @@ public class FSInteract : interactable
 
     Vector3 originalPos;
 
+    private AudioSource sfx;
+
     void Start()
     {
         originalPos = transform.position;
         fsm = FindObjectOfType<fsManager>();
+        sfx = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -40,6 +43,7 @@ public class FSInteract : interactable
         StartCoroutine(interactAnim());
         StartCoroutine(smokeAnim());
         fsm.changePSI(changeAmount);
+        sfx.PlayOneShot(sfx.clip);
     }
 
     public override void OnLoseFocus()

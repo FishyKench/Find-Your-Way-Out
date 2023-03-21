@@ -51,8 +51,8 @@ public class knobRotateInteract : interactable
     public override void OnInteract()
     {
         StartCoroutine(rotateObj());
-        sfx.Play();
-        
+        sfx.PlayOneShot(sfx.clip);
+
 
 
     }

@@ -65,7 +65,7 @@ public class buttonManager : MonoBehaviour
 
     public void changeAmount(string index, int changeAmont)
     {
-        btnClick.Play();
+        btnClick.PlayOneShot(btnClick.clip);
         switch (index)
         {
             case "red":
@@ -89,7 +89,7 @@ public class buttonManager : MonoBehaviour
 
     public void CheckSolution()
     {
-        confirmClick.Play();
+        confirmClick.PlayOneShot(confirmClick.clip);
 
         if(redNum == goalRed && greenNum == goalGreen && blueNum == goalBlue && yellowNum == goalYellow)
         {

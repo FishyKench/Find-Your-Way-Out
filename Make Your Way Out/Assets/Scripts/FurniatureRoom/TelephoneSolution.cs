@@ -100,7 +100,7 @@ public class TelephoneSolution : MonoBehaviour
             telephoneText.text = FirstHours.ToString() + SecondHours.ToString() + ":" + FirstMins.ToString() + SecondMins.ToString();
         }
 
-        buttonSFX.Play();
+        buttonSFX.PlayOneShot(buttonSFX.clip);
     }
 
 

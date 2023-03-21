@@ -104,7 +104,7 @@ public class ButtonManager_RGBnDOOR : MonoBehaviour
 
     public void changeAmount(int index, int changeAmont)
     {
-        btnClick.Play();
+        btnClick.PlayOneShot(btnClick.clip);
 
         switch (index)
         {

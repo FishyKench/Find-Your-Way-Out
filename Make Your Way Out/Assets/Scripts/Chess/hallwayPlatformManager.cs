@@ -24,7 +24,7 @@ public class hallwayPlatformManager : MonoBehaviour
     {
         if(soundPlayed == false)
         {
-            fallingSFX.Play();
+            fallingSFX.PlayOneShot(fallingSFX.clip);
             soundPlayed = true;
             StartCoroutine(soundCoolDown());
         }

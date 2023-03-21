@@ -37,7 +37,7 @@ public class LeverInteract : interactable
     public override void OnInteract()
     {
         StartCoroutine(rotateLever());
-        sfx.Play();
+        sfx.PlayOneShot(sfx.clip);
     }
 
     public override void OnLoseFocus()

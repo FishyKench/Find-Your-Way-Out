@@ -36,7 +36,7 @@ public class hallwayPlatform : MonoBehaviour
         {
             lamp.SetActive(true);
             sfx.pitch = pitch;
-            sfx.Play();
+            sfx.PlayOneShot(sfx.clip);
         }
     }
 }
