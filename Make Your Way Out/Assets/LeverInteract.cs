@@ -15,10 +15,12 @@ public class LeverInteract : interactable
     private float elapsedTime;
     private float waitTime = 0.5f;
 
+    private AudioSource sfx;
+
     void Start()
     {
         _isOff = true;
-
+        sfx = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -35,6 +37,7 @@ public class LeverInteract : interactable
     public override void OnInteract()
     {
         StartCoroutine(rotateLever());
+        sfx.Play();
     }
 
     public override void OnLoseFocus()

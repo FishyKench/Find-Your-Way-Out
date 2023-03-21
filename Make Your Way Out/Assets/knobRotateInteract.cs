@@ -17,6 +17,7 @@ public class knobRotateInteract : interactable
     private float elapsedTime;
     private float waitTime = 0.5f;
 
+    private AudioSource sfx;
 
     [SerializeField] GameObject jmpscr;
     [SerializeField] private int _jumpScareCounter;
@@ -28,6 +29,8 @@ public class knobRotateInteract : interactable
     {
         _from = Quaternion.Euler(currentRot, 0, 0);
         _to = Quaternion.Euler(_nextRot, 0, 0);
+
+        sfx = GetComponent<AudioSource>();
         
     }
     private void Update()
@@ -48,7 +51,7 @@ public class knobRotateInteract : interactable
     public override void OnInteract()
     {
         StartCoroutine(rotateObj());
-
+        sfx.Play();
         
 
 
