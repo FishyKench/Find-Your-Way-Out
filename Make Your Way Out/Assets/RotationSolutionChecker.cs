@@ -17,6 +17,13 @@ public class RotationSolutionChecker : MonoBehaviour
 
     public bool knobSolved;
 
+    private AudioSource sfx;
+    private bool sfxPlayed;
+    private void Start()
+    {
+        sfx = GetComponent<AudioSource>();
+    }
+
 
 
 
@@ -27,7 +34,7 @@ public class RotationSolutionChecker : MonoBehaviour
         thirdRotation = g3.GetComponent<knobRotateInteract>().currentRot;
 
 
-      
+
 
         if (firstRotation == 90 && secondRotation == 225 && thirdRotation == 135)
         {
@@ -35,10 +42,16 @@ public class RotationSolutionChecker : MonoBehaviour
             //solutionText.text = "Unlocked";
             //solutionText.color = correctColor;
             knobSolved = true;
+            if (sfxPlayed == false)
+            {
+                sfx.PlayOneShot(sfx.clip);
+                sfxPlayed = true;
+            }
         }
         else
         {
             knobSolved = false;
+            sfxPlayed = false;
         }
 
     }

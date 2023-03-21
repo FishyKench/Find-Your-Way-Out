@@ -21,6 +21,8 @@ public class levermanager : MonoBehaviour
     [Space(15)]
 
     public TextMeshProUGUI solutionText;
+    [SerializeReference] AudioSource sfx;
+    bool sfxPlayed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,7 @@ public class levermanager : MonoBehaviour
         if (wrongLever1._isOff == false || wrongLever2._isOff == false || wrongLever3._isOff == false || wrongLever4._isOff == false)
         {
             leverSolved = false;
+            sfxPlayed = false;
         }
 
         if (wrongLever1._isOff == true && wrongLever2._isOff == true && wrongLever3._isOff == true && wrongLever4._isOff == true)
@@ -50,10 +53,17 @@ public class levermanager : MonoBehaviour
             if (correctLever1._isOff == false && correctLever2._isOff == false && correctLever3._isOff == false)
             {
                 leverSolved = true;
+
+                if (sfxPlayed == false)
+                {
+                    sfx.PlayOneShot(sfx.clip);
+                    sfxPlayed = true;
+                }
             }
             else
             {
                 leverSolved = false;
+                sfxPlayed = false;
             }
 
         }

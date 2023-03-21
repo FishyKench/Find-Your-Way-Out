@@ -18,6 +18,7 @@ public class fsManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI psiText;
     [SerializeField] TextMeshProUGUI solutionText;
 
+    [SerializeField] AudioSource sfx;
     //easteregg
     [Space(30)]
     [SerializeField]GameObject jmpscr;
@@ -41,10 +42,12 @@ public class fsManager : MonoBehaviour
             solutionText.text = "sufficient";
             solutionText.color = correctColor;
             fsSolved = true;
+            sfx.Play();
         }
         else
         {
             fsSolved = false;
+            sfx.Stop();
         }
 
         //easteregg

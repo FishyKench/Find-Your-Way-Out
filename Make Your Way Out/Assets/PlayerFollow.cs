@@ -20,6 +20,9 @@ public class PlayerFollow : MonoBehaviour
     public float sightRange;
     public bool playerInSightRange;
 
+    [SerializeField] AudioSource rumble;
+    bool rumblePlayed = false;
+
     private void Awake()
     {
         //player = GameObject.Find("PlayerObj").transform;
@@ -44,7 +47,7 @@ public class PlayerFollow : MonoBehaviour
         if (playerInSightRange)
         {
             Physics.Raycast(transform.position, -(transform.position - player.transform.position), out RaycastHit checkwallHit);
-            Debug.DrawLine(transform.position, checkwallHit.point,Color.red);
+            Debug.DrawLine(transform.position, checkwallHit.point, Color.red);
 
             //print(checkwallHit.transform.gameObject.name);
             if (checkwallHit.transform.gameObject.CompareTag("Player"))
@@ -55,12 +58,15 @@ public class PlayerFollow : MonoBehaviour
             {
                 Patroling();
             }
-            
+
 
         }
     }
     private void Patroling()
     {
+        rumble.Stop();
+        rumblePlayed = false;
+
         if (isDead) return;
 
         if (!walkPointSet) SearchWalkPoint();
@@ -101,6 +107,12 @@ public class PlayerFollow : MonoBehaviour
         if (isDead) return;
 
         agent.SetDestination(player.position);
+
+        if (rumblePlayed == false)
+        {
+            rumble.Play();
+            rumblePlayed = true;
+        }
 
     }
     private void Destroyy()
