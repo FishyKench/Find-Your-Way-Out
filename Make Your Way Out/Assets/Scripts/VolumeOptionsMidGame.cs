@@ -11,11 +11,48 @@ public class VolumeOptionsMidGame : MonoBehaviour
     bool isPaused = false;
     [Space(15)]
 
+    [Header("Volume Settings")]
     [SerializeField] private AudioMixer mixer;
     [SerializeField] private Slider mainVolumeSlider;
     [SerializeField] private TextMeshProUGUI mainVolume;
+
+    [Header("Graphics Settings")]
     [SerializeField] private Toggle fullscreenToggle;
+
+    [Header("Sensitivity Settings")]
+    [SerializeField] private TextMeshProUGUI sensText;
+    [SerializeField] private Slider sensSlider;
     bool isFullscreen;
+    private void Awake()
+    {
+        loadAllSettings();
+
+        if(pausePanel == null)
+        {
+            pausePanel = GameObject.Find("PausePanel");
+        }
+        if (mainVolumeSlider == null)
+        {
+            mainVolumeSlider = GameObject.Find("Slider").GetComponent<Slider>();
+        }
+        if (mainVolume == null)
+        {
+            mainVolume = GameObject.Find("VolumeText").GetComponent<TextMeshProUGUI>();
+        }
+        if (fullscreenToggle == null)
+        {
+            fullscreenToggle = GameObject.Find("Toggle").GetComponent<Toggle>(); ;
+        }
+        if (sensText == null)
+        {
+            sensText = GameObject.Find("SENStxt").GetComponent<TextMeshProUGUI>();
+        }
+        if (sensSlider == null)
+        {
+            sensSlider = GameObject.Find("SENSslider").GetComponent<Slider>();
+        }
+
+    }
 
     private void Update()
     {
@@ -69,12 +106,25 @@ public class VolumeOptionsMidGame : MonoBehaviour
         }
 
     }
+    public void setSensitivity(float sliderValue)
+    {
+        PlayerPrefs.SetFloat("sens", sliderValue * 100);
+        PlayerPrefs.SetFloat("sensSliderValue", sliderValue);
+
+        sensText.text = Mathf.FloorToInt(PlayerPrefs.GetFloat("sens")).ToString();
+
+        FindObjectOfType<PlayerCam>().changeSens();
+    }
+
 
     private void loadAllSettings()
     {
         mixer.SetFloat("masterVolume", PlayerPrefs.GetFloat("masterVolume", -13));
         mainVolume.text = PlayerPrefs.GetString("masterVolumeText", "50%");
         mainVolumeSlider.value = PlayerPrefs.GetFloat("masterVolumeSliderValue", .5f);
+
+        sensText.text = PlayerPrefs.GetFloat("sens").ToString();
+        sensSlider.value = PlayerPrefs.GetFloat("sensSliderValue");
 
         if (PlayerPrefs.GetInt("fullscreen", 1) == 1)
         {

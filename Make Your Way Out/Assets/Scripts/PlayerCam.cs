@@ -18,6 +18,9 @@ public class PlayerCam : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        sensX = PlayerPrefs.GetFloat("sens", 100);
+        sensY = PlayerPrefs.GetFloat("sens", 100);
     }
 
     private void Update()
@@ -34,6 +37,12 @@ public class PlayerCam : MonoBehaviour
         // rotate cam and orientation
         camHolder.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
+
+    public void changeSens()
+    {
+        sensX = PlayerPrefs.GetFloat("sens");
+        sensY = PlayerPrefs.GetFloat("sens");
     }
 
     public void DoFov(float endValue)

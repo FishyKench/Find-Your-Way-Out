@@ -11,6 +11,7 @@ public class PickUpP : MonoBehaviour
 
     [Header("UI")]
     public GameObject grabUi;
+    public GameObject gameUi;
 
     [SerializeField]
     private Transform playerCamT;
@@ -37,7 +38,7 @@ public class PickUpP : MonoBehaviour
     void Start()
     {
         player.layer = 6;
-        grabUi = GameObject.Find("crossHair");
+        gameUi = GameObject.Find("Q");
     }
 
     // Update is called once per frame
@@ -86,6 +87,7 @@ public class PickUpP : MonoBehaviour
                             raycastHit.transform.gameObject.layer = 8;
                         }
                         grabUi.SetActive(true);
+                        gameUi.SetActive(false);
                         player.layer = 7;
                         grabScript.Grab(objectGrabT);
                     }
@@ -98,6 +100,7 @@ public class PickUpP : MonoBehaviour
                 grabScript.Drop();
                 grabScript = null;
                 grabUi.SetActive(false);
+                gameUi.SetActive(true);
                 isHoldingObject = false;
             }
         }

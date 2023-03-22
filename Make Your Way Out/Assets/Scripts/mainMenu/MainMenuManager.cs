@@ -17,13 +17,17 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Slider mainVolumeSlider;
 
     [Header("Graphics Settings")]
-    private bool isFullscreen;
     [SerializeField] private TMP_Dropdown qualityDropdown;
     [SerializeField] Toggle fullscreenToggle;
+    private bool isFullscreen;
 
     [Header("Resolutions Dropdown")]
     public TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
+
+    [Header("Sensitivity Settings")]
+    [SerializeField] private TextMeshProUGUI sensText;
+    [SerializeField] private Slider sensSlider;
 
     private void Start()
     {
@@ -124,6 +128,14 @@ public class MainMenuManager : MonoBehaviour
         PlayerPrefs.SetInt("resolutionHeight", resolution.height);
     }
 
+    //------------------------------------------------GAMEPLAY SETTINGS----------------------------------------------
+    public void setSensitivity(float sliderValue)
+    {
+        PlayerPrefs.SetFloat("sens", sliderValue * 100);
+        PlayerPrefs.SetFloat("sensSliderValue", sliderValue);
+
+        sensText.text = Mathf.FloorToInt(PlayerPrefs.GetFloat("sens")).ToString();
+    }
 
 
     private void loadAllSettings()
@@ -131,6 +143,9 @@ public class MainMenuManager : MonoBehaviour
         mixer.SetFloat("masterVolume", PlayerPrefs.GetFloat("masterVolume", -13));
         mainVolume.text = PlayerPrefs.GetString("masterVolumeText", "50%");
         mainVolumeSlider.value = PlayerPrefs.GetFloat("masterVolumeSliderValue", .5f);
+
+        sensText.text = PlayerPrefs.GetFloat("sens").ToString();
+        sensSlider.value = PlayerPrefs.GetFloat("sensSliderValue");
 
         if (PlayerPrefs.GetInt("fullscreen", 1) == 1)
         {
