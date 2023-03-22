@@ -5,7 +5,7 @@ using TMPro;
 
 public class RotationSolutionChecker : MonoBehaviour
 {
-    public TextMeshProUGUI solutionText;
+    //public TextMeshProUGUI solutionText;
 
     public GameObject g1;
     public GameObject g2;
@@ -17,12 +17,12 @@ public class RotationSolutionChecker : MonoBehaviour
 
     public bool knobSolved;
 
-    private AudioSource sfx;
+    [SerializeField] private AudioSource sfx;
     private bool sfxPlayed;
-    private void Start()
-    {
-        sfx = GetComponent<AudioSource>();
-    }
+    //private void Start()
+    //{
+    //    sfx = GetComponent<AudioSource>();
+    //}
 
 
 

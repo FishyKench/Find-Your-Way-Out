@@ -27,31 +27,6 @@ public class VolumeOptionsMidGame : MonoBehaviour
     {
         loadAllSettings();
 
-        if(pausePanel == null)
-        {
-            pausePanel = GameObject.Find("PausePanel");
-        }
-        if (mainVolumeSlider == null)
-        {
-            mainVolumeSlider = GameObject.Find("Slider").GetComponent<Slider>();
-        }
-        if (mainVolume == null)
-        {
-            mainVolume = GameObject.Find("VolumeText").GetComponent<TextMeshProUGUI>();
-        }
-        if (fullscreenToggle == null)
-        {
-            fullscreenToggle = GameObject.Find("Toggle").GetComponent<Toggle>(); ;
-        }
-        if (sensText == null)
-        {
-            sensText = GameObject.Find("SENStxt").GetComponent<TextMeshProUGUI>();
-        }
-        if (sensSlider == null)
-        {
-            sensSlider = GameObject.Find("SENSslider").GetComponent<Slider>();
-        }
-
     }
 
     private void Update()
