@@ -77,7 +77,7 @@ public class levermanager : MonoBehaviour
         else
         {
             Color32 correctColor = new Color32(255, 88, 88, 65);
-            solutionText.text = "activated";
+            solutionText.text = "deactivated";
             solutionText.color = correctColor;
         }
     }
