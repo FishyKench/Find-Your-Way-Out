@@ -7,8 +7,12 @@ using UnityEngine.UI;
 
 public class VolumeOptionsMidGame : MonoBehaviour
 {
+    [Header("Panels")]
     [SerializeField] GameObject pausePanel;
+    [SerializeField] GameObject hintPanel;
     bool isPaused = false;
+    bool hintOpened = false;
+
     [Space(15)]
 
     [Header("Volume Settings")]
@@ -33,7 +37,7 @@ public class VolumeOptionsMidGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(isPaused == false)
+            if (isPaused == false)
             {
                 pausePanel.SetActive(true);
                 isPaused = true;
@@ -42,7 +46,7 @@ public class VolumeOptionsMidGame : MonoBehaviour
                 FindObjectOfType<PlayerCam>().enabled = false;
                 FindObjectOfType<PlayerMovementAdvanced>().enabled = false;
             }
-            else if(isPaused == true)
+            else if (isPaused == true)
             {
                 pausePanel.SetActive(false);
                 isPaused = false;
@@ -52,6 +56,36 @@ public class VolumeOptionsMidGame : MonoBehaviour
                 FindObjectOfType<PlayerMovementAdvanced>().enabled = true;
             }
 
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            StartCoroutine(showHintPanel());
+        }
+    }
+
+    IEnumerator showHintPanel()
+    {
+        if (hintOpened == false)
+        {
+            hintPanel.SetActive(true);
+            hintOpened = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            FindObjectOfType<PlayerCam>().enabled = false;
+            FindObjectOfType<PlayerMovementAdvanced>().enabled = false;
+            hintPanel.GetComponent<Animator>().SetTrigger("slideIn");
+            
+        }
+        else if (hintOpened == true)
+        {
+            hintPanel.GetComponent<Animator>().SetTrigger("slideOut");
+            yield return new WaitForSeconds(0.3f);
+            hintPanel.SetActive(false);
+            hintOpened = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            FindObjectOfType<PlayerCam>().enabled = true;
+            FindObjectOfType<PlayerMovementAdvanced>().enabled = true;
         }
     }
 
