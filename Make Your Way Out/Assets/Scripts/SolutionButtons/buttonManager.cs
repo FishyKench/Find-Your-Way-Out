@@ -31,6 +31,7 @@ public class buttonManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI yellowDisplay;
     [SerializeField] AudioSource btnClick;
     [SerializeField] AudioSource confirmClick;
+    
 
     [Space (15)]
 
@@ -40,8 +41,35 @@ public class buttonManager : MonoBehaviour
     [SerializeField] int goalBlue;
     [SerializeField] int goalYellow;
 
+    [Space(15)]
+    [Header("Clocks")]
+    [SerializeField] List<Clock> clocks;
+    [Space(5)]
+    [SerializeField] List<int> hours;
+    [SerializeField] List<int> minutes;
+    [SerializeField] List<AudioSource> clockSFXs;
+    [SerializeField] List<GameObject> clockLights;
+
     public Vector3 offSet;
 
+    private void Start()
+    {
+        foreach (Clock c in clocks)
+        {
+            c.hour = 0;
+            c.minutes = 0;
+            c.seconds = 0;
+            
+        }
+        foreach (AudioSource sfx in clockSFXs)
+        {
+            sfx.Stop();
+        }
+        foreach (GameObject g in clockLights)
+        {
+            g.SetActive(false);
+        }
+    }
 
     private void Update()
     {
@@ -119,6 +147,21 @@ public class buttonManager : MonoBehaviour
                 {
                     screenAudio.Stop();
                 }
+            }
+
+            for (int i = 0; i < clocks.Count; i++)
+            {
+                clocks[i].hour = hours[i];
+                clocks[i].minutes = minutes[i];
+                clocks[i].moveOnlySeconds = true;
+            }
+            foreach (AudioSource sfx in clockSFXs)
+            {
+                sfx.Play();
+            }
+            foreach (GameObject g in clockLights)
+            {
+                g.SetActive(true);
             }
 
             GameObject confirmBTN = FindObjectOfType<confirmButton>().gameObject;

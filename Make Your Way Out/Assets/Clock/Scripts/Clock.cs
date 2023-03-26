@@ -13,7 +13,9 @@ public class Clock : MonoBehaviour {
     public GameObject pointerMinutes;
     public GameObject pointerHours;
     [SerializeField]
-    private bool DoNotMOVE;
+    public bool DoNotMOVE;
+    [SerializeField]
+    public bool moveOnlySeconds = false;
 
     //-- time speed factor
     public float clockSpeed = 1.0f;     // 1.0f = realtime, < 1.0f = slower, > 1.0f = faster
@@ -62,15 +64,22 @@ void Update()
                 }
             }
         }
-        else
+        if (moveOnlySeconds == true)
         {
             msecs += Time.deltaTime * clockSpeed;
             seconds++;
             seconds = seconds - 0.99f;
         }
+        //else
+        //{
+        //    msecs += Time.deltaTime * clockSpeed;
+        //    seconds++;
+        //    seconds = seconds - 0.99f;
+        //}
 
-    //-- calculate pointer angles
-    float rotationSeconds = (360.0f / 60.0f)  * seconds;
+
+        //-- calculate pointer angles
+        float rotationSeconds = (360.0f / 60.0f)  * seconds;
     float rotationMinutes = (360.0f / 60.0f)  * minutes;
     float rotationHours   = ((360.0f / 12.0f) * hour) + ((360.0f / (60.0f * 12.0f)) * minutes);
 
