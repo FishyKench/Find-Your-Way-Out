@@ -38,7 +38,8 @@ public class PickUpP : MonoBehaviour
     void Start()
     {
         player.layer = 6;
-        gameUi = GameObject.Find("Q");
+
+        gameUi = GameObject.Find("inGamePanel");
     }
 
     // Update is called once per frame
