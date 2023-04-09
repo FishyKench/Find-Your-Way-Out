@@ -19,9 +19,9 @@ public class HintManager : MonoBehaviour
     [SerializeField] Image counter1;
     [SerializeField] Image counter2;
     [SerializeField] Image counter3;
-    float hint1Time = 900;
-    float hint2Time = 1800;
-    float hint3Time = 2700;
+    float hint1Time = 600;
+    float hint2Time = 1200;
+    float hint3Time = 1800;
 
     TimerFromStart timer;
 
