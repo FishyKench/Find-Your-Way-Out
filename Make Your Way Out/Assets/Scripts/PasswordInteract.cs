@@ -16,8 +16,13 @@ public class PasswordInteract : interactable
     public GameObject secondImg;
     public GameObject thridImg;
 
+    [SerializeField]
+    Vector3 originalPos;
+    [SerializeField]
+    Vector3 targetPos;
 
-    public bool machineNotRunning = true; // checks if slide show is running or not
+
+    public bool machineNotRunning; // checks if slide show is running or not
 
 
     public MachineManager machineM;
@@ -27,7 +32,8 @@ public class PasswordInteract : interactable
 
     void Start()
     {
-
+        originalPos = transform.localPosition;
+        machineNotRunning = true;
     }
 
     // Update is called once per frame
@@ -69,6 +75,7 @@ public class PasswordInteract : interactable
             case 1:
                 if (lilScreenText.text.Length <= 4)
                 {
+                    StartCoroutine(interactAnim());
                     coloredButtons.textIndicator.text = "";
                     lilScreenText.text = lilScreenText.text + "X";
                 }
@@ -77,6 +84,7 @@ public class PasswordInteract : interactable
             case 2:
                 if (lilScreenText.text.Length <= 4)
                 {
+                    StartCoroutine(interactAnim());
                     coloredButtons.textIndicator.text = "";
                     lilScreenText.text = lilScreenText.text + "Y";
                 }
@@ -84,6 +92,7 @@ public class PasswordInteract : interactable
             case 3:
                 if (lilScreenText.text.Length <= 4)
                 {
+                    StartCoroutine(interactAnim());
                     coloredButtons.textIndicator.text = "";
                     lilScreenText.text = lilScreenText.text + "Z";
                 }
@@ -91,6 +100,7 @@ public class PasswordInteract : interactable
             case 4:
                 if (lilScreenText.text.Length <= 4)
                 {
+                    StartCoroutine(interactAnim());
                     coloredButtons.textIndicator.text = "";
                     lilScreenText.text = lilScreenText.text + "1";
                 }
@@ -98,6 +108,7 @@ public class PasswordInteract : interactable
             case 5:
                 if (lilScreenText.text.Length <= 4)
                 {
+                    StartCoroutine(interactAnim());
                     coloredButtons.textIndicator.text = "";
                     lilScreenText.text = lilScreenText.text + "2";
                 }
@@ -105,6 +116,7 @@ public class PasswordInteract : interactable
             case 6:
                 if (lilScreenText.text.Length <= 4)
                 {
+                    StartCoroutine(interactAnim());
                     coloredButtons.textIndicator.text = "";
                     lilScreenText.text = lilScreenText.text + "3";
                 }
@@ -164,8 +176,17 @@ public class PasswordInteract : interactable
         firstImg.SetActive(false);
 
         yield return new WaitForSeconds(0.5f);
+        print("momo");
         machineNotRunning = true;
 
+    }
+
+
+    IEnumerator interactAnim()
+    {
+        transform.position = Vector3.Lerp(transform.position, targetPos, 10);
+        yield return new WaitForSeconds(.3f);
+        transform.position = Vector3.Lerp(transform.position, originalPos, 10);
     }
 
 }

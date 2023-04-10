@@ -10,7 +10,10 @@ public class MachineColoredButton : interactable
 
     public MachineManager machineM;
     public PasswordInteract passInter;
-
+    [SerializeField]
+    Vector3 originalPos;
+    [SerializeField]
+    Vector3 targetPos;
 
     public GameObject RedBlob, BlueBlob,GreenBlob;
 
@@ -21,7 +24,7 @@ public class MachineColoredButton : interactable
 
     void Start()
     {
-
+        originalPos = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -44,18 +47,22 @@ public class MachineColoredButton : interactable
             {
                 case 1:
                     passInter.lilScreenText.text = "";
+                    StartCoroutine(interactAnim());
                     machineM.solutionString = machineM.solutionString + "R"; //A
                     StartCoroutine(DisplayColors());
+
                     textIndicator.text += "R";
                     break;
                 case 2:
                     passInter.lilScreenText.text = "";
+                    StartCoroutine(interactAnim());
                     machineM.solutionString = machineM.solutionString + "B"; //B
                     StartCoroutine(DisplayColors());
                     textIndicator.text += "B";
                     break;
                 case 3:
                     passInter.lilScreenText.text = "";
+                    StartCoroutine(interactAnim());
                     machineM.solutionString = machineM.solutionString + "G"; //C
                     StartCoroutine(DisplayColors());
                     textIndicator.text += "G";
@@ -89,6 +96,14 @@ public class MachineColoredButton : interactable
                 GreenBlob.SetActive(false);
                 break;
         }
+    }
+
+
+    IEnumerator interactAnim()
+    {
+        transform.position = Vector3.Lerp(transform.position, targetPos, 10);
+        yield return new WaitForSeconds(.3f);
+        transform.position = Vector3.Lerp(transform.position, originalPos, 10);
     }
 
 
