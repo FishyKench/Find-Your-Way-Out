@@ -7,6 +7,7 @@ public class MachineManager : MonoBehaviour
 {
 
     public string solutionString, correctString = "CBABCAC";
+    public bool machineNotRunning = true;
 
     // Start is called before the first frame update
     void Start()

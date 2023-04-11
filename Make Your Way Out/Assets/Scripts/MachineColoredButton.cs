@@ -41,7 +41,7 @@ public class MachineColoredButton : interactable
     public override void OnInteract()
     {
         
-        if(machineM.solutionString.Length < 7 && passInter.machineNotRunning == true)
+        if(machineM.solutionString.Length < 7 && machineM.machineNotRunning == true)
         { 
             switch (_buttonID)
             {

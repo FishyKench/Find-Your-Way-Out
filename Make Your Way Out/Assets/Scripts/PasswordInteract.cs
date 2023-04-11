@@ -22,7 +22,6 @@ public class PasswordInteract : interactable
     Vector3 targetPos;
 
 
-    public bool machineNotRunning; // checks if slide show is running or not
 
 
     public MachineManager machineM;
@@ -33,24 +32,28 @@ public class PasswordInteract : interactable
     void Start()
     {
         originalPos = transform.localPosition;
-        machineNotRunning = true;
+        machineM.machineNotRunning = true;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if(lilScreenText.text == "Z32X")
+        if (lilScreenText.text == "Z32X")
         {
             textIsCorrect = true;
         }
 
-        if(lilScreenText.text.Length == 4)
+        if (lilScreenText.text.Length == 4)
         {
-            if(textIsCorrect == true)
+            if (textIsCorrect == true)
             {
-                StartCoroutine(SlideShow());
-                lilScreenText.text = "";
+                if (machineM.machineNotRunning == true)
+                {
+                    StartCoroutine(SlideShow());
+                    lilScreenText.text = "";
+                }
+
             }
             else
             {
@@ -79,7 +82,7 @@ public class PasswordInteract : interactable
                     coloredButtons.textIndicator.text = "";
                     lilScreenText.text = lilScreenText.text + "X";
                 }
-                    
+
                 break;
             case 2:
                 if (lilScreenText.text.Length <= 4)
@@ -135,7 +138,7 @@ public class PasswordInteract : interactable
 
     IEnumerator SlideShow()
     {
-        machineNotRunning = false;
+        machineM.machineNotRunning = false;
         machineM.solutionString = "";
         textIsCorrect = false; // making the text false again
 
@@ -154,7 +157,7 @@ public class PasswordInteract : interactable
 
 
         yield return new WaitForSeconds(1f); // 2nd img is displayed... (again)
-        thridImg.SetActive(false); 
+        thridImg.SetActive(false);
         secondImg.SetActive(true);
 
         yield return new WaitForSeconds(1f); // 1st img is displayed... (again)
@@ -176,8 +179,7 @@ public class PasswordInteract : interactable
         firstImg.SetActive(false);
 
         yield return new WaitForSeconds(0.5f);
-        print("momo");
-        machineNotRunning = true;
+        machineM.machineNotRunning = true;
 
     }
 
