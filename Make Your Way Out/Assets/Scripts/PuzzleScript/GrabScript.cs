@@ -136,7 +136,6 @@ public class GrabScript : MonoBehaviour
             objectRB.velocity = Vector3.zero;
             if (Input.GetKey(KeyCode.Mouse1))
             {
-                print("ur mom");
                 camerMove.enabled = false;
                 playerMovement.enabled = false;
                 rotateObj.enabled = true;
@@ -147,7 +146,6 @@ public class GrabScript : MonoBehaviour
             }
             else
             {
-                print("ur mom");
                 camerMove.enabled = true;
                 playerMovement.enabled = true;
                 rotateObj.enabled = false;
