@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class gogoggagaDelete : interactable
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ChamberDoors : interactable
 {
 
     public GameObject door1;
@@ -58,28 +62,27 @@ public class gogoggagaDelete : interactable
     public override void OnInteract()
     {
 
-            if (isOpen == false && isInteractable == true)
-            {
-                StartCoroutine(canInteract());
-                StartCoroutine(openDoor());
-                isOpen = true;
-            }
-            else if (isInteractable == true && isOpen == true)
-            {
-                StartCoroutine(canInteract());
-                StartCoroutine(closeDoor());
-                isOpen = false;
-            }
-       
-        
-        
+        if (isOpen == false && isInteractable == true)
+        {
+            StartCoroutine(canInteract());
+            StartCoroutine(openDoor());
+            isOpen = true;
+        }
+        else if (isInteractable == true && isOpen == true)
+        {
+            StartCoroutine(canInteract());
+            StartCoroutine(closeDoor());
+            isOpen = false;
+        }
+
+
+
     }
 
     public override void OnLoseFocus()
     {
 
     }
-
 
     private IEnumerator canInteract()
     {
@@ -97,9 +100,9 @@ public class gogoggagaDelete : interactable
         while (elapsedTime < waitTime)
         {
             door1.transform.position = Vector3.Lerp(originalPos1, targetPos1, (elapsedTime / waitTime));
-            door2.transform.position = Vector3.Lerp(originalPos1, targetPos1, (elapsedTime / waitTime));
-            door3.transform.position = Vector3.Lerp(originalPos1, targetPos1, (elapsedTime / waitTime));
-            door4.transform.position = Vector3.Lerp(originalPos1, targetPos1, (elapsedTime / waitTime));
+            door2.transform.position = Vector3.Lerp(originalPos2, targetPos2, (elapsedTime / waitTime));
+            door3.transform.position = Vector3.Lerp(originalPos3, targetPos3, (elapsedTime / waitTime));
+            door4.transform.position = Vector3.Lerp(originalPos4, targetPos4, (elapsedTime / waitTime));
 
             elapsedTime += Time.deltaTime;
 
@@ -110,30 +113,9 @@ public class gogoggagaDelete : interactable
         }
         // Make sure we got there
         door1.transform.position = targetPos1;
-        door2.transform.position = targetPos1;
-        door3.transform.position = targetPos1;
-        door4.transform.position = targetPos1;
-        elapsedTime = 0;
-        yield return new WaitForSeconds(2f);
-
-        while (elapsedTime < waitTime)
-        {
-            door1.transform.position = Vector3.Lerp(door1.transform.position, targetPos1, (elapsedTime / waitTime));
-            door2.transform.position = Vector3.Lerp(door1.transform.position, targetPos1, (elapsedTime / waitTime));
-            door3.transform.position = Vector3.Lerp(door1.transform.position, targetPos1, (elapsedTime / waitTime));
-            door4.transform.position = Vector3.Lerp(door1.transform.position, targetPos1, (elapsedTime / waitTime));
-            elapsedTime += Time.deltaTime;
-
-            // Yield here
-            yield return null;
-
-
-        }
-        // Make sure we got there
-        door1.transform.position = targetPos1;
-        door2.transform.position = targetPos1;
-        door3.transform.position = targetPos1;
-        door4.transform.position = targetPos1;
+        door2.transform.position = targetPos2;
+        door3.transform.position = targetPos3;
+        door4.transform.position = targetPos4;
         elapsedTime = 0;
 
     }
@@ -141,9 +123,6 @@ public class gogoggagaDelete : interactable
 
     private IEnumerator closeDoor()
     {
-
-
-
 
         while (elapsedTime < waitTime)
         {
@@ -167,26 +146,8 @@ public class gogoggagaDelete : interactable
         elapsedTime = 0;
         yield return new WaitForSeconds(2f);
 
-        while (elapsedTime < waitTime)
-        {
-            door1.transform.position = Vector3.Lerp(door1.transform.position, originalPos1, (elapsedTime / waitTime));
-            door2.transform.position = Vector3.Lerp(door1.transform.position, originalPos2, (elapsedTime / waitTime));
-            door3.transform.position = Vector3.Lerp(door1.transform.position, originalPos3, (elapsedTime / waitTime));
-            door4.transform.position = Vector3.Lerp(door1.transform.position, originalPos4, (elapsedTime / waitTime));
-            elapsedTime += Time.deltaTime;
-
-            // Yield here
-            yield return null;
-
-
-        }
-        // Make sure we got there
-        door1.transform.position = originalPos1;
-        door2.transform.position = originalPos2;
-        door3.transform.position = originalPos3;
-        door4.transform.position = originalPos4;
-        elapsedTime = 0;
     }
 
 
 }
+
