@@ -13,6 +13,7 @@ public class ChamberConfButton : interactable
     public GameObject Cage;
     public GameObject Wall;
     public GameObject explosionParticles;
+    public GameObject glassParticles;
     public List<Light> lights;
 
     [SerializeField]
@@ -24,7 +25,7 @@ public class ChamberConfButton : interactable
     private void Start()
     {
         orignalScale = theSuspect.transform.localScale;
-        bigScale = new Vector3(11.5f, 11.5f, 11.5f);
+        bigScale = new Vector3(9f, 9f, 9f);
 
 
 
@@ -51,6 +52,8 @@ public class ChamberConfButton : interactable
 
     private IEnumerator makeBig()
     {
+        glassParticles.SetActive(true);
+        Destroy(Cage);
 
         while (elapsedTime < waitTime)
         {
@@ -70,19 +73,17 @@ public class ChamberConfButton : interactable
     }
     IEnumerator destoryRoute()
     {
-        explosionParticles.SetActive(true);
-        yield return new WaitForSeconds(0.2f);
-        //turnOffLights
         foreach (Light l in lights)
         {
             l.color = Color.red;
             l.range = 10;
             l.intensity = 0.1f;
         }
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         Destroy(theSuspect);
+        explosionParticles.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
         Destroy(Wall);
-        Destroy(Cage);
     }
 
 }
