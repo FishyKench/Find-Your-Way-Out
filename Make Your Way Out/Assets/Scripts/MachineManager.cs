@@ -6,14 +6,24 @@ using TMPro;
 public class MachineManager : MonoBehaviour
 {
 
-    public string solutionString, correctString = "CBABCAC";
+    public string solutionString, correctString;
     public bool machineNotRunning = true;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    private int _id;
+
+
+    public GameObject light1;
+    public GameObject light2;
+    public GameObject light3;
+    public GameObject light4;
     void Start()
     {
-        
-        
+        light1.SetActive(false);
+        light2.SetActive(false);
+        light3.SetActive(false);
+        light4.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -23,6 +33,14 @@ public class MachineManager : MonoBehaviour
         {
             if (string.Compare(solutionString, correctString) == 0)
             {
+                if(_id == 2)
+                {
+                    light1.SetActive(true);
+                    light2.SetActive(true);
+                    light3.SetActive(true);
+                    light4.SetActive(true);
+
+                }
                 //win??
                 print("momo");
 

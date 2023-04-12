@@ -144,26 +144,27 @@ public class PasswordInteract : interactable
         machineM.solutionString = "";
         textIsCorrect = false; // making the text false again
 
+        secondImg.SetActive(true); //2nd img displayed 
+
+        yield return new WaitForSeconds(1f);  // 3rd img is displayed.. 
+        secondImg.SetActive(false);
+        thridImg.SetActive(true);
+
+        yield return new WaitForSeconds(1f); // 1st img is displayed.. 
+        thridImg.SetActive(false);
         firstImg.SetActive(true);
-        yield return new WaitForSeconds(1f);  // 1st img is displayed.. 
+
+        yield return new WaitForSeconds(1f); // 2nd img is displayed... 
         firstImg.SetActive(false);
         secondImg.SetActive(true);
 
-        yield return new WaitForSeconds(1f); // 2nd img is displayed.. 
+
+        yield return new WaitForSeconds(1f); // 3rd img is displayed... (again)
         secondImg.SetActive(false);
         thridImg.SetActive(true);
-
-        yield return new WaitForSeconds(1f); // 3rd img is displayed... 
-        secondImg.SetActive(false);
-        thridImg.SetActive(true);
-
-
-        yield return new WaitForSeconds(1f); // 2nd img is displayed... (again)
-        thridImg.SetActive(false);
-        secondImg.SetActive(true);
 
         yield return new WaitForSeconds(1f); // 1st img is displayed... (again)
-        secondImg.SetActive(false);
+        thridImg.SetActive(false);
         firstImg.SetActive(true);
 
 
@@ -172,13 +173,8 @@ public class PasswordInteract : interactable
         thridImg.SetActive(true);
 
 
-        yield return new WaitForSeconds(1f); // 1st img is displayed... (again)
-        thridImg.SetActive(false);
-        firstImg.SetActive(true);
-
-
         yield return new WaitForSeconds(1f);  //screen is off
-        firstImg.SetActive(false);
+        thridImg.SetActive(false);
 
         yield return new WaitForSeconds(0.5f);
         machineM.machineNotRunning = true;

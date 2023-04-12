@@ -30,6 +30,10 @@ public class MachineColoredButton : interactable
     // Update is called once per frame
     void Update()
     {
+        if(textIndicator.text.Length >= 7)
+        {
+            textIndicator.text = "";
+        }
 
     }
 
