@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,11 @@ public class ChamberDoors : interactable
     public GameObject door2;
     public GameObject door3;
     public GameObject door4;
+    
+    public TextMeshProUGUI chemText1;
+    public TextMeshProUGUI chemText2;
+    public TextMeshProUGUI chemText3;
+    public TextMeshProUGUI chemText4;
 
 
     public GameObject sphereVial;
@@ -102,6 +108,11 @@ public class ChamberDoors : interactable
             switch (sequenceNo)
             {
                 case 1:
+                    chemText1.text = "Na";
+                    chemText2.text = "Cl";
+                    chemText3.text = "Fe";
+                    chemText4.text = "H";
+
                     sphereVial.transform.position = firstChamberPos;
                     squareVial.transform.position = secondChamberPos;
                     cylinderVial.transform.position = thirdChamberPos;   //1234
@@ -112,6 +123,11 @@ public class ChamberDoors : interactable
                     break;
 
                 case 2:
+                    chemText1.text = "Ca";
+                    chemText2.text = "N";
+                    chemText3.text = "He";
+                    chemText4.text = "H";
+
                     sphereVial.transform.position = fourthChamberPos;
                     squareVial.transform.position = thirdChamberPos;
                     cylinderVial.transform.position = secondChamberPos; //4321
@@ -121,6 +137,11 @@ public class ChamberDoors : interactable
                     isOpen = true;
                     break;
                 case 3:
+                    chemText1.text = "Au";
+                    chemText2.text = "Na";
+                    chemText3.text = "Si";
+                    chemText4.text = "K";
+
                     sphereVial.transform.position = firstChamberPos;
                     squareVial.transform.position = fourthChamberPos;
                     cylinderVial.transform.position = secondChamberPos;  //1423
@@ -130,6 +151,11 @@ public class ChamberDoors : interactable
                     isOpen = true;
                     break;
                 case 4:
+                    chemText1.text = "Pt";
+                    chemText2.text = "Fe";
+                    chemText3.text = "H";
+                    chemText4.text = "Si";
+
                     sphereVial.transform.position = secondChamberPos;
                     squareVial.transform.position = thirdChamberPos;
                     cylinderVial.transform.position = firstChamberPos;  //2314
@@ -139,6 +165,11 @@ public class ChamberDoors : interactable
                     isOpen = true;
                     break;
                 case 5:
+                    chemText1.text = "Au";
+                    chemText2.text = "Pt";
+                    chemText3.text = "Si";
+                    chemText4.text = "Fe";
+
                     sphereVial.transform.position = thirdChamberPos;
                     squareVial.transform.position = firstChamberPos;
                     cylinderVial.transform.position = secondChamberPos;  //3124
@@ -148,6 +179,11 @@ public class ChamberDoors : interactable
                     isOpen = true;
                     break;
                 case 6:
+                    chemText1.text = "Cl";
+                    chemText2.text = "H";
+                    chemText3.text = "Pt";
+                    chemText4.text = "Na";
+
                     sphereVial.transform.position = fourthChamberPos;
                     squareVial.transform.position = thirdChamberPos;
                     cylinderVial.transform.position = firstChamberPos;  //4312
@@ -157,6 +193,11 @@ public class ChamberDoors : interactable
                     isOpen = true;
                     break;
                 case 7:
+                    chemText1.text = "K";
+                    chemText2.text = "H";
+                    chemText3.text = "N";
+                    chemText4.text = "He";
+
                     sphereVial.transform.position = secondChamberPos;
                     squareVial.transform.position = firstChamberPos;
                     cylinderVial.transform.position = thirdChamberPos;  //2134
@@ -166,6 +207,11 @@ public class ChamberDoors : interactable
                     isOpen = true;
                     break;
                 case 8:
+                    chemText1.text = "Fe";
+                    chemText2.text = "Li";
+                    chemText3.text = "Na";
+                    chemText4.text = "N";
+
                     sphereVial.transform.position = firstChamberPos;
                     squareVial.transform.position = secondChamberPos;
                     cylinderVial.transform.position = fourthChamberPos;  //1243
