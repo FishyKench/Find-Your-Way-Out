@@ -9,12 +9,16 @@ public class ChamberConfButton : interactable
     public ChamberDoors chamberDoorsScript;
     private float elapsedTime;
     private float waitTime = 3f;
+    //for ending visuals
     public GameObject theSuspect;
     public GameObject Cage;
     public GameObject Wall;
     public GameObject explosionParticles;
     public GameObject glassParticles;
     public List<Light> lights;
+    public MeshRenderer lamp1;
+    public MeshRenderer lamp2;
+    public Material lampRed;
     CameraShake camShake;
 
     [SerializeField]
@@ -76,6 +80,7 @@ public class ChamberConfButton : interactable
     }
     IEnumerator destoryRoute()
     {
+        lamp1.
         foreach (Light l in lights)
         {
             l.color = Color.red;
