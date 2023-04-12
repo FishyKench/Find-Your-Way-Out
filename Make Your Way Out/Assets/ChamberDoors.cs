@@ -14,8 +14,21 @@ public class ChamberDoors : interactable
     public GameObject door3;
     public GameObject door4;
 
+
+    public GameObject sphereVial;
+    public GameObject squareVial;
+    public GameObject cylinderVial;
+    public GameObject triangleVial;
+
+
+
+
+
+
     public bool isOpen;
     public bool isInteractable;
+
+    public int sequenceNo;
 
 
 
@@ -36,6 +49,12 @@ public class ChamberDoors : interactable
     public Vector3 targetPos4;
 
 
+    public Vector3 firstChamberPos;
+    public Vector3 secondChamberPos;
+    public Vector3 thirdChamberPos;
+    public Vector3 fourthChamberPos;
+
+
 
     private void Start()
     {
@@ -53,7 +72,18 @@ public class ChamberDoors : interactable
 
         isInteractable = true;
 
+        firstChamberPos = new Vector3(-8.76f, -2.46f, -26.56f);
+        secondChamberPos = new Vector3(-9.17f, -2.46f, -26.56f);
+        thirdChamberPos = new Vector3(-9.59f, -2.46f, -26.56f);
+        fourthChamberPos = new Vector3(-10.01f, -2.46f, -26.56f);
+        sequenceNo = 0;
+        
+
+
+
     }
+
+
     public override void OnFocus()
     {
 
@@ -64,9 +94,88 @@ public class ChamberDoors : interactable
 
         if (isOpen == false && isInteractable == true)
         {
-            StartCoroutine(canInteract());
-            StartCoroutine(openDoor());
-            isOpen = true;
+            if (sequenceNo >= 8)
+            {
+                sequenceNo = 1;
+            }
+            sequenceNo++;
+            switch (sequenceNo)
+            {
+                case 1:
+                    sphereVial.transform.position = firstChamberPos;
+                    squareVial.transform.position = secondChamberPos;
+                    cylinderVial.transform.position = thirdChamberPos;   //1234
+                    triangleVial.transform.position = fourthChamberPos;
+                    StartCoroutine(canInteract());
+                    StartCoroutine(openDoor());
+                    isOpen = true;
+                    break;
+
+                case 2:
+                    sphereVial.transform.position = fourthChamberPos;
+                    squareVial.transform.position = thirdChamberPos;
+                    cylinderVial.transform.position = secondChamberPos; //4321
+                    triangleVial.transform.position = firstChamberPos;
+                    StartCoroutine(canInteract());
+                    StartCoroutine(openDoor());
+                    isOpen = true;
+                    break;
+                case 3:
+                    sphereVial.transform.position = firstChamberPos;
+                    squareVial.transform.position = fourthChamberPos;
+                    cylinderVial.transform.position = secondChamberPos;  //1423
+                    triangleVial.transform.position = thirdChamberPos;
+                    StartCoroutine(canInteract());
+                    StartCoroutine(openDoor());
+                    isOpen = true;
+                    break;
+                case 4:
+                    sphereVial.transform.position = secondChamberPos;
+                    squareVial.transform.position = thirdChamberPos;
+                    cylinderVial.transform.position = firstChamberPos;  //2314
+                    triangleVial.transform.position = fourthChamberPos;
+                    StartCoroutine(canInteract());
+                    StartCoroutine(openDoor());
+                    isOpen = true;
+                    break;
+                case 5:
+                    sphereVial.transform.position = thirdChamberPos;
+                    squareVial.transform.position = firstChamberPos;
+                    cylinderVial.transform.position = secondChamberPos;  //3124
+                    triangleVial.transform.position = fourthChamberPos;
+                    StartCoroutine(canInteract());
+                    StartCoroutine(openDoor());
+                    isOpen = true;
+                    break;
+                case 6:
+                    sphereVial.transform.position = fourthChamberPos;
+                    squareVial.transform.position = thirdChamberPos;
+                    cylinderVial.transform.position = firstChamberPos;  //4312
+                    triangleVial.transform.position = secondChamberPos;
+                    StartCoroutine(canInteract());
+                    StartCoroutine(openDoor());
+                    isOpen = true;
+                    break;
+                case 7:
+                    sphereVial.transform.position = secondChamberPos;
+                    squareVial.transform.position = firstChamberPos;
+                    cylinderVial.transform.position = thirdChamberPos;  //2134
+                    triangleVial.transform.position = fourthChamberPos;
+                    StartCoroutine(canInteract());
+                    StartCoroutine(openDoor());
+                    isOpen = true;
+                    break;
+                case 8:
+                    sphereVial.transform.position = firstChamberPos;
+                    squareVial.transform.position = secondChamberPos;
+                    cylinderVial.transform.position = fourthChamberPos;  //1243
+                    triangleVial.transform.position = thirdChamberPos;
+                    StartCoroutine(canInteract());
+                    StartCoroutine(openDoor());
+                    isOpen = true;
+                    break;
+
+            }
         }
         else if (isInteractable == true && isOpen == true)
         {
