@@ -21,6 +21,8 @@ public class PasswordInteract : interactable
     [SerializeField]
     Vector3 targetPos;
 
+    public string password;
+
 
 
 
@@ -39,7 +41,7 @@ public class PasswordInteract : interactable
     void Update()
     {
 
-        if (lilScreenText.text == "Z32X")
+        if (lilScreenText.text == password)
         {
             textIsCorrect = true;
         }
