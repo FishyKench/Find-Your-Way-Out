@@ -11,16 +11,22 @@ public class ChamberConfButton : interactable
     private float waitTime = 3f;
     //for ending visuals
     public GameObject theSuspect;
-    public GameObject turnOffMesh;
-    public GameObject Cage;
-    public GameObject Wall;
-    public GameObject explosionParticles;
-    public GameObject glassParticles;
+
     public List<Light> lights;
     public MeshRenderer lamp1;
     public MeshRenderer lamp2;
     public Material lampRed;
     CameraShake camShake;
+    [Header("ending")]
+    public GameObject turnOffMesh;
+    public GameObject Cage;
+    public GameObject Wall;
+    public GameObject explosionParticles;
+    public GameObject glassParticles;
+    [SerializeField]AudioSource sfx;
+    [SerializeField]AudioSource explosionSfx;
+    [SerializeField]AudioSource glassBreakSfx;
+
 
     [SerializeField]
     private Vector3 orignalScale;
@@ -33,6 +39,7 @@ public class ChamberConfButton : interactable
         orignalScale = theSuspect.transform.localScale;
         bigScale = new Vector3(9f, 9f, 9f);
         camShake = FindObjectOfType<CameraShake>();
+        sfx = GetComponent<AudioSource>();
 
 
     }
@@ -47,7 +54,7 @@ public class ChamberConfButton : interactable
         {
             StartCoroutine(makeBig());
         }
-
+        sfx.PlayOneShot(sfx.clip);
     }
 
     public override void OnLoseFocus()
@@ -59,6 +66,7 @@ public class ChamberConfButton : interactable
     private IEnumerator makeBig()
     {
         glassParticles.SetActive(true);
+        glassBreakSfx.PlayOneShot(glassBreakSfx.clip);
         Destroy(Cage);
         camShake.StartCoroutine(camShake.Shake(0.3f, 0.1f));
        
@@ -94,6 +102,7 @@ public class ChamberConfButton : interactable
         Destroy(theSuspect);
         Destroy(turnOffMesh);
         explosionParticles.SetActive(true);
+        explosionSfx.PlayOneShot(explosionSfx.clip);
         Destroy(Wall);
     }
 

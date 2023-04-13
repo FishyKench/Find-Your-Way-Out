@@ -30,11 +30,15 @@ public class PasswordInteract : interactable
 
     public MachineColoredButton coloredButtons;
 
+    AudioSource sfx;
+
 
     void Start()
     {
         originalPos = transform.localPosition;
         machineM.machineNotRunning = true;
+
+        sfx = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -129,7 +133,7 @@ public class PasswordInteract : interactable
         }
 
 
-
+        sfx.PlayOneShot(sfx.clip);
     }
 
     public override void OnLoseFocus()

@@ -19,12 +19,15 @@ public class MachineColoredButton : interactable
 
     public TMP_Text textIndicator;
 
+    AudioSource sfx;
+
 
 
 
     void Start()
     {
         originalPos = transform.localPosition;
+        sfx = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -73,6 +76,7 @@ public class MachineColoredButton : interactable
                     break;
             }
         }
+        sfx.PlayOneShot(sfx.clip);
     }
 
     public override void OnLoseFocus()

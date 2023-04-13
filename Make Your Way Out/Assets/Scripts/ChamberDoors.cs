@@ -62,6 +62,8 @@ public class ChamberDoors : interactable
     public Vector3 thirdChamberPos;
     public Vector3 fourthChamberPos;
 
+    AudioSource sfx;
+
 
 
     private void Start()
@@ -85,8 +87,8 @@ public class ChamberDoors : interactable
         thirdChamberPos = new Vector3(-9.59f, -2.46f, -26.56f);
         fourthChamberPos = new Vector3(-10.01f, -2.46f, -26.56f);
         sequenceNo = 0;
-        
 
+        sfx = GetComponent<AudioSource>();
 
 
     }
@@ -99,7 +101,7 @@ public class ChamberDoors : interactable
 
     public override void OnInteract()
     {
-
+        sfx.PlayOneShot(sfx.clip);
         if (isOpen == false && isInteractable == true)
         {
             if (sequenceNo >= 8)
