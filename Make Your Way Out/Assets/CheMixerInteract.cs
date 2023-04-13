@@ -7,6 +7,7 @@ public class CheMixerInteract : interactable
 {
 
     Vector3 originalPos;
+    [SerializeField]
     Vector3 targetPos;
     public int btnID;
 
@@ -18,9 +19,14 @@ public class CheMixerInteract : interactable
     public TMP_Text thirdElement;
     public TMP_Text fourthElement;
 
-    public override void OnFocus()
+
+    private void Start()
     {
         originalPos = this.transform.position;
+    }
+    public override void OnFocus()
+    {
+        
     }
 
     public override void OnInteract()
@@ -32,6 +38,7 @@ public class CheMixerInteract : interactable
         switch (btnID)
         {
             case 1:
+                StartCoroutine(interactAnim());
                 switch (ChemMixScript.btnPos)
                 {
                     case 1:
@@ -50,6 +57,7 @@ public class CheMixerInteract : interactable
 
                 break;
             case 2:
+                StartCoroutine(interactAnim());
                 switch (ChemMixScript.btnPos)
                 {
                     case 1:
@@ -68,6 +76,7 @@ public class CheMixerInteract : interactable
 
                 break;
             case 3:
+                StartCoroutine(interactAnim());
                 switch (ChemMixScript.btnPos)
                 {
                     case 1:
@@ -85,6 +94,7 @@ public class CheMixerInteract : interactable
                 }
                 break;
             case 4:
+                StartCoroutine(interactAnim());
                 switch (ChemMixScript.btnPos)
                 {
                     case 1:
@@ -102,6 +112,7 @@ public class CheMixerInteract : interactable
                 }
                 break;
             case 5:
+                StartCoroutine(interactAnim());
                 switch (ChemMixScript.btnPos)
                 {
                     case 1:
@@ -119,6 +130,7 @@ public class CheMixerInteract : interactable
                 }
                 break;
             case 6:
+                StartCoroutine(interactAnim());
                 switch (ChemMixScript.btnPos)
                 {
                     case 1:
@@ -137,6 +149,7 @@ public class CheMixerInteract : interactable
 
                 break;
             case 7:
+                StartCoroutine(interactAnim());
                 switch (ChemMixScript.btnPos)
                 {
                     case 1:
@@ -154,6 +167,7 @@ public class CheMixerInteract : interactable
                 }
                 break;
             case 8:
+                StartCoroutine(interactAnim());
                 switch (ChemMixScript.btnPos)
                 {
                     case 1:
@@ -171,6 +185,7 @@ public class CheMixerInteract : interactable
                 }
                 break;
             case 9:
+                StartCoroutine(interactAnim());
                 switch (ChemMixScript.btnPos)
                 {
                     case 1:
@@ -188,6 +203,7 @@ public class CheMixerInteract : interactable
                 }
                 break;
             case 10:
+                StartCoroutine(interactAnim());
                 switch (ChemMixScript.btnPos)
                 {
                     case 1:
@@ -205,6 +221,7 @@ public class CheMixerInteract : interactable
                 }
                 break;
             case 11:
+                StartCoroutine(interactAnim());
                 switch (ChemMixScript.btnPos)
                 {
                     case 1:
@@ -222,6 +239,7 @@ public class CheMixerInteract : interactable
                 }
                 break;
             case 12:
+                StartCoroutine(interactAnim());
                 switch (ChemMixScript.btnPos)
                 {
                     case 1:
@@ -250,7 +268,7 @@ public class CheMixerInteract : interactable
 
     IEnumerator interactAnim()
     {
-        //transform.position = Vector3.Lerp(transform.position, targetPos.position, 10);
+        transform.position = Vector3.Lerp(transform.position, targetPos, 10);
         yield return new WaitForSeconds(.3f);
         transform.position = Vector3.Lerp(transform.position, originalPos, 10);
     }
