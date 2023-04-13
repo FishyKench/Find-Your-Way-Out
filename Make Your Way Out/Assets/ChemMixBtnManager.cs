@@ -12,6 +12,9 @@ public class ChemMixBtnManager : MonoBehaviour
     public TMP_Text thirdText;
     public TMP_Text fourthText;
 
+    public Animator doorL;
+    public Animator doorR;
+
     public int btnPos;
 
 
@@ -25,7 +28,8 @@ public class ChemMixBtnManager : MonoBehaviour
     {
         if(firstText.text == "Au" && secondText.text == "Pt" && thirdText.text == "Si" && fourthText.text == "Fe")
         {
-            print("momo");
+            doorL.SetTrigger("open");
+            doorR.SetTrigger("open");
         }
         
     }

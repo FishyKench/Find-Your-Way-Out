@@ -26,6 +26,8 @@ public class ChamberDoors : interactable
     public GameObject cylinderVial;
     public GameObject triangleVial;
 
+    public GameObject confirmLight;
+
 
 
 
@@ -248,7 +250,7 @@ public class ChamberDoors : interactable
 
     private IEnumerator openDoor()
     {
-
+        confirmLight.SetActive(false);
 
 
 
@@ -278,6 +280,7 @@ public class ChamberDoors : interactable
 
     private IEnumerator closeDoor()
     {
+        confirmLight.SetActive(true);
 
         while (elapsedTime < waitTime)
         {
