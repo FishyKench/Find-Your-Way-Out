@@ -11,6 +11,7 @@ public class ChamberConfButton : interactable
     private float waitTime = 3f;
     //for ending visuals
     public GameObject theSuspect;
+    public GameObject turnOffMesh;
     public GameObject Cage;
     public GameObject Wall;
     public GameObject explosionParticles;
@@ -91,6 +92,7 @@ public class ChamberConfButton : interactable
         yield return new WaitForSeconds(0.2f);
         camShake.StartCoroutine(camShake.Shake(1f, 0.5f));
         Destroy(theSuspect);
+        Destroy(turnOffMesh);
         explosionParticles.SetActive(true);
         Destroy(Wall);
     }
