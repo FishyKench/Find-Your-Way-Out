@@ -17,6 +17,12 @@ public class MachineManager : MonoBehaviour
     public GameObject light2;
     public GameObject light3;
     public GameObject light4;
+    public GameObject gonnaBeDestroyed;
+    public AudioSource lightsOn;
+    bool sfxplayed = false;
+
+
+
     void Start()
     {
         light1.SetActive(false);
@@ -33,22 +39,35 @@ public class MachineManager : MonoBehaviour
         {
             if (string.Compare(solutionString, correctString) == 0)
             {
-                if(_id == 2)
+                if (_id == 2)
                 {
                     light1.SetActive(true);
                     light2.SetActive(true);
                     light3.SetActive(true);
                     light4.SetActive(true);
-
                 }
-                //win??
-                print("momo");
+                if (_id == 1)
+                {
+                    light1.SetActive(true);
+                    light2.SetActive(true);
+                    light3.SetActive(true);
+                    Destroy(gonnaBeDestroyed);
+                    playsfx();
+                }
 
             }
             else
             {
                 solutionString = "";
             }
+        }
+    }
+    void playsfx()
+    {
+        if (sfxplayed == false)
+        {
+            lightsOn.PlayOneShot(lightsOn.clip);
+            sfxplayed = true;
         }
     }
 }

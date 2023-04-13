@@ -14,7 +14,7 @@ public class ChamberDoors : interactable
     public GameObject door2;
     public GameObject door3;
     public GameObject door4;
-    
+
     public TextMeshProUGUI chemText1;
     public TextMeshProUGUI chemText2;
     public TextMeshProUGUI chemText3;
@@ -62,7 +62,9 @@ public class ChamberDoors : interactable
     public Vector3 thirdChamberPos;
     public Vector3 fourthChamberPos;
 
-    AudioSource sfx;
+    [SerializeField] AudioSource sfx;
+    [SerializeField] AudioSource doorSfx;
+    [SerializeField] AudioSource beltSfx;
 
 
 
@@ -252,8 +254,8 @@ public class ChamberDoors : interactable
 
     private IEnumerator openDoor()
     {
+        doorSfx.PlayOneShot(doorSfx.clip);
         confirmLight.SetActive(false);
-
 
 
         while (elapsedTime < waitTime)
@@ -282,6 +284,8 @@ public class ChamberDoors : interactable
 
     private IEnumerator closeDoor()
     {
+        doorSfx.PlayOneShot(doorSfx.clip);
+        beltSfx.PlayOneShot(beltSfx.clip);
         confirmLight.SetActive(true);
 
         while (elapsedTime < waitTime)

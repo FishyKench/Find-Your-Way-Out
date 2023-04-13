@@ -26,6 +26,7 @@ public class ChamberConfButton : interactable
     [SerializeField]AudioSource sfx;
     [SerializeField]AudioSource explosionSfx;
     [SerializeField]AudioSource glassBreakSfx;
+    [SerializeField]AudioSource rumbleSfx;
 
 
     [SerializeField]
@@ -65,6 +66,7 @@ public class ChamberConfButton : interactable
 
     private IEnumerator makeBig()
     {
+        rumbleSfx.Play();
         glassParticles.SetActive(true);
         glassBreakSfx.PlayOneShot(glassBreakSfx.clip);
         Destroy(Cage);
@@ -104,6 +106,7 @@ public class ChamberConfButton : interactable
         explosionParticles.SetActive(true);
         explosionSfx.PlayOneShot(explosionSfx.clip);
         Destroy(Wall);
+        rumbleSfx.Stop();
     }
 
 }
