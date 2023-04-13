@@ -19,10 +19,13 @@ public class CheMixerInteract : interactable
     public TMP_Text thirdElement;
     public TMP_Text fourthElement;
 
+    AudioSource sfx;
+
 
     private void Start()
     {
         originalPos = this.transform.position;
+        sfx = GetComponent<AudioSource>();
     }
     public override void OnFocus()
     {
@@ -31,7 +34,7 @@ public class CheMixerInteract : interactable
 
     public override void OnInteract()
     {
-
+        sfx.PlayOneShot(sfx.clip);
         ChemMixScript.btnPos++;
         if (ChemMixScript.btnPos >= 5)
             ChemMixScript.btnPos = 1;

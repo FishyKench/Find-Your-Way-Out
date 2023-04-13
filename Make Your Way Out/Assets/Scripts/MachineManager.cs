@@ -45,6 +45,7 @@ public class MachineManager : MonoBehaviour
                     light2.SetActive(true);
                     light3.SetActive(true);
                     light4.SetActive(true);
+                    playsfx();
                 }
                 if (_id == 1)
                 {

@@ -17,20 +17,31 @@ public class ChemMixBtnManager : MonoBehaviour
 
     public int btnPos;
 
+    AudioSource sfx;
+    bool sfxplayed = false;
 
     void Start()
     {
-
+        sfx = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame //Au Pt Si Fe
     void Update()
     {
-        if(firstText.text == "Au" && secondText.text == "Pt" && thirdText.text == "Si" && fourthText.text == "Fe")
+        if (firstText.text == "Au" && secondText.text == "Pt" && thirdText.text == "Si" && fourthText.text == "Fe")
         {
+            playsfx();
             doorL.SetTrigger("open");
             doorR.SetTrigger("open");
         }
-        
+
+    }
+    void playsfx()
+    {
+        if (sfxplayed == false)
+        {
+            sfx.PlayOneShot(sfx.clip);
+            sfxplayed = true;
+        }
     }
 }

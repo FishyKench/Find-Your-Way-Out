@@ -16,10 +16,12 @@ public class RestBtnChemMix : interactable
     [SerializeField]
     Vector3 targetPos;
 
+    AudioSource sfx;
 
     private void Start()
     {
         originalPos = this.transform.position;
+        sfx = GetComponent<AudioSource>();
     }
     public override void OnFocus()
     {
@@ -28,6 +30,7 @@ public class RestBtnChemMix : interactable
 
     public override void OnInteract()
     {
+        sfx.PlayOneShot(sfx.clip);
         StartCoroutine(interactAnim());
 
         chemSctipt.btnPos = 0;
