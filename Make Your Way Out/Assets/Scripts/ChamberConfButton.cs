@@ -80,7 +80,8 @@ public class ChamberConfButton : interactable
     }
     IEnumerator destoryRoute()
     {
-        lamp1.
+        lamp1.materials[0] = lampRed;
+        lamp2.materials[0] = lampRed;
         foreach (Light l in lights)
         {
             l.color = Color.red;
