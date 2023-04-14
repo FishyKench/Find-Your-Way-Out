@@ -107,6 +107,8 @@ public class ChamberConfButton : interactable
         explosionSfx.PlayOneShot(explosionSfx.clip);
         Destroy(Wall);
         rumbleSfx.Stop();
+        this.transform.position = new Vector3(23423423, 45356345, 34543);
+        
     }
 
 }
