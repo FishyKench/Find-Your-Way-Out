@@ -3738,7 +3738,7 @@ PrefabInstance:
     - target: {fileID: 110549059462811239, guid: 8a2cd69b64b32b6448a41793cb7e6925,
         type: 3}
       propertyPath: correctString
-      value: GBRGBRG
+      value: GBRGBRB
       objectReference: {fileID: 0}
     - target: {fileID: 110549059462811239, guid: 8a2cd69b64b32b6448a41793cb7e6925,
         type: 3}
@@ -14104,7 +14104,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WITH THE KEYCODE UR PATH SHALL ENLIGHTEN
+  m_text: THE COLORS TRANSLATE HIS SHAPES
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 610d0c46059c8174e92fed7e0a106351, type: 2}
   m_sharedMaterial: {fileID: -7697608981748587020, guid: 610d0c46059c8174e92fed7e0a106351,
@@ -24844,6 +24844,7 @@ GameObject:
   - component: {fileID: 1469063449817067684}
   - component: {fileID: 2581254552847266088}
   - component: {fileID: 7678967357277347797}
+  - component: {fileID: 7678967357277347798}
   m_Layer: 0
   m_Name: VialMixer
   m_TagString: Untagged
@@ -29386,6 +29387,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7678967357277347798
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1535903647676948782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1050614959458139241, guid: ad389c0b9b42d044e967fec68d3d4dce, type: 3}
 --- !u!4 &7684702323656241365
 Transform:
   m_ObjectHideFlags: 0
