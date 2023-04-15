@@ -6,6 +6,8 @@ public class DoorLocked : interactable
 {
     public bool isLocked = true;
 
+    public  bool isOpened;
+
     [SerializeField] private Material highlightMat;
     [SerializeField] private AudioSource slam;
     [SerializeField] private AudioSource open;
@@ -44,8 +46,11 @@ public class DoorLocked : interactable
 
     public override void OnInteract()
     {
-        if(isLocked == false)
+        if(isLocked == false && isOpened == false)
+        {
             StartCoroutine(openDoor());
+            isOpened = true;
+        }
     }
 
     public override void OnLoseFocus()
@@ -72,21 +77,6 @@ public class DoorLocked : interactable
         // Make sure we got there
         transform.rotation = _targetRot;
         elapsedTime = 0;
-        yield return new WaitForSeconds(2f);
-        slam.PlayOneShot(slam.clip);
 
-        while (elapsedTime < waitTime)
-        {
-            transform.rotation = Quaternion.Lerp(this.transform.rotation, originalRotation, (elapsedTime / waitTime));
-            elapsedTime += Time.deltaTime;
-
-            // Yield here
-            yield return null;
-
-
-        }
-        // Make sure we got there
-        transform.rotation = originalRotation;
-        elapsedTime = 0;
     }
 }
