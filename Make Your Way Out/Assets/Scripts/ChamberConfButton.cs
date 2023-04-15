@@ -6,7 +6,6 @@ using UnityEngine;
 public class ChamberConfButton : interactable
 {
 
-    public ChamberDoors chamberDoorsScript;
     private float elapsedTime;
     private float waitTime = 3f;
     //for ending visuals
@@ -23,16 +22,43 @@ public class ChamberConfButton : interactable
     public GameObject Wall;
     public GameObject explosionParticles;
     public GameObject glassParticles;
-    [SerializeField]AudioSource sfx;
-    [SerializeField]AudioSource explosionSfx;
-    [SerializeField]AudioSource glassBreakSfx;
-    [SerializeField]AudioSource rumbleSfx;
+    [SerializeField] AudioSource sfx;
+    [SerializeField] AudioSource explosionSfx;
+    [SerializeField] AudioSource glassBreakSfx;
+    [SerializeField] AudioSource rumbleSfx;
 
 
     [SerializeField]
     private Vector3 orignalScale;
     [SerializeField]
     private Vector3 bigScale;
+
+
+    public VilesChange btn1;
+    public VilesChange btn2;
+    public VilesChange btn3;
+    public VilesChange btn4;
+
+    public GameObject door1;
+    public GameObject door2;
+    public GameObject door3;
+    public GameObject door4;
+
+
+    public Vector3 origianlPos1;
+    public Vector3 origianlPos2;
+    public Vector3 origianlPos3;
+    public Vector3 origianlPos4;
+
+
+    public Vector3 targetlPos1;
+    public Vector3 targetlPos2;
+    public Vector3 targetlPos3;
+    public Vector3 targetlPos4;
+
+    public bool isCorrect;
+
+    public bool doorisDone;
 
 
     private void Start()
@@ -43,6 +69,17 @@ public class ChamberConfButton : interactable
         sfx = GetComponent<AudioSource>();
 
 
+
+        origianlPos1 = door1.transform.position;
+        origianlPos2 = door2.transform.position;
+        origianlPos3 = door3.transform.position;
+        origianlPos4 = door4.transform.position;
+
+        isCorrect = false;
+        doorisDone = true;
+
+
+
     }
     public override void OnFocus()
     {
@@ -51,11 +88,22 @@ public class ChamberConfButton : interactable
 
     public override void OnInteract()
     {
-        if (chamberDoorsScript.sequenceNo == 5 && chamberDoorsScript.isOpen == false)
+
+        if (btn1.isCorrect == true && btn2.isCorrect == true && btn3.isCorrect == true && btn4.isCorrect == true)
         {
-            StartCoroutine(makeBig());
+            isCorrect = true;
+            if (doorisDone == true)
+            {
+                StartCoroutine(doorAnim());
+            }
         }
-        sfx.PlayOneShot(sfx.clip);
+        else
+        {
+            if (doorisDone == true)
+            {
+                StartCoroutine(doorAnim());
+            }
+        }
     }
 
     public override void OnLoseFocus()
@@ -71,7 +119,7 @@ public class ChamberConfButton : interactable
         glassBreakSfx.PlayOneShot(glassBreakSfx.clip);
         Destroy(Cage);
         camShake.StartCoroutine(camShake.Shake(0.3f, 0.1f));
-       
+
 
         while (elapsedTime < waitTime)
         {
@@ -87,7 +135,7 @@ public class ChamberConfButton : interactable
         // Make sure we got there
         theSuspect.transform.localScale = bigScale;
         elapsedTime = 0;
-       StartCoroutine(destoryRoute());
+        StartCoroutine(destoryRoute());
     }
     IEnumerator destoryRoute()
     {
@@ -108,7 +156,66 @@ public class ChamberConfButton : interactable
         Destroy(Wall);
         rumbleSfx.Stop();
         this.transform.position = new Vector3(23423423, 45356345, 34543);
-        
+
     }
+
+    IEnumerator doorAnim()
+    {
+        doorisDone = false;
+        while (elapsedTime < waitTime)
+        {
+
+            door1.transform.position = Vector3.Lerp(origianlPos1, targetlPos1, (elapsedTime / waitTime));
+            door2.transform.position = Vector3.Lerp(origianlPos2, targetlPos2, (elapsedTime / waitTime));
+            door3.transform.position = Vector3.Lerp(origianlPos3, targetlPos3, (elapsedTime / waitTime));
+            door4.transform.position = Vector3.Lerp(origianlPos4, targetlPos4, (elapsedTime / waitTime));
+            elapsedTime += Time.deltaTime;
+
+            // Yield here
+            yield return null;
+
+
+        }
+        // Make sure we got there
+        door1.transform.position = targetlPos1;
+        door2.transform.position = targetlPos2;
+        door3.transform.position = targetlPos3;
+        door4.transform.position = targetlPos4;
+        elapsedTime = 0;
+
+        yield return new WaitForSeconds(1f);
+        if (isCorrect == true)
+        {
+            StartCoroutine(makeBig());
+            doorisDone = true;
+        }
+        else
+        {
+            while (elapsedTime < waitTime)
+            {
+                door1.transform.position = Vector3.Lerp(door1.transform.position, origianlPos1, (elapsedTime / waitTime));
+                door2.transform.position = Vector3.Lerp(door2.transform.position, origianlPos1, (elapsedTime / waitTime));
+                door3.transform.position = Vector3.Lerp(door3.transform.position, origianlPos1, (elapsedTime / waitTime));
+                door4.transform.position = Vector3.Lerp(door4.transform.position, origianlPos1, (elapsedTime / waitTime));
+                elapsedTime += Time.deltaTime;
+
+                // Yield here
+                yield return null;
+
+
+            }
+            // Make sure we got there
+            door1.transform.position = origianlPos1;
+            door2.transform.position = origianlPos2;
+            door3.transform.position = origianlPos3;
+            door4.transform.position = origianlPos4;
+            elapsedTime = 0;
+            doorisDone = true;
+        }
+
+
+    }
+
+
 
 }
