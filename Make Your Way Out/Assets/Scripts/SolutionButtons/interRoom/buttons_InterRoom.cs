@@ -9,6 +9,7 @@ public class buttons_InterRoom : interactable
     private MeshRenderer _meshRenderer;
     Vector3 originalPos;
     private AudioSource sfx;
+    private GameObject light;
 
     [SerializeField] private buttonManager_interRoom bm;
     [SerializeField] private Material highlightMat;
@@ -26,6 +27,8 @@ public class buttons_InterRoom : interactable
 
         _defaultMat = _meshRenderer.material;
         sfx = GetComponent<AudioSource>();
+        light = GetComponentInChildren<Light>().gameObject;
+        light.SetActive(false);
     }
 
     public override void OnFocus()
@@ -38,6 +41,7 @@ public class buttons_InterRoom : interactable
     {
         bm.CheckID(id);
         sfx.PlayOneShot(sfx.clip);
+        light.SetActive(true);
     }
 
     //when player stops looking at this object

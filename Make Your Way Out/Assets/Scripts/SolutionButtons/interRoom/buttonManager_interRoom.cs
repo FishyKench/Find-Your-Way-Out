@@ -5,35 +5,43 @@ using UnityEngine;
 public class buttonManager_interRoom : MonoBehaviour
 {
     [SerializeField] private int index = 1;
+    [SerializeField] private int correctIndex = 1;
     [SerializeField] private List<GameObject> lights;
 
     public GameObject normalDoor;
     public GameObject brokenDoor;
     public void CheckID(int ID)
     {
-
-        if (ID == index)
+        print("id gotten :" + ID);
+        if (ID == correctIndex)
         {
             index++;
-            print(index);
-            lights[ID-=1].SetActive(true);
+            correctIndex++;
         }
-        else
+        if(ID != correctIndex)
         {
-            index = 1;
-            print(index);
+            index++;
+            correctIndex = 1;
 
-            foreach ( GameObject light in lights)
+            if (index >= 9 && correctIndex <= 9)
             {
-                light.SetActive(false);
+                foreach (GameObject light in lights)
+                {
+                    light.SetActive(false);
+                }
+                index = 1;
+                correctIndex = 1;
             }
         }
 
-        if(index == 9)
+        if (correctIndex >= 9)
         {
             print("CACHANG DOOR OPEN");
             Destroy(normalDoor);
             Instantiate(brokenDoor, normalDoor.transform.position, Quaternion.identity);
         }
+
+        print("index: "+ index);
+        print("correct index: "+ correctIndex);
     }
 }
