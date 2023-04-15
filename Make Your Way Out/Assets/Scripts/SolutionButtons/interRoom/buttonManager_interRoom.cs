@@ -18,20 +18,10 @@ public class buttonManager_interRoom : MonoBehaviour
             index++;
             correctIndex++;
         }
-        if(ID != correctIndex)
+        else if(ID != correctIndex)
         {
             index++;
             correctIndex = 1;
-
-            if (index >= 9 && correctIndex <= 9)
-            {
-                foreach (GameObject light in lights)
-                {
-                    light.SetActive(false);
-                }
-                index = 1;
-                correctIndex = 1;
-            }
         }
 
         if (correctIndex >= 9)
@@ -43,5 +33,17 @@ public class buttonManager_interRoom : MonoBehaviour
 
         print("index: "+ index);
         print("correct index: "+ correctIndex);
+    }
+    private void Update()
+    {
+        if (index >= 9 && correctIndex <= 9)
+        {
+            foreach (GameObject light in lights)
+            {
+                light.SetActive(false);
+            }
+            index = 1;
+            correctIndex = 1;
+        }
     }
 }
