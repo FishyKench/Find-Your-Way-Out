@@ -28,6 +28,9 @@ public class VilesChange : interactable
     private float elapsedTime;
     private float waitTime = 0.75f;
 
+    [SerializeField] AudioSource clickSFX;
+    [SerializeField] AudioSource beltSFX;
+
 
 
     private void Start()
@@ -51,8 +54,10 @@ public class VilesChange : interactable
 
     public override void OnInteract()
     {
+        clickSFX.PlayOneShot(clickSFX.clip);
         if(chamberScript.doorisDone == true)
         {
+            beltSFX.PlayOneShot(beltSFX.clip);
             switch (btnID)
             {
 

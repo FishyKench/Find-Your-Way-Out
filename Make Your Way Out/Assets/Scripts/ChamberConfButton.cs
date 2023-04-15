@@ -26,6 +26,8 @@ public class ChamberConfButton : interactable
     [SerializeField] AudioSource explosionSfx;
     [SerializeField] AudioSource glassBreakSfx;
     [SerializeField] AudioSource rumbleSfx;
+    [SerializeField] AudioSource doorSfx;
+    [SerializeField] AudioSource doorLongSfx;
 
 
     [SerializeField]
@@ -161,9 +163,12 @@ public class ChamberConfButton : interactable
 
     IEnumerator doorAnim()
     {
+        
         doorisDone = false;
+        doorLongSfx.PlayOneShot(doorLongSfx.clip);
         while (elapsedTime < waitTime)
         {
+            
 
             door1.transform.position = Vector3.Lerp(origianlPos1, targetlPos1, (elapsedTime / waitTime));
             door2.transform.position = Vector3.Lerp(origianlPos2, targetlPos2, (elapsedTime / waitTime));
@@ -191,8 +196,11 @@ public class ChamberConfButton : interactable
         }
         else
         {
+            doorSfx.PlayOneShot(doorSfx.clip);
             while (elapsedTime < waitTime)
             {
+                
+
                 door1.transform.position = Vector3.Lerp(door1.transform.position, origianlPos1, (elapsedTime / waitTime));
                 door2.transform.position = Vector3.Lerp(door2.transform.position, origianlPos1, (elapsedTime / waitTime));
                 door3.transform.position = Vector3.Lerp(door3.transform.position, origianlPos1, (elapsedTime / waitTime));
