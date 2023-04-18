@@ -19,9 +19,11 @@ public class HintManager : MonoBehaviour
     [SerializeField] Image counter1;
     [SerializeField] Image counter2;
     [SerializeField] Image counter3;
+    [SerializeField] bool withoutCounter = false;
     float hint1Time = 600;
     float hint2Time = 1200;
     float hint3Time = 1800;
+
 
     TimerFromStart timer;
 
@@ -36,6 +38,14 @@ public class HintManager : MonoBehaviour
         counter1.fillAmount = time/hint1Time;
         counter2.fillAmount = time/hint2Time;
         counter3.fillAmount = time/hint3Time;
+
+        if (withoutCounter == true)
+        {
+            time = 1850;
+            counter1.fillAmount = 1;
+            counter2.fillAmount = 1;
+            counter3.fillAmount = 1;
+        }
     }
 
     public void RevealHint(int id)
