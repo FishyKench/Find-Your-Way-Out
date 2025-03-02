@@ -545,20 +545,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &23097903
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1479,6 +1468,144 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 76699886}
   m_Mesh: {fileID: -1074309534524519612, guid: a38b55f5ff50a314fae2d685efddc6b2, type: 3}
+--- !u!1 &83898578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 83898579}
+  - component: {fileID: 83898581}
+  - component: {fileID: 83898580}
+  m_Layer: 5
+  m_Name: drop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &83898579
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83898578}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 344016644}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: -26.2}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &83898580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83898578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'INTERACT
+
+'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 380b249e6c74a0142a916a64a60221f4, type: 2}
+  m_sharedMaterial: {fileID: -4723034570810616907, guid: 380b249e6c74a0142a916a64a60221f4,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 22
+  m_fontSizeBase: 22
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 16
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &83898581
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83898578}
+  m_CullTransparentMesh: 1
 --- !u!1 &83988242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,20 +1722,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &84342609
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1854,20 +1970,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &100275898
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2213,20 +2318,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 1
   hasEntered: 1
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &134472785
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2814,20 +2908,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &175507107
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3892,20 +3975,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &219513335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4182,20 +4254,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &228523962
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4563,20 +4624,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &239531549
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4862,20 +4912,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &252185014
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5744,20 +5783,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &289146660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6408,20 +6436,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &306473029
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6667,20 +6684,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &306790474
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6876,6 +6882,7 @@ RectTransform:
   - {fileID: 737215436}
   - {fileID: 1543993879}
   - {fileID: 1734647584}
+  - {fileID: 1312335848}
   m_Father: {fileID: 1069268611}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7150,20 +7157,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &313546973
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7409,20 +7405,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &325792470
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7816,20 +7801,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &333330332
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8025,7 +7999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.0000153, y: -258.99994}
+  m_AnchoredPosition: {x: -1.0000153, y: -213.30298}
   m_SizeDelta: {x: 292.5, y: 480.09998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &339673172
@@ -8125,6 +8099,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339673170}
+  m_CullTransparentMesh: 1
+--- !u!1 &344016643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 344016644}
+  - component: {fileID: 344016646}
+  - component: {fileID: 344016645}
+  m_Layer: 5
+  m_Name: E
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &344016644
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344016643}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 653724209}
+  - {fileID: 83898579}
+  m_Father: {fileID: 850486704}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -105.400024, y: 14.999998}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 1, y: 0}
+--- !u!114 &344016645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344016643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 8871746079345400166, guid: 80a603dbc87ea1d41a732eba8af22d82,
+    type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &344016646
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344016643}
   m_CullTransparentMesh: 1
 --- !u!4 &351272844 stripped
 Transform:
@@ -8315,20 +8368,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &363110253
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8574,20 +8616,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &381095789
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10074,20 +10105,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &485065157
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10643,20 +10663,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &495206862
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11151,20 +11160,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &515841015
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11410,20 +11408,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &520126560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12417,7 +12404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.8548584, y: -287}
+  m_AnchoredPosition: {x: -0.8548584, y: -241.30304}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &598410003
@@ -12804,20 +12791,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &620620181
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13197,6 +13173,142 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &653724208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 653724209}
+  - component: {fileID: 653724211}
+  - component: {fileID: 653724210}
+  m_Layer: 5
+  m_Name: text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &653724209
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653724208}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 344016644}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.00015258789, y: 13.9}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &653724210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653724208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: E
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 380b249e6c74a0142a916a64a60221f4, type: 2}
+  m_sharedMaterial: {fileID: -4723034570810616907, guid: 380b249e6c74a0142a916a64a60221f4,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 2516582400
+  m_fontColor: {r: 0, g: 0, b: 0, a: 0.5882353}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 27.94
+  m_fontSizeBase: 27.94
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &653724211
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653724208}
+  m_CullTransparentMesh: 1
 --- !u!1 &659840834
 GameObject:
   m_ObjectHideFlags: 0
@@ -14102,20 +14214,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &725658118
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14591,20 +14692,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &745200893
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14850,20 +14940,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &749809083
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15415,7 +15494,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11.75
+  m_fontSize: 34.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -15844,20 +15923,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &835443756
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16179,20 +16247,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &841708076
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16469,6 +16526,7 @@ RectTransform:
   - {fileID: 1503026894}
   - {fileID: 1843177086}
   - {fileID: 1205920318}
+  - {fileID: 344016644}
   m_Father: {fileID: 1069268611}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16873,20 +16931,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &858005021
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17215,20 +17262,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &882846027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17424,7 +17460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.5152473, y: -406}
+  m_AnchoredPosition: {x: -1.5152473, y: -360.30304}
   m_SizeDelta: {x: 292.5, y: 480.09998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &888427602
@@ -17800,20 +17836,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &902185453
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18204,20 +18229,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &922006879
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18810,20 +18824,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &934289302
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19152,20 +19155,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &942650646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19523,7 +19515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.8548584, y: -103.000046}
+  m_AnchoredPosition: {x: -0.8548584, y: -57.303093}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &961461970
@@ -20103,20 +20095,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1012388979
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20658,7 +20639,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15.25
+  m_fontSize: 47.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -20963,20 +20944,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1065532012
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21362,20 +21332,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1071549997
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21672,20 +21631,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1077921291
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22230,20 +22178,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1094535770
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23082,20 +23019,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1148891775
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23291,7 +23217,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.3621702, y: -475.39694}
+  m_AnchoredPosition: {x: -1.3621702, y: -429.7}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1154764462
@@ -23937,20 +23863,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1214046930
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25014,20 +24929,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1250704330
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25273,20 +25177,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1264882742
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26089,6 +25982,143 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1312335847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1312335848}
+  - component: {fileID: 1312335850}
+  - component: {fileID: 1312335849}
+  m_Layer: 5
+  m_Name: MainMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1312335848
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312335847}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.39392322, y: 0.39392322, z: 0.39392322}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1856740849}
+  m_Father: {fileID: 306994396}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 18.4, y: -409.3}
+  m_SizeDelta: {x: 814.4663, y: 50}
+  m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1312335849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312335847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Hold Q while paused to go to main menu '
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 380b249e6c74a0142a916a64a60221f4, type: 2}
+  m_sharedMaterial: {fileID: -4723034570810616907, guid: 380b249e6c74a0142a916a64a60221f4,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4286019573
+  m_fontColor: {r: 0.9622642, g: 0.46751517, b: 0.46751517, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1312335850
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312335847}
+  m_CullTransparentMesh: 1
 --- !u!1 &1315582730
 GameObject:
   m_ObjectHideFlags: 0
@@ -26174,20 +26204,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1315582734
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26602,7 +26621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.0000153, y: -442.99988}
+  m_AnchoredPosition: {x: -1.0000153, y: -397.30292}
   m_SizeDelta: {x: 292.5, y: 480.09998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1340497620
@@ -27607,20 +27626,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1433618687
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28200,20 +28208,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1469799011
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28772,20 +28769,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1478814832
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29161,20 +29147,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1505304697
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29429,7 +29404,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 23.2
+  m_fontSize: 38.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -29600,7 +29575,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.09090909, y: 1}
   m_AnchoredPosition: {x: 0.000015258789, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -29935,20 +29910,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1582354681
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30360,20 +30324,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1608298083
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30987,20 +30940,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1639931709
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31329,20 +31271,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1649420009
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31800,20 +31731,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1665959955
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32059,20 +31979,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1682191480
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32412,20 +32321,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1709656342
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32623,7 +32521,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -411.7}
+  m_AnchoredPosition: {x: 0, y: -394.1}
   m_SizeDelta: {x: 700, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1734647585
@@ -32638,7 +32536,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3a160dbba8585043982c4c6737300c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillImage: {fileID: 839990354}
+  rFillImage: {fileID: 839990354}
+  qFillImage: {fileID: 1856740850}
 --- !u!114 &1734647586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33377,20 +33276,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1791254726
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33719,20 +33607,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1802455331
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34280,20 +34157,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1831156632
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34669,6 +34535,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849058270}
   m_CullTransparentMesh: 1
+--- !u!1 &1856740848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1856740849}
+  - component: {fileID: 1856740851}
+  - component: {fileID: 1856740850}
+  m_Layer: 5
+  m_Name: qImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1856740849
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856740848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1312335848}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -4.0644, y: 0}
+  m_SizeDelta: {x: 806.34, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1856740850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856740848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.59599996, g: 0.29932442, b: 0.30197322, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300012, guid: db63fa1c2adceb141974024b30ffa6db, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 0
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1856740851
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856740848}
+  m_CullTransparentMesh: 1
 --- !u!1 &1858777905
 GameObject:
   m_ObjectHideFlags: 0
@@ -34754,20 +34696,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1858777909
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35096,20 +35027,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1882248119
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36296,20 +36216,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1929477898
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37234,20 +37143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1959768451
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37878,20 +37776,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &1990215525
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38536,20 +38423,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &2058335234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39097,20 +38973,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hasPiece: 0
   hasEntered: 0
+  currentPiece: {fileID: 0}
   grabscipt: {fileID: 0}
-  _chessKing: {fileID: 4739917302077424672, guid: c0c184674b0987e489ed6b959bfdb57e,
-    type: 3}
-  _chessRook: {fileID: 4671260556461475368, guid: 470ac4cd1f6c98142946a3ece8343b71,
-    type: 3}
-  _chessBishop: {fileID: 1350021866342126682, guid: 05ddaa01a3c15214ba7703a729aec9b5,
-    type: 3}
-  _chessQueen: {fileID: 8491238314483833210, guid: 0c801c8edd2319d4b93698357a04d815,
-    type: 3}
-  _chessKnight: {fileID: 3232343786310043658, guid: bb61aaf897776084d9ba5d302f72ba52,
-    type: 3}
-  _chessPawn: {fileID: 2223846777135460482, guid: 2770bc244cac78f42b8404e614491c0e,
-    type: 3}
-  daPlayer: {fileID: 0}
+  chessTypeChecker: {fileID: 0}
 --- !u!65 &2086511909
 BoxCollider:
   m_ObjectHideFlags: 0

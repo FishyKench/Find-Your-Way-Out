@@ -32,17 +32,49 @@ public class VilesChange : interactable
     [SerializeField] AudioSource beltSFX;
 
 
-
     private void Start()
     {
         sphereVial.SetActive(false);
         squareVial.SetActive(false);
         cylinderVial.SetActive(false);
-        triangleVial.SetActive(true);
-        seqNo = 1;
+        triangleVial.SetActive(false);
 
+        seqNo = 1;
         isCorrect = false;
+
+        if (btnID == 1)
+        {
+            SetRandomVial(exclude: triangleVial);
+        }
+        else if (btnID == 2)
+        {
+            SetRandomVial(exclude: sphereVial);
+        }
+        else if (btnID == 3)
+        {
+            SetRandomVial(exclude: cylinderVial);
+        }
+        else if (btnID == 4)
+        {
+            SetRandomVial(exclude: squareVial);
+        }
+        else
+        {
+            SetRandomVial();
+        }
     }
+
+    private void SetRandomVial(GameObject exclude = null)
+    {
+        List<GameObject> validVials = new List<GameObject> { sphereVial, squareVial, cylinderVial, triangleVial };
+
+        if (exclude != null)
+            validVials.Remove(exclude);
+
+        GameObject selectedVial = validVials[Random.Range(0, validVials.Count)];
+        selectedVial.SetActive(true);
+    }
+
 
     private void Update()
     {

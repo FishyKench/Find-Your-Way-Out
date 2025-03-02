@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScumInteract : interactable
 {
@@ -41,6 +42,6 @@ public class ScumInteract : interactable
         fade.SetTrigger("FadeIn");
         yield return new WaitForSeconds(1f);
         print("QUIT");
-        Application.Quit(0);
+        SceneManager.LoadScene("MainMenu");
     }
 }
