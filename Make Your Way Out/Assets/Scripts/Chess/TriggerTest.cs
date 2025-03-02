@@ -3,78 +3,46 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerTest : MonoBehaviour
-
 {
     public bool hasPiece;
     public bool hasEntered;
+    public GameObject currentPiece; // stores the exact piece on this tile
+
     [SerializeField]
     private GrabScript grabscipt;
-
-    [SerializeField]
-    private GameObject _chessKing; // The King Prefab
-    [SerializeField]
-    private GameObject _chessRook; // The Rook Prefab
-    [SerializeField]
-    private GameObject _chessBishop; //The Bishop Prefab
-    [SerializeField]
-    private GameObject _chessQueen; // The Queen Prefab
-    [SerializeField]
-    private GameObject _chessKnight; // The Knight Prefab
-    [SerializeField]
-    private GameObject _chessPawn; // The Pawn Prefab
-
-    private GameObject _chessPiece; // the refrence to the prefab to be able to destory it 
-
-    public GameObject daPlayer;
-
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
- 
+    public ChessTypeChecker chessTypeChecker; // reference to get the piece type
 
     private void OnTriggerStay(Collider other)
     {
-                grabscipt = other.gameObject.GetComponent<GrabScript>();
-        if (hasEntered == false && hasPiece == false)
+        grabscipt = other.gameObject.GetComponent<GrabScript>();
+        if (!hasEntered && !hasPiece)
         {
-
-            if (other.tag == "ChessPiece" && hasPiece == false && grabscipt.IsGrabbed == false)
+            if (other.CompareTag("ChessPiece") && !hasPiece && grabscipt.IsGrabbed == false)
             {
                 hasEntered = true;
-                other.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                hasPiece = true;
+                currentPiece = other.gameObject; // track the piece
+
+                other.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 other.transform.rotation = Quaternion.Euler(-90, 0, 0);
                 other.GetComponent<Rigidbody>().freezeRotation = true;
-                other.transform.localPosition = this.gameObject.transform.position;
+                other.transform.position = transform.position;
                 other.GetComponent<Rigidbody>().freezeRotation = false;
-                other.tag = "ChessPieceIn";
-                hasPiece = true;
 
-                //sfx
+                other.tag = "ChessPieceIn";
+
                 GetComponent<AudioSource>().Play();
             }
-
-
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Destroy(_chessPiece);
-        hasPiece = false;
-        hasEntered = false;
-        if (other.tag == "ChessPieceIn")
+        if (other.gameObject == currentPiece) // oonly reset if the piece is the one placed
         {
-            
+            hasPiece = false;
+            hasEntered = false;
+            currentPiece = null;
             other.tag = "ChessPiece";
         }
     }

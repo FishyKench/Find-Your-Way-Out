@@ -43,14 +43,57 @@ public class PlacementIndicator : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (triggerScript.GetComponent<TriggerTest>().hasPiece == true)
+        if (triggerScript.hasPiece && triggerScript.currentPiece != null) // makes sure there is a piece
         {
             Destroy(_chessPiece);
+
+            if (!hasEntered) // update once only.
+            {
+                hasEntered = true;
+
+                ChessTypeChecker typeChecker = triggerScript.currentPiece.GetComponent<ChessTypeChecker>();
+                if (typeChecker != null)
+                {
+                    ResetPieceFlags(); // reset all flags before setting the correct one
+
+                    switch (typeChecker.Type)
+                    {
+                        case "King":
+                            hasKing = true;
+                            break;
+                        case "Rook":
+                            hasRook = true;
+                            break;
+                        case "Bishop":
+                            hasBishop = true;
+                            break;
+                        case "Queen":
+                            hasQueen = true;
+                            break;
+                        case "Knight":
+                            hasKnight = true;
+                            break;
+                        case "Pawn":
+                            hasPawn = true;
+                            break;
+                    }
+                }
+            }
         }
     }
+
+    private void ResetPieceFlags()
+    {
+        hasKing = false;
+        hasRook = false;
+        hasBishop = false;
+        hasQueen = false;
+        hasKnight = false;
+        hasPawn = false;
+    }
+
 
     private void OnTriggerStay(Collider other)
     {
