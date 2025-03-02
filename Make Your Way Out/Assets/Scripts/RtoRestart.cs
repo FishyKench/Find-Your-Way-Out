@@ -6,56 +6,30 @@ using UnityEngine.UI;
 
 public class RtoRestart : MonoBehaviour
 {
-    [SerializeField] Image rFillImage;
-    [SerializeField] Image qFillImage;
+    [SerializeField] Image fillImage;
     bool rHeld = false;
-    bool qHeld = false;
     float holdTimer = 0f;
     float requiredHoldTime = 3f;
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
-        {
             rHeld = true;
-            qHeld = false;
-            holdTimer = 0f;
-            qFillImage.fillAmount = 0f;
-        }
         if (Input.GetKeyUp(KeyCode.R))
-            rHeld = false;
-
-        if (Input.GetKeyDown(KeyCode.Q))
         {
-            qHeld = true;
             rHeld = false;
             holdTimer = 0f;
-            rFillImage.fillAmount = 0f;
-        }
-        if (Input.GetKeyUp(KeyCode.Q))
-            qHeld = false;
-
-        if (!rHeld && !qHeld)
-        {
-            holdTimer = 0f;
-            rFillImage.fillAmount = 0f;
-            qFillImage.fillAmount = 0f;
-            return;
+            fillImage.fillAmount = 0f;
         }
 
-        holdTimer += Time.deltaTime;
 
-        if (rHeld)
+        if(rHeld == true)
         {
-            rFillImage.fillAmount = holdTimer / requiredHoldTime;
-            if (holdTimer >= requiredHoldTime)
+            holdTimer += Time.deltaTime;
+            if(holdTimer >= requiredHoldTime)
+            {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-        else if (qHeld)
-        {
-            qFillImage.fillAmount = holdTimer / requiredHoldTime;
-            if (holdTimer >= requiredHoldTime)
-                SceneManager.LoadScene("MainMenu");
+            }
+            fillImage.fillAmount = holdTimer / requiredHoldTime;
         }
     }
 }
